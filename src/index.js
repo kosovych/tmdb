@@ -1,8 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
-
-import StubsRoot from './components/stubs/StubsRoot'
+import App from './App'
 
 import configureStore from './store/configureStore'
 import './assets/styles/app.scss'
@@ -11,7 +10,7 @@ const store = configureStore()
 
 render(
   <Provider store={store}>
-    <StubsRoot />
+    <App />
   </Provider>,
   document.getElementById('app') || document.createElement('div')
 )

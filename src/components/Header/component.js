@@ -37,7 +37,7 @@ const Header = () => (
       <Col>
         <Dropdown overlay={Overlay}>
           <Typography.Text>
-            <Avatar icon={(<UserOutlined />)} />
+            <Avatar icon={<UserOutlined />} />
             {' '}
             <span className="hide-sm-down">Username</span>
             {' '}

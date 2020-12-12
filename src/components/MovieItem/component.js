@@ -10,7 +10,7 @@ const Movie = ({ actions }) => (
         alt="example"
         src="http://t2.gstatic.com/images?q=tbn:ANd9GcQA_-tL18_rj9zEcjN6n41NEaJm-kRNF9UeOtvksZ4z_OW6jRA9"
       />
-)}
+    )}
     className="top-margin"
     actions={actions}
   >

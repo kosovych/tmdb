@@ -3,22 +3,22 @@ import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 
-const PrivateRoute = ({ component: Component, sessionID, ...rest }) => (
+const GuestRoute = ({ component: Component, sessionID, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      sessionID ? <Component {...props} /> : <Redirect to="/login" />
+      sessionID ? <Redirect to="/" /> : <Component {...props} />
     )}
   />
 )
 
-PrivateRoute.propTypes = {
+GuestRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
   sessionID: PropTypes.string
 }
 
-PrivateRoute.defaultProps = {
+GuestRoute.defaultProps = {
   sessionID: null
 }
 
-export default PrivateRoute
+export default GuestRoute

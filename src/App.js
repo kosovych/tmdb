@@ -4,6 +4,7 @@ import Login from './containers/Login'
 import Dashboard from './containers/Dashboard'
 import StubsRoot from './components/stubs/StubsRoot'
 import PrivateRoute from './components/PrivateRoute'
+import GuestRoute from './components/GuestRoute'
 
 const App = () => (
   <Router>
@@ -13,7 +14,7 @@ const App = () => (
         exact
         component={Dashboard}
       />
-      <Route
+      <GuestRoute
         path="/login"
         component={Login}
       />

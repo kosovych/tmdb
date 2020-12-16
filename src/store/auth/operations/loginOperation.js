@@ -1,5 +1,4 @@
 import { createLogic } from 'redux-logic'
-// eslint-disable-next-line import/no-unresolved
 import { LOGIN_SUBMIT } from '../types'
 import { loginLoading, loginError, loginSuccess } from '../actions'
 
@@ -11,10 +10,10 @@ export const loginOperation = createLogic({
     dispatch(loginError(null))
     const { username, password } = action
     try {
-      const requestToken = await axios.get('/authentication/token/new')
-        .then(res => res.data.request_token)
+      const requestTokenReq = await axios.get('/authentication/token/new')
+      const requestToken = requestTokenReq.data.request_token
 
-      const sessionRequestToken = await axios.post(
+      const sessionRequestTokenReq = await axios.post(
         '/authentication/token/validate_with_login',
         {
           request_token: requestToken,
@@ -22,13 +21,14 @@ export const loginOperation = createLogic({
           password
         }
       )
-        .then(res => res.data.request_token)
+      const sessionRequestToken = sessionRequestTokenReq.data.request_token
 
-      const sessionID = await axios.post(
+      const sessionIDReq = await axios.post(
         '/authentication/session/new',
         { request_token: sessionRequestToken }
       )
-        .then(res => res.data.session_id)
+      const sessionID = sessionIDReq.data.session_id
+
       localStorage.setItem('session_id', sessionID)
       dispatch(loginSuccess(sessionID))
     } catch (err) {

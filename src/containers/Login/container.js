@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { loginSubmit } from 'Store/auth/actions'
 import LoginComponent from './component'
-import { loginSubmit } from '../../store/auth/actions'
 
 class Login extends Component {
   render() {

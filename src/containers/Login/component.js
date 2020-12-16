@@ -1,14 +1,12 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 import {
   Button, Col, Form, Input, Layout, Row, Typography, Alert
 } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const Login = ({
-  login, errorTxt, loading, sessionID
+  login, errorTxt, loading
 }) => (
   <div className="center">
     <Layout>
@@ -66,19 +64,13 @@ const Login = ({
         </Row>
       </Layout.Content>
     </Layout>
-    {sessionID && <Redirect to="/" />}
   </div>
 )
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   errorTxt: PropTypes.string,
-  loading: PropTypes.bool.isRequired,
-  sessionID: PropTypes.string
-}
-
-Login.defaultProps = {
-  sessionID: null
+  loading: PropTypes.bool.isRequired
 }
 
 Login.defaultProps = {

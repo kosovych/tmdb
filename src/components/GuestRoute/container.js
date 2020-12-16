@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import PrivateRouteComponent from './component'
+import GuestRouteComponent from './component'
 
-const PrivateRoute = props => (
-  <PrivateRouteComponent
+const GuestRoute = props => (
+  <GuestRouteComponent
     {...props}
   />
 )
@@ -13,12 +13,12 @@ const mapStateToProps = state => ({
   sessionID: state.auth.sessionID
 })
 
-PrivateRoute.propTypes = {
+GuestRoute.propTypes = {
   sessionID: PropTypes.string
 }
 
-PrivateRoute.defaultProps = {
+GuestRoute.defaultProps = {
   sessionID: null
 }
 
-export default connect(mapStateToProps)(PrivateRoute)
+export default connect(mapStateToProps)(GuestRoute)

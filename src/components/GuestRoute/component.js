@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-
 const GuestRoute = ({ component: Component, sessionID, ...rest }) => (
   <Route
     {...rest}

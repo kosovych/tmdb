@@ -1,13 +1,12 @@
 import { createLogic } from 'redux-logic'
 import { LOGIN_SUBMIT } from '../types'
-import { loginLoading, loginError, loginSuccess } from '../actions'
+import { loginFails, loginSuccess, loginRequest } from '../actions'
 
 export const loginOperation = createLogic({
   type: LOGIN_SUBMIT,
   latest: true,
   async process({ action, axios }, dispatch, done) {
-    dispatch(loginLoading(true))
-    dispatch(loginError(null))
+    dispatch(loginRequest(true, null))
     const { username, password } = action
     try {
       const requestTokenReq = await axios.get('/authentication/token/new')
@@ -30,11 +29,10 @@ export const loginOperation = createLogic({
       const sessionID = sessionIDReq.data.session_id
 
       localStorage.setItem('session_id', sessionID)
-      dispatch(loginSuccess(sessionID))
+      dispatch(loginSuccess(sessionID, false))
     } catch (err) {
-      dispatch(loginError(err.response.data.status_message))
+      dispatch(loginFails(err.response.data.status_message, false))
     }
-    dispatch(loginLoading(false))
     done()
   }
 })

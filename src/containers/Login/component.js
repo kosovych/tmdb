@@ -27,9 +27,7 @@ const Login = ({
                 message={errorTxt}
               />
               )}
-              <Form.Item
-                name="username"
-              >
+              <Form.Item name="username">
                 <Input
                   prefix={(
                     <UserOutlined

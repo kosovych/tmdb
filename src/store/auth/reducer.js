@@ -8,9 +8,9 @@ const initState = {
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST: return { ...state, loading: action.loading }
-    case LOGIN_FAILS: return { ...state, errorTxt: action.errorTxt, loading: action.loading }
-    case LOGIN_SUCCESS: return { ...state, sessionID: action.sessionID, loading: action.loading }
+    case LOGIN_REQUEST: return { ...state, loading: true, errorTxt: null }
+    case LOGIN_FAILS: return { ...state, errorTxt: action.errorTxt, loading: false }
+    case LOGIN_SUCCESS: return { ...state, sessionID: action.sessionID, loading: false }
     default: return state
   }
 }

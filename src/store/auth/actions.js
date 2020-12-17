@@ -8,20 +8,16 @@ export const loginSubmit = ({ username, password }) => ({
   password
 })
 
-export const loginFails = (errorTxt, loading) => ({
+export const loginFails = errorTxt => ({
   type: LOGIN_FAILS,
-  errorTxt,
-  loading
+  errorTxt
 })
 
-export const loginSuccess = (sessionID, loading) => ({
+export const loginSuccess = sessionID => ({
   type: LOGIN_SUCCESS,
-  sessionID,
-  loading
+  sessionID
 })
 
-export const loginRequest = (loading, error) => ({
-  type: LOGIN_REQUEST,
-  loading,
-  error
+export const loginRequest = () => ({
+  type: LOGIN_REQUEST
 })

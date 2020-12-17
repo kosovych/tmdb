@@ -1,7 +1,7 @@
 import { createLogicMiddleware } from 'redux-logic'
 import { createStore, applyMiddleware } from 'redux'
-
-import logics from './logics'
+import axios from '../axios'
+import logic from './logics'
 import rootReducer from './rootReducer'
 
 const bindMiddleware = (middleware) => {
@@ -17,9 +17,11 @@ const bindMiddleware = (middleware) => {
 
 const configureStore = (initialState = {}) => {
   // Add dependencies to pass them to logic functions
-  const dependencies = {}
+  const dependencies = {
+    axios
+  }
 
-  const logicMiddleware = createLogicMiddleware(logics, dependencies)
+  const logicMiddleware = createLogicMiddleware(logic, dependencies)
   const store = createStore(rootReducer, initialState, bindMiddleware([logicMiddleware]))
 
   return store

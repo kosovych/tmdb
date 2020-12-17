@@ -1,12 +1,14 @@
 import React from 'react'
 import {
-  Button, Col, Form, Input, Layout, Row, Typography, Alert
+  Button, Col, Layout, Row, Typography, Alert
 } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
+import { Form, Field } from 'formik'
+import FormField from '../../components/FormField'
 
 const Login = ({
-  login, errorTxt, loading
+  errorTxt, loading, handleSubmit, errors: { username, password }, touched
 }) => (
   <div className="center">
     <Layout>
@@ -19,44 +21,50 @@ const Login = ({
             sm={{ span: 10, offset: 1 }}
             lg={{ span: 8, offset: 2 }}
           >
-            <Form onFinish={login}>
+            <Form onSubmit={handleSubmit}>
               <Typography.Title>The Movie DB</Typography.Title>
               {errorTxt && (
-              <Alert
-                type="error"
-                message={errorTxt}
-              />
+                <Alert
+                  type="error"
+                  message={errorTxt}
+                />
               )}
-              <Form.Item name="username">
-                <Input
-                  prefix={(
+              <Field
+                name="username"
+                validateStatus={(username && touched.username) ? 'error' : null}
+                help={touched.username && username}
+                component={FormField}
+                placeholder="Username"
+                prefix={
+                  (
                     <UserOutlined
                       style={{ color: 'rgba(0,0,0,.25)' }}
                     />
-                  )}
-                  placeholder="Username"
-                />
-              </Form.Item>
-              <Form.Item name="password">
-                <Input
-                  prefix={(
+                  )
+                }
+              />
+              <Field
+                name="password"
+                validateStatus={(password && touched.password) ? 'error' : null}
+                help={touched.password && password}
+                component={FormField}
+                placeholder="Password"
+                type="password"
+                prefix={
+                  (
                     <LockOutlined
                       style={{ color: 'rgba(0,0,0,.25)' }}
                     />
-                  )}
-                  type="password"
-                  placeholder="Password"
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  loading={loading}
-                  type="primary"
-                  htmlType="submit"
-                >
-                  Log in
-                </Button>
-              </Form.Item>
+                  )
+                }
+              />
+              <Button
+                loading={loading}
+                type="primary"
+                htmlType="submit"
+              >
+              Log in
+              </Button>
             </Form>
           </Col>
         </Row>
@@ -66,9 +74,11 @@ const Login = ({
 )
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired,
   errorTxt: PropTypes.string,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.shape().isRequired,
+  touched: PropTypes.shape().isRequired
 }
 
 Login.defaultProps = {

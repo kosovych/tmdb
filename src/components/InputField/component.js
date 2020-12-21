@@ -4,35 +4,36 @@ import {
 } from 'antd'
 import PropTypes from 'prop-types'
 
-const FormField = ({
-  placeholder, validateStatus, help, field, prefix: PrefixComponent, ...inputProps
+const InputField = ({
+  placeholder, validateStatus, help, field, prefix: Prefix, form: { errors, touched }, ...inputProps
 }) => (
   <Form.Item
-    validateStatus={validateStatus}
-    help={help}
+    validateStatus={(errors[field.name]) ? 'error' : null}
+    help={touched[field.name] && errors[field.name]}
   >
     <Input
       {...field}
       {...inputProps}
-      prefix={PrefixComponent}
+      prefix={Prefix}
       placeholder={placeholder}
     />
   </Form.Item>
 )
 
-FormField.propTypes = {
+InputField.propTypes = {
   placeholder: PropTypes.string,
   validateStatus: PropTypes.string,
   help: PropTypes.string,
   field: PropTypes.shape().isRequired,
-  prefix: PropTypes.element
+  prefix: PropTypes.element,
+  form: PropTypes.shape().isRequired
 }
 
-FormField.defaultProps = {
+InputField.defaultProps = {
   placeholder: null,
   validateStatus: null,
   help: null,
   prefix: null
 }
 
-export default FormField
+export default InputField

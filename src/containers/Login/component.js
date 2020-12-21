@@ -5,7 +5,7 @@ import {
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'formik'
-import FormField from '../../components/FormField'
+import InputField from 'Components/InputField'
 
 const Login = ({
   errorTxt, loading, handleSubmit, errors: { username, password }, touched
@@ -31,9 +31,7 @@ const Login = ({
               )}
               <Field
                 name="username"
-                validateStatus={(username && touched.username) ? 'error' : null}
-                help={touched.username && username}
-                component={FormField}
+                component={InputField}
                 placeholder="Username"
                 prefix={
                   (
@@ -45,9 +43,7 @@ const Login = ({
               />
               <Field
                 name="password"
-                validateStatus={(password && touched.password) ? 'error' : null}
-                help={touched.password && password}
-                component={FormField}
+                component={InputField}
                 placeholder="Password"
                 type="password"
                 prefix={
@@ -76,9 +72,7 @@ const Login = ({
 Login.propTypes = {
   errorTxt: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  errors: PropTypes.shape().isRequired,
-  touched: PropTypes.shape().isRequired
+  handleSubmit: PropTypes.func.isRequired
 }
 
 Login.defaultProps = {

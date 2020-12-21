@@ -9,16 +9,13 @@ import LoginComponent from './component'
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().required('Required'),
-  password: Yup.string().min(4, 'To Short').required('Required')
+  password: Yup.string().min(4, 'Password should contain at least 4 characters').required('Required')
 })
 
 class Login extends Component {
   render() {
     return (
-      <LoginComponent
-        {...this.props}
-        validationSchema={LoginSchema}
-      />
+      <LoginComponent {...this.props} />
     )
   }
 }
@@ -40,6 +37,5 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(withFormik({
   mapPropsToValues: () => ({ username: '', password: '' }),
   handleSubmit: (value, { props }) => props.login(value),
-  // handleSubmit: (...a) => console.log(a),
   validationSchema: LoginSchema
 })(Login))

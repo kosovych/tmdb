@@ -1,15 +1,13 @@
 import React from 'react'
-import {
-  Form, Input
-} from 'antd'
+import { Form, Input } from 'antd'
 import PropTypes from 'prop-types'
 
 const InputField = ({
-  placeholder, validateStatus, help, field, prefix: Prefix, form: { errors, touched }, ...inputProps
+  placeholder, validateStatus, help, field, prefix: Prefix, ...inputProps
 }) => (
   <Form.Item
-    validateStatus={(errors[field.name]) ? 'error' : null}
-    help={touched[field.name] && errors[field.name]}
+    validateStatus={validateStatus}
+    help={help}
   >
     <Input
       {...field}
@@ -25,8 +23,7 @@ InputField.propTypes = {
   validateStatus: PropTypes.string,
   help: PropTypes.string,
   field: PropTypes.shape().isRequired,
-  prefix: PropTypes.element,
-  form: PropTypes.shape().isRequired
+  prefix: PropTypes.element
 }
 
 InputField.defaultProps = {

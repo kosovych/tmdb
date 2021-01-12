@@ -8,7 +8,7 @@ import { Form, Field } from 'formik'
 import InputField from 'Components/InputField'
 
 const Login = ({
-  errorTxt, loading, handleSubmit, errors: { username, password }, touched
+  errorTxt, loading, handleSubmit
 }) => (
   <div className="center">
     <Layout>
@@ -59,7 +59,7 @@ const Login = ({
                 type="primary"
                 htmlType="submit"
               >
-              Log in
+                Log in
               </Button>
             </Form>
           </Col>

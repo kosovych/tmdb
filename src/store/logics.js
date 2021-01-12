@@ -1,3 +1,4 @@
 import { loginOperation } from './auth/operations'
+import { dataOperation } from './data/operations'
 
-export default [loginOperation]
+export default [loginOperation, dataOperation]

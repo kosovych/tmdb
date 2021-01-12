@@ -1,0 +1,1 @@
+export { trendingMoviesSchema } from './trendingMoviesSchema'

@@ -1,0 +1,1 @@
+export { dataOperation } from './dataOperation'

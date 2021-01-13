@@ -36,6 +36,6 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(withFormik({
   mapPropsToValues: () => ({ username: '', password: '' }),
-  handleSubmit: (value, { props }) => props.login(value),
+  handleSubmit: (values, { props }) => props.login(values),
   validationSchema: LoginSchema
 })(Login))

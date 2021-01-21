@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { getIn } from 'formik'
 import InputFieldComponent from './component'
 
 class InputField extends Component {
-  getValidateStatus() {
-    const { field, form: { errors } } = this.props
-    return (errors[field.name]) ? 'error' : null
+  get validateStatus() {
+    const { field, form } = this.props
+    return getIn(form.errors, field.name) ? 'error' : null
   }
 
-  getHelp() {
-    const { field, form: { errors, touched } } = this.props
-    return touched[field.name] && errors[field.name]
+  get helpMessage() {
+    const { field, form } = this.props
+    return getIn(form.touched, field.name) && getIn(form.errors, field.name)
   }
 
   render() {
@@ -18,8 +19,8 @@ class InputField extends Component {
     return (
       <InputFieldComponent
         {...restProps}
-        validateStatus={this.getValidateStatus()}
-        help={this.getHelp()}
+        validateStatus={this.validateStatus}
+        help={this.helpMessage}
         field={field}
       />
     )

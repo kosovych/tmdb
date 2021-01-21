@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import InputFieldComponent from './component'
 
-const InputField = ({
-  field, form: { errors, touched }, ...restProps
-}) => (
-  <InputFieldComponent
-    {...restProps}
-    validateStatus={(errors[field.name]) ? 'error' : null}
-    help={touched[field.name] && errors[field.name]}
-    field={field}
-  />
-)
+class InputField extends Component {
+  getValidateStatus() {
+    const { field, form: { errors } } = this.props
+    return (errors[field.name]) ? 'error' : null
+  }
+
+  getHelp() {
+    const { field, form: { errors, touched } } = this.props
+    return touched[field.name] && errors[field.name]
+  }
+
+  render() {
+    const { field, ...restProps } = this.props
+    return (
+      <InputFieldComponent
+        {...restProps}
+        validateStatus={this.getValidateStatus()}
+        help={this.getHelp()}
+        field={field}
+      />
+    )
+  }
+}
 
 InputField.propTypes = {
   validateStatus: PropTypes.string,

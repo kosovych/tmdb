@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
-// import { PropertySafetyFilled } from '@ant-design/icons'
 
 const Movie = ({ poster, overview, title }) => (
   <Card

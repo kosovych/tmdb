@@ -53,8 +53,11 @@ const Dashboard = ({
                 moviesIDs={movies.items}
                 moviesData={moviesData}
               />
-            ) : <Col><Spin /></Col>
-        }
+            ) : (
+              <Col>
+                <Spin />
+              </Col>
+            )}
           </Row>
         </Col>
       </Row>

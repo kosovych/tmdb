@@ -1,13 +1,12 @@
 import { createLogic } from 'redux-logic'
 import { REQUEST_DATA } from '../types'
-import { requestDataSuccess, requestDataStart } from '../actions'
+import { requestDataSuccess } from '../actions'
 import { addMovies } from '../../movies/actions'
 
 export const dataOperation = createLogic({
   type: REQUEST_DATA,
   latest: true,
   async process({ action, axios }, dispatch, done) {
-    dispatch(requestDataStart(true))
     const { endpoint, url, schema } = action
     try {
       const dataRequest = await axios.get(url)

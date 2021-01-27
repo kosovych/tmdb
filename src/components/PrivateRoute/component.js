@@ -1,22 +1,16 @@
 import React from 'react'
-import { Layout } from 'antd'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Header from '../../containers/Header'
+import UserLayout from '../UserLayout'
 
 const PrivateRoute = ({ component: Component, sessionID, ...rest }) => (
   <Route
     {...rest}
     render={props => (
       sessionID ? (
-        <>
-          <Layout>
-            <Header />
-            <Layout.Content>
-              <Component {...props} />
-            </Layout.Content>
-          </Layout>
-        </>
+        <UserLayout>
+          <Component {...props} />
+        </UserLayout>
       ) : <Redirect to="/login" />
     )}
   />

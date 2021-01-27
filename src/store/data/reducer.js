@@ -11,7 +11,7 @@ const reducer = (state = initState, action) => {
     case REQUEST_DATA_SUCCESS:
       return { ...state, moviesData: action.payload, loading: false }
     default:
-      return { ...state }
+      return state
   }
 }
 

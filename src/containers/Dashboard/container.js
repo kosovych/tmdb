@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { requestData } from 'Store/data/actions'
-import { TRENDING_MOVIES, ALL_TRENDING_DAY } from 'Constants/'
-import { trendingMoviesSchema } from 'Utils/'
+import { TRENDING_MOVIES, ALL_TRENDING_DAY } from 'Constants'
+import { trendingMoviesSchema } from 'Utils'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {

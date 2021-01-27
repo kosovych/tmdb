@@ -17,7 +17,7 @@ const Header = ({ onLogout }) => (
       </Col>
       <Col>
         <Dropdown
-          overlay={() => <Menu onLogout={onLogout} />}
+          overlay={<Menu onLogout={onLogout} />}
         >
           <Typography.Text>
             <Avatar icon={<UserOutlined />} />

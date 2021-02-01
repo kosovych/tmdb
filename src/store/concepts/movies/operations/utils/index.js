@@ -1,0 +1,1 @@
+export { getSchemaByEndpoint } from './getSchemaByEndpoint'

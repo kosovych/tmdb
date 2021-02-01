@@ -2,30 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { requestData } from 'Store/data/actions'
+import { getMovies as getMoviesAction } from 'Store/concepts/movies/actions'
 import { TRENDING_MOVIES, ALL_TRENDING_DAY } from 'Constants'
-import { trendingMoviesSchema } from 'Utils'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {
   componentDidMount() {
     const { getMovies } = this.props
-    getMovies(ALL_TRENDING_DAY, TRENDING_MOVIES, trendingMoviesSchema)
+    getMovies(TRENDING_MOVIES, ALL_TRENDING_DAY)
   }
 
   onPageChange = (page) => {
     const { getMovies } = this.props
-    getMovies(`${ALL_TRENDING_DAY}?page=${page}`, TRENDING_MOVIES, trendingMoviesSchema)
+    getMovies(TRENDING_MOVIES, `${ALL_TRENDING_DAY}?page=${page}`)
   }
 
   render() {
-    const { moviesData, movies, loading } = this.props
+    const {
+      moviesData, movies, loading, currentPage, totalPages, error
+    } = this.props
     return (
       <DashboardComponent
         moviesData={moviesData}
         movies={movies}
+        currentPage={currentPage}
+        totalPages={totalPages}
         loading={loading}
         onPageChange={this.onPageChange}
+        error={error}
       />
     )
   }
@@ -34,27 +38,32 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   getMovies: PropTypes.func.isRequired,
   moviesData: PropTypes.shape(),
-  movies: PropTypes.shape({
-    currentPage: PropTypes.number,
-    items: PropTypes.arrayOf(PropTypes.number),
-    totalPages: PropTypes.number
-  }),
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number,
+  movies: PropTypes.PropTypes.arrayOf(PropTypes.number),
+  error: PropTypes.string
 }
 
 Dashboard.defaultProps = {
   moviesData: null,
-  movies: null
+  movies: null,
+  currentPage: null,
+  totalPages: null,
+  error: null
 }
 
 const mapStateToProps = state => ({
-  loading: state.data.loading,
-  moviesData: state.data.moviesData,
-  movies: state.movies[TRENDING_MOVIES]
+  moviesData: state.data.movies,
+  loading: state.movies[TRENDING_MOVIES].meta.loading,
+  currentPage: state.movies[TRENDING_MOVIES].meta.currentPage,
+  totalPages: state.movies[TRENDING_MOVIES].meta.totalPages,
+  movies: state.movies[TRENDING_MOVIES].entries,
+  error: state.movies[TRENDING_MOVIES].meta.error
 })
 
 const mapDispatchToProps = {
-  getMovies: requestData
+  getMovies: getMoviesAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

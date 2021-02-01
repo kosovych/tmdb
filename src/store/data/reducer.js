@@ -1,15 +1,10 @@
-import { REQUEST_DATA, REQUEST_DATA_SUCCESS } from './types'
+import { STORE_DATA } from './types'
 
-const initState = {
-  loading: false
-}
-
-const reducer = (state = initState, action) => {
+const reducer = (state = {}, action) => {
+  const endpointData = state[action.endpoint]
   switch (action.type) {
-    case REQUEST_DATA:
-      return { ...state, loading: true }
-    case REQUEST_DATA_SUCCESS:
-      return { ...state, moviesData: action.payload, loading: false }
+    case STORE_DATA:
+      return { ...state, [action.endpoint]: { ...endpointData, ...action.payload } }
     default:
       return state
   }

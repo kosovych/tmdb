@@ -1,0 +1,1 @@
+export { getMoviesOperation } from './getMoviesOperation'

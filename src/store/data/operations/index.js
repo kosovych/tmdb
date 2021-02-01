@@ -1,1 +1,0 @@
-export { dataOperation } from './dataOperation'

@@ -1,13 +1,7 @@
-import { REQUEST_DATA, REQUEST_DATA_SUCCESS } from './types'
+import { STORE_DATA } from './types'
 
-export const requestData = (url, endpoint, schema) => ({
-  type: REQUEST_DATA,
-  url,
+export const storeData = (endpoint, payload) => ({
+  type: STORE_DATA,
   endpoint,
-  schema
-})
-
-export const requestDataSuccess = payload => ({
-  type: REQUEST_DATA_SUCCESS,
   payload
 })

@@ -1,37 +1,16 @@
 import React from 'react'
 import {
-  Row, Col, Input, Pagination, Spin
+  Row, Col, Pagination, Spin, Alert
 } from 'antd'
 import PropTypes from 'prop-types'
-
 import MoviesList from 'Components/MoviesList'
+import Search from './Search'
 
 const Dashboard = ({
-  moviesData, movies, loading, onPageChange
+  moviesData, movies, loading, onPageChange, currentPage, totalPages, error
 }) => (
   <>
-    <Row
-      justify="center"
-      gutter={{
-        xs: 8, sm: 16, md: 24, lg: 22
-      }}
-    >
-      <Col
-        className="gutter-row"
-        xs={{ span: 20 }}
-        sm={{ span: 20 }}
-        md={{ span: 14 }}
-        lg={{ span: 12 }}
-        xl={{ span: 10 }}
-      >
-        <Input.Search
-          placeholder="Enter movie name"
-          size="large"
-          enterButton="Search"
-          className="top-margin"
-        />
-      </Col>
-    </Row>
+    <Search />
     <div className="top-margin">
       <Row
         type="flex"
@@ -48,14 +27,23 @@ const Dashboard = ({
             }}
             justify={loading ? 'center' : 'start'}
           >
-            {!loading && movies ? (
-              <MoviesList
-                moviesIDs={movies.items}
-                moviesData={moviesData}
-              />
-            ) : (
+            {loading && (
               <Col>
                 <Spin />
+              </Col>
+            )}
+            {!loading && movies && (
+              <MoviesList
+                moviesIDs={movies}
+                moviesData={moviesData}
+              />
+            )}
+            {error && (
+              <Col span={24}>
+                <Alert
+                  message={error}
+                  type="error"
+                />
               </Col>
             )}
           </Row>
@@ -69,11 +57,11 @@ const Dashboard = ({
           {movies && (
           <Pagination
             disabled={loading}
-            defaultCurrent={movies.currentPage}
+            defaultCurrent={currentPage}
             onChange={onPageChange}
             className="pagination"
             showSizeChanger={false}
-            total={movies.totalPages}
+            total={totalPages}
           />
           )}
         </Col>
@@ -85,17 +73,19 @@ const Dashboard = ({
 Dashboard.propTypes = {
   onPageChange: PropTypes.func.isRequired,
   moviesData: PropTypes.shape(),
-  movies: PropTypes.shape({
-    currentPage: PropTypes.number,
-    items: PropTypes.arrayOf(PropTypes.number),
-    totalPages: PropTypes.number
-  }),
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number,
+  error: PropTypes.string,
+  movies: PropTypes.PropTypes.arrayOf(PropTypes.number)
 }
 
 Dashboard.defaultProps = {
   moviesData: null,
-  movies: null
+  movies: null,
+  currentPage: null,
+  totalPages: null,
+  error: null
 }
 
 export default Dashboard

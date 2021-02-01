@@ -1,0 +1,4 @@
+export const GET_MOVIES = 'movies/GET_MOVIES'
+export const REQUEST_MOVIES_START = 'movies/REQUEST_MOVIES_START'
+export const REQUEST_MOVIES_SUCCESS = 'movies/REQUEST_MOVIES_SUCCESS'
+export const REQUEST_MOVIES_ERROR = 'movies/REQUEST_MOVIES_ERROR'

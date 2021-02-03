@@ -17,7 +17,8 @@ const reducer = (state = initialState, action) => {
       return merge({ ...state }, { [endpoint]: { meta: { loading: true, error: null } } })
     case REQUEST_MOVIES_SUCCESS:
       return merge(
-        { ...state },
+        {},
+        { state },
         {
           [endpoint]: {
             meta: {

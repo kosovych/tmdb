@@ -70,3 +70,13 @@ body,
 .mr-8 {
   margin-right: 8px;
 }
+.reset-btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.d-none {
+  display: none !important;
+}

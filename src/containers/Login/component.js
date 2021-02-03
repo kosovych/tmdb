@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Button, Col, Layout, Row, Typography, Alert
+  Button, Col, Layout, Row, Typography, Alert, Input
 } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
@@ -32,6 +32,7 @@ const Login = ({
               <Field
                 name="username"
                 component={InputField}
+                inputComponent={Input}
                 placeholder="Username"
                 prefix={
                   (
@@ -44,6 +45,7 @@ const Login = ({
               <Field
                 name="password"
                 component={InputField}
+                inputComponent={Input}
                 placeholder="Password"
                 type="password"
                 prefix={

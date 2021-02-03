@@ -1,16 +1,16 @@
 import React from 'react'
 import {
-  Row, Col, Pagination, Spin, Alert
+  Row, Col, Pagination, Spin, Alert, Empty
 } from 'antd'
 import PropTypes from 'prop-types'
 import MoviesList from 'Components/MoviesList'
 import Search from './Search'
 
 const Dashboard = ({
-  moviesData, movies, loading, onPageChange, currentPage, totalPages, error
+  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, onSearch, showEmpty
 }) => (
   <>
-    <Search />
+    <Search onSearch={onSearch} />
     <div className="top-margin">
       <Row
         type="flex"
@@ -37,6 +37,11 @@ const Dashboard = ({
                 moviesIDs={movies}
                 moviesData={moviesData}
               />
+            )}
+            { showEmpty && (
+              <Col span={24}>
+                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+              </Col>
             )}
             {error && (
               <Col span={24}>
@@ -72,12 +77,14 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   onPageChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   moviesData: PropTypes.shape(),
   loading: PropTypes.bool.isRequired,
   currentPage: PropTypes.number,
   totalPages: PropTypes.number,
   error: PropTypes.string,
-  movies: PropTypes.PropTypes.arrayOf(PropTypes.number)
+  movies: PropTypes.PropTypes.arrayOf(PropTypes.number),
+  showEmpty: PropTypes.bool
 }
 
 Dashboard.defaultProps = {
@@ -85,7 +92,8 @@ Dashboard.defaultProps = {
   movies: null,
   currentPage: null,
   totalPages: null,
-  error: null
+  error: null,
+  showEmpty: false
 }
 
 export default Dashboard

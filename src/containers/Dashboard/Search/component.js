@@ -2,8 +2,15 @@ import React from 'react'
 import {
   Row, Col, Input
 } from 'antd'
+import PropTypes from 'prop-types'
+import { Form, Field } from 'formik'
+import InputField from 'Components/InputField'
+import ClearButton from './ClearButton'
 
-const Search = () => (
+
+const Search = ({
+  handleSubmit, values, onClear, handleBlur
+}) => (
   <Row
     justify="center"
     gutter={{
@@ -18,15 +25,36 @@ const Search = () => (
       lg={{ span: 12 }}
       xl={{ span: 10 }}
     >
-      <Input.Search
-        placeholder="Enter movie name"
-        size="large"
-        enterButton="Search"
-        className="top-margin"
-        allowClear
-      />
+      <Form onSubmit={handleSubmit}>
+        <Field
+          component={InputField}
+          inputComponent={Input.Search}
+          name="search"
+          placeholder="Enter movie name"
+          size="large"
+          enterButton="Search"
+          className="top-margin"
+          onSearch={handleSubmit}
+          onBlur={values.search && handleBlur}
+          suffix={(
+            <ClearButton
+              onClick={onClear}
+              isVisible={values.search}
+            />
+          )}
+        />
+      </Form>
     </Col>
   </Row>
 )
+
+Search.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  values: PropTypes.shape({
+    search: PropTypes.string.isRequired
+  }).isRequired,
+  onClear: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired
+}
 
 export default Search

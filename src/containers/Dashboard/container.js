@@ -7,14 +7,38 @@ import { TRENDING_MOVIES, ALL_TRENDING_DAY } from 'Constants'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {
-  componentDidMount() {
-    const { getMovies } = this.props
-    getMovies(TRENDING_MOVIES, ALL_TRENDING_DAY)
+  state = {
+    url: ALL_TRENDING_DAY
+  }
+
+  componentDidMount = () => {
+    this.fetchMovies()
   }
 
   onPageChange = (page) => {
     const { getMovies } = this.props
-    getMovies(TRENDING_MOVIES, `${ALL_TRENDING_DAY}?page=${page}`)
+    const { url } = this.state
+    const symbolForPagerQuery = url !== ALL_TRENDING_DAY ? '&' : '?'
+    getMovies(TRENDING_MOVIES, `${url}${symbolForPagerQuery}page=${page}`)
+  }
+
+  onSearch = (url) => {
+    const { url: stateURL } = this.state
+    if (stateURL === ALL_TRENDING_DAY && ALL_TRENDING_DAY === url) {
+      return
+    }
+    this.setState(() => ({ url }), () => this.fetchMovies())
+  }
+
+  get showEmpty() {
+    const { loading, movies } = this.props
+    return !loading && movies && !movies.length
+  }
+
+  fetchMovies = () => {
+    const { getMovies } = this.props
+    const { url } = this.state
+    getMovies(TRENDING_MOVIES, url)
   }
 
   render() {
@@ -30,6 +54,8 @@ class Dashboard extends Component {
         loading={loading}
         onPageChange={this.onPageChange}
         error={error}
+        onSearch={this.onSearch}
+        showEmpty={this.showEmpty}
       />
     )
   }

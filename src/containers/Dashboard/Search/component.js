@@ -7,7 +7,6 @@ import { Form, Field } from 'formik'
 import InputField from 'Components/InputField'
 import ClearButton from './ClearButton'
 
-
 const Search = ({
   handleSubmit, values, onClear, handleBlur
 }) => (
@@ -28,7 +27,7 @@ const Search = ({
       <Form onSubmit={handleSubmit}>
         <Field
           component={InputField}
-          inputComponent={Input.Search}
+          inputAs={Input.Search}
           name="search"
           placeholder="Enter movie name"
           size="large"

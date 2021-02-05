@@ -7,7 +7,7 @@ import MoviesList from 'Components/MoviesList'
 import Search from './Search'
 
 const Dashboard = ({
-  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, onSearch, showEmpty
+  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, onSearch, isBlank
 }) => (
   <>
     <Search onSearch={onSearch} />
@@ -38,7 +38,7 @@ const Dashboard = ({
                 moviesData={moviesData}
               />
             )}
-            { showEmpty && (
+            {isBlank && (
               <Col span={24}>
                 <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
               </Col>
@@ -60,14 +60,14 @@ const Dashboard = ({
       >
         <Col>
           {movies && (
-          <Pagination
-            disabled={loading}
-            defaultCurrent={currentPage}
-            onChange={onPageChange}
-            className="pagination"
-            showSizeChanger={false}
-            total={totalPages}
-          />
+            <Pagination
+              disabled={loading}
+              defaultCurrent={currentPage}
+              onChange={onPageChange}
+              className="pagination"
+              showSizeChanger={false}
+              total={totalPages}
+            />
           )}
         </Col>
       </Row>
@@ -84,7 +84,7 @@ Dashboard.propTypes = {
   totalPages: PropTypes.number,
   error: PropTypes.string,
   movies: PropTypes.PropTypes.arrayOf(PropTypes.number),
-  showEmpty: PropTypes.bool
+  isBlank: PropTypes.bool
 }
 
 Dashboard.defaultProps = {
@@ -93,7 +93,7 @@ Dashboard.defaultProps = {
   currentPage: null,
   totalPages: null,
   error: null,
-  showEmpty: false
+  isBlank: false
 }
 
 export default Dashboard

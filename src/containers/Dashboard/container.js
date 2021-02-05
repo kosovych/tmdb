@@ -30,7 +30,7 @@ class Dashboard extends Component {
     this.setState(() => ({ url }), () => this.fetchMovies())
   }
 
-  get showEmpty() {
+  get isBlank() {
     const { loading, movies } = this.props
     return !loading && movies && !movies.length
   }
@@ -55,7 +55,7 @@ class Dashboard extends Component {
         onPageChange={this.onPageChange}
         error={error}
         onSearch={this.onSearch}
-        showEmpty={this.showEmpty}
+        isBlank={this.isBlank}
       />
     )
   }

@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic'
 import { storeData } from 'Store/data/actions'
+import { normalize, schema } from 'normalizr'
 import { GET_MOVIES } from '../types'
-import { getSchemaByEndpoint } from './utils'
 import { requestMoviesStart, requestMoviesSuccess, requestMoviesError } from '../actions'
 
 export const getMoviesOperation = createLogic({
@@ -9,12 +9,13 @@ export const getMoviesOperation = createLogic({
   latest: true,
   async process({ action, axios }, dispatch, done) {
     const { endpoint, url } = action
-    const schema = getSchemaByEndpoint(endpoint)
+    const movieSchema = new schema.Entity('movies')
+    const moviesListSchema = new schema.Array(movieSchema)
     dispatch(requestMoviesStart(endpoint))
     try {
       const dataRequest = await axios.get(url)
       const { data } = dataRequest
-      const { result, entities } = schema(data.results)
+      const { result, entities } = normalize(data.results, moviesListSchema)
       const movies = {
         entries: result,
         totalPages: data.total_pages,

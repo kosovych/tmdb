@@ -32,7 +32,6 @@ const Login = ({
               <Field
                 name="username"
                 component={InputField}
-                inputComponent={Input}
                 placeholder="Username"
                 prefix={
                   (
@@ -45,7 +44,6 @@ const Login = ({
               <Field
                 name="password"
                 component={InputField}
-                inputComponent={Input}
                 placeholder="Password"
                 type="password"
                 prefix={

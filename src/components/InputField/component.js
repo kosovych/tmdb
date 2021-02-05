@@ -1,9 +1,9 @@
 import React from 'react'
-import { Form } from 'antd'
+import { Form, Input as AntInput } from 'antd'
 import PropTypes from 'prop-types'
 
 const InputField = ({
-  placeholder, validateStatus, inputComponent: Input, help, field, prefix: Prefix, ...inputProps
+  placeholder, validateStatus, inputAs: Input, help, field, prefix: Prefix, ...inputProps
 }) => (
   <Form.Item
     validateStatus={validateStatus}
@@ -23,10 +23,7 @@ InputField.propTypes = {
   validateStatus: PropTypes.string,
   help: PropTypes.string,
   field: PropTypes.shape().isRequired,
-  inputComponent: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.element
-  ]),
+  inputAs: PropTypes.elementType,
   prefix: PropTypes.element
 }
 
@@ -35,7 +32,7 @@ InputField.defaultProps = {
   validateStatus: null,
   help: null,
   prefix: null,
-  inputComponent: null
+  inputAs: AntInput
 }
 
 export default InputField

@@ -14,11 +14,11 @@ const reducer = (state = initialState, action) => {
   const { type, endpoint } = action
   switch (type) {
     case REQUEST_MOVIES_START:
-      return merge({ ...state }, { [endpoint]: { meta: { loading: true, error: null } } })
+      return merge({}, state, { [endpoint]: { meta: { loading: true, error: null } } })
     case REQUEST_MOVIES_SUCCESS:
       return merge(
         {},
-        { state },
+        state,
         {
           [endpoint]: {
             meta: {
@@ -33,7 +33,8 @@ const reducer = (state = initialState, action) => {
       )
     case REQUEST_MOVIES_ERROR:
       return merge(
-        { ...state },
+        {},
+        state,
         {
           [endpoint]: {
             meta: {

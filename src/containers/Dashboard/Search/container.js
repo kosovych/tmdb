@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import { SEARCH_MOVIE, ALL_TRENDING_DAY } from 'Constants'
 import SearchComponent from './component'
 
-
 const SearchSchema = Yup.object().shape({
   search: Yup.string().min(2, 'Search should contain at least 2 characters').required()
 })
@@ -22,8 +21,8 @@ class Search extends Component {
   render() {
     return (
       <SearchComponent
-        onChange={this.onChange}
         {...this.props}
+        onChange={this.onChange}
         onClear={this.onClear}
       />
     )

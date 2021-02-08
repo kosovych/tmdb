@@ -24,7 +24,7 @@ const Search = ({
       lg={{ span: 12 }}
       xl={{ span: 10 }}
     >
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <Field
           component={InputField}
           inputAs={Input.Search}

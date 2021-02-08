@@ -1,1 +1,0 @@
-export { getMoviesOperation } from './getMoviesOperation'

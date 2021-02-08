@@ -7,10 +7,10 @@ import MoviesList from 'Components/MoviesList'
 import Search from './Search'
 
 const Dashboard = ({
-  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, onSearch, isBlank
+  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, isBlank
 }) => (
   <>
-    <Search onSearch={onSearch} />
+    <Search />
     <div className="top-margin">
       <Row
         type="flex"
@@ -77,7 +77,6 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   onPageChange: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
   moviesData: PropTypes.shape(),
   loading: PropTypes.bool.isRequired,
   currentPage: PropTypes.number,

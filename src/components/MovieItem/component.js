@@ -7,7 +7,7 @@ const Movie = ({ poster, overview, title }) => (
     hoverable
     cover={(
       <img
-        alt="example"
+        alt={title}
         src={`https://image.tmdb.org/t/p/w500/${poster}`}
         width="500"
         height="750"
@@ -27,6 +27,5 @@ Movie.propTypes = {
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }
-
 
 export default Movie

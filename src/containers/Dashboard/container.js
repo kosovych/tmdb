@@ -2,43 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getMovies as getMoviesAction } from 'Store/concepts/movies/actions'
-import { TRENDING_MOVIES, ALL_TRENDING_DAY } from 'Constants'
+import { getMovies as getMoviesAction } from 'Store/concepts/movieCatalogs/actions'
+import { TRENDING_MOVIES } from 'Constants'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {
-  state = {
-    url: ALL_TRENDING_DAY
-  }
-
   componentDidMount = () => {
-    this.fetchMovies()
+    const { getMovies } = this.props
+    getMovies()
   }
 
   onPageChange = (page) => {
     const { getMovies } = this.props
-    const { url } = this.state
-    const symbolForPagerQuery = url !== ALL_TRENDING_DAY ? '&' : '?'
-    getMovies(TRENDING_MOVIES, `${url}${symbolForPagerQuery}page=${page}`)
-  }
-
-  onSearch = (url) => {
-    const { url: stateURL } = this.state
-    if (stateURL === ALL_TRENDING_DAY && ALL_TRENDING_DAY === url) {
-      return
-    }
-    this.setState(() => ({ url }), () => this.fetchMovies())
+    getMovies({ page })
   }
 
   get isBlank() {
     const { loading, movies } = this.props
     return !loading && movies && !movies.length
-  }
-
-  fetchMovies = () => {
-    const { getMovies } = this.props
-    const { url } = this.state
-    getMovies(TRENDING_MOVIES, url)
   }
 
   render() {
@@ -54,7 +35,6 @@ class Dashboard extends Component {
         loading={loading}
         onPageChange={this.onPageChange}
         error={error}
-        onSearch={this.onSearch}
         isBlank={this.isBlank}
       />
     )
@@ -81,11 +61,11 @@ Dashboard.defaultProps = {
 
 const mapStateToProps = state => ({
   moviesData: state.data.movies,
-  loading: state.movies[TRENDING_MOVIES].meta.loading,
-  currentPage: state.movies[TRENDING_MOVIES].meta.currentPage,
-  totalPages: state.movies[TRENDING_MOVIES].meta.totalPages,
-  movies: state.movies[TRENDING_MOVIES].entries,
-  error: state.movies[TRENDING_MOVIES].meta.error
+  loading: state.movieCatalogs[TRENDING_MOVIES].meta.loading,
+  currentPage: state.movieCatalogs[TRENDING_MOVIES].meta.currentPage,
+  totalPages: state.movieCatalogs[TRENDING_MOVIES].meta.totalPages,
+  movies: state.movieCatalogs[TRENDING_MOVIES].entries,
+  error: state.movieCatalogs[TRENDING_MOVIES].meta.error
 })
 
 const mapDispatchToProps = {

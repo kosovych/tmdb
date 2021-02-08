@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import auth from './auth'
 import data from './data'
-import movies from './concepts/movies'
+import movieCatalogs from './concepts/movieCatalogs'
 
 const reducers = combineReducers({
   auth,
   data,
-  movies
+  movieCatalogs
 })
 
 export default reducers

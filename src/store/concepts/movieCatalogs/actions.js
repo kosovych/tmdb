@@ -1,11 +1,10 @@
 import {
-  GET_MOVIES, REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR
+  GET_MOVIES, REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR, SET_SEARCH
 } from './types'
 
-export const getMovies = (endpoint, url) => ({
+export const getMovies = queries => ({
   type: GET_MOVIES,
-  endpoint,
-  url
+  queries
 })
 
 export const requestMoviesStart = endpoint => ({
@@ -23,4 +22,10 @@ export const requestMoviesError = (endpoint, error) => ({
   type: REQUEST_MOVIES_ERROR,
   endpoint,
   error
+})
+
+export const setSearch = (endpoint, searchQuery) => ({
+  type: SET_SEARCH,
+  endpoint,
+  searchQuery
 })

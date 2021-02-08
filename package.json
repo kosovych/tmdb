@@ -65,6 +65,7 @@
     "lodash": "^4.17.11",
     "normalizr": "^3.6.1",
     "prop-types": "^15.7.2",
+    "ramda": "^0.27.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

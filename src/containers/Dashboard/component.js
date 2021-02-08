@@ -7,7 +7,7 @@ import MoviesList from 'Components/MoviesList'
 import Search from './Search'
 
 const Dashboard = ({
-  moviesData, movies, loading, onPageChange, currentPage, totalPages, error, isBlank
+  movies, loading, onPageChange, currentPage, totalPages, error, isBlank
 }) => (
   <>
     <Search />
@@ -34,8 +34,7 @@ const Dashboard = ({
             )}
             {!loading && movies && (
               <MoviesList
-                moviesIDs={movies}
-                moviesData={moviesData}
+                movies={movies}
               />
             )}
             {isBlank && (
@@ -59,10 +58,10 @@ const Dashboard = ({
         justify="center"
       >
         <Col>
-          {movies && (
+          {movies && !!totalPages && (
             <Pagination
               disabled={loading}
-              defaultCurrent={currentPage}
+              current={currentPage}
               onChange={onPageChange}
               className="pagination"
               showSizeChanger={false}
@@ -77,18 +76,17 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   onPageChange: PropTypes.func.isRequired,
-  moviesData: PropTypes.shape(),
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   currentPage: PropTypes.number,
   totalPages: PropTypes.number,
   error: PropTypes.string,
-  movies: PropTypes.PropTypes.arrayOf(PropTypes.number),
+  movies: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
   isBlank: PropTypes.bool
 }
 
 Dashboard.defaultProps = {
-  moviesData: null,
   movies: null,
+  loading: null,
   currentPage: null,
   totalPages: null,
   error: null,

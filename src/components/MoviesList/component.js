@@ -2,11 +2,11 @@ import React from 'react'
 import MovieItem from 'Components/MovieItem'
 import { Col } from 'antd'
 
-const MoviesList = ({ moviesIDs, moviesData }) => (
-  moviesIDs && moviesIDs.map((item) => {
+const MoviesList = ({ movies }) => (
+  movies.map((movie) => {
     const {
       id, poster_path: poster, name, title, overview
-    } = moviesData[item]
+    } = movie
     return (
       <Col
         key={id}

@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Button, Col, Layout, Row, Typography, Alert, Input
+  Button, Col, Layout, Row, Typography, Alert
 } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'

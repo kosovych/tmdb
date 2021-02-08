@@ -4,6 +4,13 @@ import PropTypes from 'prop-types'
 
 import { getMovies as getMoviesAction } from 'Store/concepts/movieCatalogs/actions'
 import { TRENDING_MOVIES } from 'Constants'
+import {
+  moviesSelector,
+  moviePagesSelector,
+  movieErrorSelector,
+  movieLoadingSelector,
+  isBlankSelector
+} from 'Store/concepts/movieCatalogs/selectors'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {
@@ -17,25 +24,19 @@ class Dashboard extends Component {
     getMovies({ page })
   }
 
-  get isBlank() {
-    const { loading, movies } = this.props
-    return !loading && movies && !movies.length
-  }
-
   render() {
     const {
-      moviesData, movies, loading, currentPage, totalPages, error
+      movies, loading, pagination: { currentPage, totalPages }, error, isBlank
     } = this.props
     return (
       <DashboardComponent
-        moviesData={moviesData}
         movies={movies}
         currentPage={currentPage}
         totalPages={totalPages}
         loading={loading}
         onPageChange={this.onPageChange}
         error={error}
-        isBlank={this.isBlank}
+        isBlank={isBlank}
       />
     )
   }
@@ -43,29 +44,33 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getMovies: PropTypes.func.isRequired,
-  moviesData: PropTypes.shape(),
-  loading: PropTypes.bool.isRequired,
-  currentPage: PropTypes.number,
-  totalPages: PropTypes.number,
-  movies: PropTypes.PropTypes.arrayOf(PropTypes.number),
-  error: PropTypes.string
+  loading: PropTypes.bool,
+  pagination: PropTypes.shape({
+    currentPage: PropTypes.number,
+    totalPages: PropTypes.number
+  }),
+  movies: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
+  error: PropTypes.string,
+  isBlank: PropTypes.bool
 }
 
 Dashboard.defaultProps = {
-  moviesData: null,
+  loading: null,
   movies: null,
-  currentPage: null,
-  totalPages: null,
-  error: null
+  pagination: {
+    currentPage: null,
+    totalPages: null
+  },
+  error: null,
+  isBlank: false
 }
 
 const mapStateToProps = state => ({
-  moviesData: state.data.movies,
-  loading: state.movieCatalogs[TRENDING_MOVIES].meta.loading,
-  currentPage: state.movieCatalogs[TRENDING_MOVIES].meta.currentPage,
-  totalPages: state.movieCatalogs[TRENDING_MOVIES].meta.totalPages,
-  movies: state.movieCatalogs[TRENDING_MOVIES].entries,
-  error: state.movieCatalogs[TRENDING_MOVIES].meta.error
+  loading: movieLoadingSelector(state, TRENDING_MOVIES),
+  pagination: moviePagesSelector(state, TRENDING_MOVIES),
+  movies: moviesSelector(state, TRENDING_MOVIES),
+  error: movieErrorSelector(state, TRENDING_MOVIES),
+  isBlank: isBlankSelector(state, TRENDING_MOVIES)
 })
 
 const mapDispatchToProps = {

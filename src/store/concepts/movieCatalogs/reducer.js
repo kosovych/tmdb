@@ -1,19 +1,10 @@
-import { TRENDING_MOVIES } from 'Constants'
 import { merge } from 'lodash'
 import { assoc, path } from 'ramda'
 import {
   REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR, SET_SEARCH
 } from './types'
 
-const initialState = {
-  [TRENDING_MOVIES]: {
-    meta: {
-      loading: false
-    }
-  }
-}
-
-const reducer = (state = initialState, action) => {
+const reducer = (state = {}, action) => {
   const { type, endpoint } = action
   switch (type) {
     case REQUEST_MOVIES_START:

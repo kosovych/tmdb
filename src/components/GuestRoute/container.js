@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import GuestRouteComponent from './component'
 
 const GuestRoute = props => (

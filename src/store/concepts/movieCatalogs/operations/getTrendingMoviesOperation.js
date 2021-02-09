@@ -1,7 +1,8 @@
 import { createLogic } from 'redux-logic'
-import { storeData } from 'Store/data/actions'
 import { path } from 'ramda'
 import { normalize, schema } from 'normalizr'
+
+import { storeData } from 'Store/data/actions'
 import { ALL_TRENDING_DAY_URL, SEARCH_MOVIE_URL, TRENDING_MOVIES } from 'Constants'
 import { GET_MOVIES } from '../types'
 import { requestMoviesStart, requestMoviesSuccess, requestMoviesError } from '../actions'

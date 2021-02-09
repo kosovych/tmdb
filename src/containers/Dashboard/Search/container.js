@@ -4,6 +4,7 @@ import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 import { TRENDING_MOVIES } from 'Constants'
 import { getMovies as getMoviesAction, setSearch as setSearchAction } from 'Store/concepts/movieCatalogs/actions'
 import SearchComponent from './component'

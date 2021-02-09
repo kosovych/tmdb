@@ -1,6 +1,7 @@
 import React from 'react'
-import MovieItem from 'Components/MovieItem'
 import { Col } from 'antd'
+
+import MovieItem from 'Components/MovieItem'
 
 const MoviesList = ({ movies }) => (
   movies.map((movie) => {

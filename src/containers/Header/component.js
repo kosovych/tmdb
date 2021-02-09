@@ -4,6 +4,7 @@ import {
 } from 'antd'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
+
 import Menu from './Menu'
 
 const Header = ({ onLogout }) => (

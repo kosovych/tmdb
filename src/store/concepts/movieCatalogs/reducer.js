@@ -1,5 +1,6 @@
 import { merge } from 'lodash'
 import { assoc, path } from 'ramda'
+
 import {
   REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR, SET_SEARCH
 } from './types'

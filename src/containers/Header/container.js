@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import { logout } from 'Store/auth/actions'
 import HeaderComponent from './component'
 

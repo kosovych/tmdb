@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getMovies as getMoviesAction } from 'Store/concepts/movieCatalogs/actions'
-import { TRENDING_MOVIES } from 'Constants'
+import { getMovies as getMoviesAction } from 'Store/trendingMovies/actions'
 import {
   moviesSelector,
   moviePagesSelector,
   movieErrorSelector,
   movieLoadingSelector,
   isBlankSelector
-} from 'Store/concepts/movieCatalogs/selectors'
+} from 'Store/trendingMovies/selectors'
 import DashboardComponent from './component'
 
 class Dashboard extends Component {
@@ -66,11 +65,11 @@ Dashboard.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-  loading: movieLoadingSelector(state, TRENDING_MOVIES),
-  pagination: moviePagesSelector(state, TRENDING_MOVIES),
-  movies: moviesSelector(state, TRENDING_MOVIES),
-  error: movieErrorSelector(state, TRENDING_MOVIES),
-  isBlank: isBlankSelector(state, TRENDING_MOVIES)
+  loading: movieLoadingSelector(state),
+  pagination: moviePagesSelector(state),
+  movies: moviesSelector(state),
+  error: movieErrorSelector(state),
+  isBlank: isBlankSelector(state)
 })
 
 const mapDispatchToProps = {

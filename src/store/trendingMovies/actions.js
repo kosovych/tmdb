@@ -7,25 +7,21 @@ export const getMovies = params => ({
   params
 })
 
-export const requestMoviesStart = endpoint => ({
-  type: REQUEST_MOVIES_START,
-  endpoint
+export const requestMoviesStart = () => ({
+  type: REQUEST_MOVIES_START
 })
 
-export const requestMoviesSuccess = (endpoint, payload) => ({
+export const requestMoviesSuccess = payload => ({
   type: REQUEST_MOVIES_SUCCESS,
-  endpoint,
   payload
 })
 
-export const requestMoviesError = (endpoint, error) => ({
+export const requestMoviesError = error => ({
   type: REQUEST_MOVIES_ERROR,
-  endpoint,
   error
 })
 
-export const setSearch = (endpoint, searchQuery) => ({
+export const setSearch = searchQuery => ({
   type: SET_SEARCH,
-  endpoint,
   searchQuery
 })

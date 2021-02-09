@@ -5,8 +5,7 @@ import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { TRENDING_MOVIES } from 'Constants'
-import { getMovies as getMoviesAction, setSearch as setSearchAction } from 'Store/concepts/movieCatalogs/actions'
+import { getMovies as getMoviesAction, setSearch as setSearchAction } from 'Store/trendingMovies/actions'
 import SearchComponent from './component'
 
 const SearchSchema = Yup.object().shape({
@@ -20,7 +19,7 @@ class Search extends Component {
     } = this.props
     setFieldTouched('search', false)
     if (submitCount > 0) {
-      setSearch(TRENDING_MOVIES, '')
+      setSearch('')
       getMovies()
     }
     handleReset()
@@ -53,7 +52,7 @@ export default connect(null, mapDispatchToProps)(withFormik({
   mapPropsToValues: () => ({ search: '' }),
   handleSubmit: (values, { props }) => {
     const { getMovies, setSearch } = props
-    setSearch(TRENDING_MOVIES, values.search)
+    setSearch(values.search)
     getMovies()
   },
   validationSchema: SearchSchema

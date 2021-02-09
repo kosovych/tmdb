@@ -6,12 +6,12 @@ const movieDataSelector = state => (
   path(['data', 'movies'], state)
 )
 
-const movieCatalogEntriesSelector = (state, endpoint) => (
-  path(['movieCatalogs', endpoint, 'entries'], state)
+const movieCatalogEntriesSelector = state => (
+  path(['trendingMovies', 'entries'], state)
 )
 
-const movieMetaSelector = (state, endpoint) => (
-  path(['movieCatalogs', endpoint, 'meta'], state)
+const movieMetaSelector = state => (
+  path(['trendingMovies', 'meta'], state)
 )
 
 export const moviePagesSelector = createSelector(

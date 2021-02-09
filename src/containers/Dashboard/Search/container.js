@@ -21,10 +21,9 @@ class Search extends Component {
     setFieldTouched('search', false)
     if (submitCount > 0) {
       setSearch(TRENDING_MOVIES, '')
-      handleReset()
-      return getMovies()
+      getMovies()
     }
-    return handleReset()
+    handleReset()
   }
 
   render() {

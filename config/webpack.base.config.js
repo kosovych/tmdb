@@ -69,6 +69,7 @@ module.exports = {
       Store: path.resolve(__dirname, '../src/store'),
       Constants: path.resolve(__dirname, '../src/constants'),
       Utils: path.resolve(__dirname, '../src/utils'),
+      Schemas: path.resolve(__dirname, '../src/schemas'),
     }
   },
   devServer: {

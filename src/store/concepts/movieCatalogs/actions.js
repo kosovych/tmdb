@@ -2,9 +2,9 @@ import {
   GET_MOVIES, REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR, SET_SEARCH
 } from './types'
 
-export const getMovies = queries => ({
+export const getMovies = params => ({
   type: GET_MOVIES,
-  queries
+  params
 })
 
 export const requestMoviesStart = endpoint => ({

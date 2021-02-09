@@ -6,7 +6,8 @@
     "paths": {
       "Components/*": ["./src/components/*"],
       "Helpers/*": ["./src/config/*"],
-      "Store/*": ["./src/store/*"]
+      "Store/*": ["./src/store/*"],
+      "Schemas/*": ["./src/schemas/*"]
     },
     "module": "commonjs"
   },

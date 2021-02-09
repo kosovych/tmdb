@@ -1,17 +1,16 @@
 import { createSelector } from 'reselect'
-import { path } from 'ramda'
-import { map, pick } from 'lodash'
+import { map, pick, get } from 'lodash'
 
 const movieDataSelector = state => (
-  path(['data', 'movies'], state)
+  get(state, ['data', 'movies'])
 )
 
 const movieCatalogEntriesSelector = state => (
-  path(['trendingMovies', 'entries'], state)
+  get(state, ['trendingMovies', 'entries'])
 )
 
 const movieMetaSelector = state => (
-  path(['trendingMovies', 'meta'], state)
+  get(state, ['trendingMovies', 'meta'])
 )
 
 export const moviePagesSelector = createSelector(
@@ -21,12 +20,12 @@ export const moviePagesSelector = createSelector(
 
 export const movieErrorSelector = createSelector(
   movieMetaSelector,
-  meta => path(['error'], meta)
+  meta => get(meta, ['error'])
 )
 
 export const movieLoadingSelector = createSelector(
   movieMetaSelector,
-  meta => path(['loading'], meta)
+  meta => get(meta, ['loading'])
 )
 
 export const isBlankSelector = createSelector(

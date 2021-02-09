@@ -1,5 +1,5 @@
 import { createLogic } from 'redux-logic'
-import { path } from 'ramda'
+import { get } from 'lodash'
 import { normalize } from 'normalizr'
 
 import { getMoviesListSchema } from 'Schemas'
@@ -13,7 +13,7 @@ export const getMoviesOperation = createLogic({
   latest: true,
   async process({ getState, action, axios }, dispatch, done) {
     let { params } = action
-    const searchQuery = path(['trendingMovies', 'meta', 'search'], getState())
+    const searchQuery = get(getState(), ['trendingMovies', 'meta', 'search'])
     const url = searchQuery ? SEARCH_MOVIE_URL : ALL_TRENDING_DAY_URL
     if (searchQuery) {
       params = { ...params, query: searchQuery }

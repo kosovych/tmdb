@@ -1,5 +1,4 @@
-import { merge } from 'lodash'
-import { assoc, path } from 'ramda'
+import { merge, get } from 'lodash'
 
 import {
   REQUEST_MOVIES_START, REQUEST_MOVIES_SUCCESS, REQUEST_MOVIES_ERROR, SET_SEARCH
@@ -9,15 +8,14 @@ const reducer = (state = {}, action) => {
   const { type } = action
   switch (type) {
     case REQUEST_MOVIES_START:
-      return assoc(
-        'meta',
-        {
+      return {
+        ...state,
+        meta: {
           loading: true,
           error: null,
-          search: path(['meta', 'search'], state)
-        },
-        state
-      )
+          search: get(state, ['meta', 'search'])
+        }
+      }
     case REQUEST_MOVIES_SUCCESS:
       return {
         ...state,
@@ -26,7 +24,7 @@ const reducer = (state = {}, action) => {
           currentPage: action.payload.currentPage,
           totalPages: action.payload.totalPages,
           error: null,
-          search: path(['meta', 'search'], state)
+          search: get(state, ['meta', 'search'])
         },
         entries: action.payload.entries
       }
@@ -36,7 +34,7 @@ const reducer = (state = {}, action) => {
         meta: {
           error: action.error,
           loading: false,
-          search: path(['meta', 'search'], state)
+          search: get(state, ['meta', 'search'])
         },
         entries: null
       }

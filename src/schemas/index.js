@@ -1,1 +1,1 @@
-export { getMoviesListSchema } from './moviesListSchema'
+export { moviesListSchema } from './moviesListSchema'

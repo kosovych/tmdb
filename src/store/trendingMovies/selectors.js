@@ -25,7 +25,12 @@ export const movieErrorSelector = createSelector(
 
 export const movieLoadingSelector = createSelector(
   movieMetaSelector,
-  meta => get(meta, ['loading'])
+  meta => get(meta, 'loading')
+)
+
+export const movieSearchQuerySelector = createSelector(
+  movieMetaSelector,
+  meta => get(meta, 'search')
 )
 
 export const isBlankSelector = createSelector(

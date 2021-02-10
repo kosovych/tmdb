@@ -3,7 +3,7 @@ import { Form, Input as AntInput } from 'antd'
 import PropTypes from 'prop-types'
 
 const InputField = ({
-  placeholder, validateStatus, inputAs: Component, help, field, prefix: Prefix, ...inputProps
+  placeholder, validateStatus, inputAs: Component, help, field, prefix, ...inputProps
 }) => (
   <Form.Item
     validateStatus={validateStatus}
@@ -12,7 +12,7 @@ const InputField = ({
     <Component
       {...field}
       {...inputProps}
-      prefix={Prefix}
+      prefix={prefix}
       placeholder={placeholder}
     />
   </Form.Item>

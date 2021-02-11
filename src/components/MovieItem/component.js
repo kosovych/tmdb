@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
-const Movie = ({ poster, overview, title }) => (
+const Movie = ({ poster, overview, title, actions }) => (
   <Card
     hoverable
+    actions={actions}
     cover={(
       <img
         alt={title}

@@ -3,7 +3,7 @@ import { Col } from 'antd'
 
 import MovieItem from 'Components/MovieItem'
 
-const MoviesList = ({ movies }) => (
+const MoviesList = ({ movies, actions }) => (
   movies.map((movie) => {
     const {
       id, poster_path: poster, name, title, overview
@@ -21,6 +21,7 @@ const MoviesList = ({ movies }) => (
           poster={poster}
           overview={overview}
           title={title || name}
+          actions={actions}
         />
       </Col>
     )

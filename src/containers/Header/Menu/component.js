@@ -12,9 +12,9 @@ const Menu = ({ onLogout }) => (
     {/* <AntMenu.Item>
       <Link to="/stubs/lists">My Lists</Link>
     </AntMenu.Item> */}
-    {/* <AntMenu.Item>
-      <Link to="/stubs/watchlist">Watchlist</Link>
-    </AntMenu.Item> */}
+    <AntMenu.Item>
+      <Link to="/watchlist">Watchlist</Link>
+    </AntMenu.Item>
     {/* <AntMenu.Item>
       <Link to="/stubs/favorites">Favorites</Link>
     </AntMenu.Item> */}

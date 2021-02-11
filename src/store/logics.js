@@ -1,4 +1,4 @@
-import { loginOperation } from './auth/operations'
+import { loginOperation, getUserOperation } from './auth/operations'
 import { getMoviesOperation } from './trendingMovies/operations'
 
-export default [loginOperation, getMoviesOperation]
+export default [loginOperation, getUserOperation, getMoviesOperation]

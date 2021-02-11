@@ -1,0 +1,23 @@
+import { createLogic } from 'redux-logic'
+import { get } from 'lodash'
+
+import { ACCOUNT } from 'Constants'
+import { GET_USER } from '../types'
+import { storeUser } from '../actions'
+
+export const getUserOperation = createLogic({
+  type: GET_USER,
+  latest: true,
+  async process({ action, axios }, dispatch, done) {
+    const { sessionID } = action
+    const userReq = await axios.get(ACCOUNT, { params: { session_id: sessionID } })
+    const {
+      id, name, avatar, username
+    } = userReq.data
+    const avatarUrl = get(avatar, ['tmdb', 'avatar_path'])
+    dispatch(storeUser({
+      userID: id, displayName: name, username, avatarUrl
+    }))
+    done()
+  }
+})

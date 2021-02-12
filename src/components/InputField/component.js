@@ -1,18 +1,18 @@
 import React from 'react'
-import { Form, Input } from 'antd'
+import { Form, Input as AntInput } from 'antd'
 import PropTypes from 'prop-types'
 
 const InputField = ({
-  placeholder, validateStatus, help, field, prefix: Prefix, ...inputProps
+  placeholder, validateStatus, inputAs: Component, help, field, prefix, ...inputProps
 }) => (
   <Form.Item
     validateStatus={validateStatus}
     help={help}
   >
-    <Input
+    <Component
       {...field}
       {...inputProps}
-      prefix={Prefix}
+      prefix={prefix}
       placeholder={placeholder}
     />
   </Form.Item>
@@ -23,6 +23,7 @@ InputField.propTypes = {
   validateStatus: PropTypes.string,
   help: PropTypes.string,
   field: PropTypes.shape().isRequired,
+  inputAs: PropTypes.elementType,
   prefix: PropTypes.element
 }
 
@@ -30,7 +31,8 @@ InputField.defaultProps = {
   placeholder: null,
   validateStatus: null,
   help: null,
-  prefix: null
+  prefix: null,
+  inputAs: AntInput
 }
 
 export default InputField

@@ -1,12 +1,17 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import UserLayout from '../UserLayout'
 
 const PrivateRoute = ({ component: Component, sessionID, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      sessionID ? <Component {...props} /> : <Redirect to="/login" />
+      sessionID ? (
+        <UserLayout>
+          <Component {...props} />
+        </UserLayout>
+      ) : <Redirect to="/login" />
     )}
   />
 )

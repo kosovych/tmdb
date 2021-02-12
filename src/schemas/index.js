@@ -1,0 +1,1 @@
+export { moviesListSchema } from './moviesListSchema'

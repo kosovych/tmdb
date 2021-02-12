@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { getIn } from 'formik'
+
 import InputFieldComponent from './component'
 
 class InputField extends Component {

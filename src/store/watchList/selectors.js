@@ -6,11 +6,11 @@ const movieDataSelector = state => (
 )
 
 const movieCatalogEntriesSelector = state => (
-  get(state, ['trendingMovies', 'entries'])
+  get(state, ['watchList', 'entries'])
 )
 
 const movieMetaSelector = state => (
-  get(state, ['trendingMovies', 'meta'])
+  get(state, ['watchList', 'meta'])
 )
 
 export const moviePagesSelector = createSelector(
@@ -37,6 +37,11 @@ export const isBlankSelector = createSelector(
   movieCatalogEntriesSelector,
   movieLoadingSelector,
   (moviesEntries, loading) => !loading && moviesEntries && !moviesEntries.length
+)
+
+export const removeMovieErrorsSelector = createSelector(
+  movieMetaSelector,
+  meta => get(meta, 'removeErrors') || []
 )
 
 export const moviesSelector = createSelector(

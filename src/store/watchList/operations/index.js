@@ -1,1 +1,2 @@
-export { getMoviesOperation } from './getTrendingMoviesOperation'
+export { getWatchListOperation } from './getWatchListOperation'
+export { removeMovieOperation } from './removeMovieOperation'

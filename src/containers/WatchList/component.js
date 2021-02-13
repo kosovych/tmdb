@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Row, Col, Pagination, Spin, Alert, Empty
+  Row, Col, Pagination, Spin, Alert, Empty, Typography
 } from 'antd'
 import PropTypes from 'prop-types'
 
@@ -10,7 +10,7 @@ import DeleteMovie from './DeleteMovie'
 const WatchList = ({
   movies, loading, onPageChange, currentPage, totalPages, error, isBlank
 }) => (
-  <div className="top-margin">
+  <>
     <Row
       type="flex"
       gutter={16}
@@ -20,6 +20,9 @@ const WatchList = ({
         span={20}
         offset={2}
       >
+        <div className="top-margin">
+          <Typography.Title>Watchlist</Typography.Title>
+        </div>
         <Row
           gutter={{
             xs: 8, sm: 16, md: 24, lg: 32
@@ -27,30 +30,28 @@ const WatchList = ({
           justify={loading ? 'center' : 'start'}
         >
           {loading && (
-          <Col>
-            <Spin />
-          </Col>
+            <Col>
+              <Spin />
+            </Col>
           )}
           {!loading && movies && (
-          <MoviesList
-            movies={movies}
-            actions={[
-              <DeleteMovie key="delete-movie" />
-            ]}
-          />
+            <MoviesList
+              movies={movies}
+              action={DeleteMovie}
+            />
           )}
           {isBlank && (
-          <Col span={24}>
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-          </Col>
+            <Col span={24}>
+              <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            </Col>
           )}
           {error && (
-          <Col span={24}>
-            <Alert
-              message={error}
-              type="error"
-            />
-          </Col>
+            <Col span={24}>
+              <Alert
+                message={error}
+                type="error"
+              />
+            </Col>
           )}
         </Row>
       </Col>
@@ -61,18 +62,18 @@ const WatchList = ({
     >
       <Col>
         {movies && !!totalPages && (
-        <Pagination
-          disabled={loading}
-          current={currentPage}
-          onChange={onPageChange}
-          className="pagination"
-          showSizeChanger={false}
-          total={totalPages}
-        />
+          <Pagination
+            disabled={loading}
+            current={currentPage}
+            onChange={onPageChange}
+            className="pagination"
+            showSizeChanger={false}
+            total={totalPages}
+          />
         )}
       </Col>
     </Row>
-  </div>
+  </>
 )
 
 WatchList.propTypes = {

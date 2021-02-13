@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
 
-const Movie = ({ poster, overview, title, actions }) => (
+const Movie = ({
+  poster, overview, title, action: Action, movieId
+}) => (
   <Card
     hoverable
-    actions={actions}
+    actions={[<Action
+      key={movieId}
+      movieId={movieId}
+      title={title}
+    />]}
     cover={(
       <img
         alt={title}
@@ -13,7 +19,7 @@ const Movie = ({ poster, overview, title, actions }) => (
         width="500"
         height="750"
       />
-    )}
+      )}
     className="top-margin"
   >
     <Card.Meta
@@ -26,7 +32,14 @@ const Movie = ({ poster, overview, title, actions }) => (
 Movie.propTypes = {
   poster: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  action: PropTypes.elementType,
+  movieId: PropTypes.number
+}
+
+Movie.defaultProps = {
+  action: null,
+  movieId: null
 }
 
 export default Movie

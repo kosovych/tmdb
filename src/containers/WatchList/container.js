@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getMovies as getMoviesAction } from 'Store/trendingMovies/actions'
+import { getMovies as getMoviesAction } from 'Store/watchList/actions'
 import {
   moviesSelector,
   moviePagesSelector,
   movieErrorSelector,
   movieLoadingSelector,
   isBlankSelector
-} from 'Store/trendingMovies/selectors'
+} from 'Store/watchList/selectors'
 import WatchListComponent from './component'
 
 class WatchList extends Component {

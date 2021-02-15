@@ -8,9 +8,7 @@ const DeleteMovie = ({ onClick }) => (
     type="button"
     className="reset-btn"
   >
-    <DeleteOutlined
-      key="open-modal"
-    />
+    <DeleteOutlined />
   </button>
 )
 

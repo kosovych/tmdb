@@ -4,30 +4,33 @@ import { Card } from 'antd'
 
 const Movie = ({
   poster, overview, title, action: Action, movieId
-}) => (
-  <Card
-    hoverable
-    actions={[<Action
-      key={movieId}
-      movieId={movieId}
-      title={title}
-    />]}
-    cover={(
-      <img
-        alt={title}
-        src={`https://image.tmdb.org/t/p/w500/${poster}`}
-        width="500"
-        height="750"
-      />
+}) => {
+  const actionsArr = Action ? ([<Action
+    key={movieId}
+    movieId={movieId}
+    title={title}
+  />]) : null
+  return (
+    <Card
+      hoverable
+      actions={actionsArr}
+      cover={(
+        <img
+          alt={title}
+          src={`https://image.tmdb.org/t/p/w500/${poster}`}
+          width="500"
+          height="750"
+        />
       )}
-    className="top-margin"
-  >
-    <Card.Meta
-      title={title}
-      description={overview}
-    />
-  </Card>
-)
+      className="top-margin"
+    >
+      <Card.Meta
+        title={title}
+        description={overview}
+      />
+    </Card>
+  )
+}
 
 Movie.propTypes = {
   poster: PropTypes.string.isRequired,

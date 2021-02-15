@@ -6,7 +6,7 @@ import { logout, getUser as getUserAction } from 'Store/auth/actions'
 import HeaderComponent from './component'
 
 class Header extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { username, sessionID, getUser } = this.props
     if (!username) {
       getUser(sessionID)

@@ -11,9 +11,10 @@ export const getWatchListOperation = createLogic({
   type: GET_MOVIES,
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {
+    const state = getState()
     const { params = {} } = action
-    params.session_id = sessionIdSelector(getState())
-    const url = `/account/${userIdSelector(getState())}/watchlist/movies`
+    params.session_id = sessionIdSelector(state)
+    const url = `/account/${userIdSelector(state)}/watchlist/movies`
     dispatch(requestMoviesStart())
     try {
       const dataRequest = await axios.get(url, { params })

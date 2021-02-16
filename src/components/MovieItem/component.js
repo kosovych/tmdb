@@ -5,7 +5,7 @@ import { Card } from 'antd'
 const Movie = ({
   poster, overview, title, action: Action, movieId
 }) => {
-  const actionsArr = Action ? ([<Action
+  const actions = Action ? ([<Action
     key={movieId}
     movieId={movieId}
     title={title}
@@ -13,7 +13,7 @@ const Movie = ({
   return (
     <Card
       hoverable
-      actions={actionsArr}
+      actions={actions}
       cover={(
         <img
           alt={title}

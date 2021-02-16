@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal } from 'antd'
 import { connect } from 'react-redux'
-import { openNotification } from 'Utils'
 
+import { openNotification } from 'Utils'
 import { removeMovieErrorsSelector } from 'Store/watchList/selectors'
 import {
   removeMovie as removeMovieAction,
@@ -15,30 +15,29 @@ class DeleteMovie extends Component {
   onDeleteMovie = () => {
     const { removeMovie, movieId, title } = this.props
     return Modal.confirm({
-      title: 'Do you want to delete movie from watchlist?',
+      title: 'Do you want to delete this movie from the Watchlist?',
       onOk() { removeMovie(movieId, title) }
     })
   }
 
-  render() {
+  get error() {
     const {
-      movieId,
-      title,
-      removeMovieErrors,
-      cleanupRemoveMovieErrors
+      movieId, title, cleanupRemoveMovieErrors, removeMovieErrors
     } = this.props
     const config = {
       message: 'Error',
-      description: `Cant remove "${title}" from Watchlist`,
+      description: `Can't remove "${title}" the from Watchlist`,
       type: 'error',
-      onClose() { cleanupRemoveMovieErrors(movieId) }
+      onClose: () => cleanupRemoveMovieErrors(movieId)
     }
     const error = removeMovieErrors.includes(movieId) && openNotification(config)
+    return error
+  }
+
+  render() {
     return (
-      <DeleteMovieComponent
-        onClick={this.onDeleteMovie}
-      >
-        {error}
+      <DeleteMovieComponent onClick={this.onDeleteMovie}>
+        {this.error}
       </DeleteMovieComponent>
     )
   }

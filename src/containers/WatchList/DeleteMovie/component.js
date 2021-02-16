@@ -7,6 +7,7 @@ const DeleteMovie = ({ onClick }) => (
     onClick={onClick}
     type="button"
     className="reset-btn"
+    aria-label="Remove from the Watchlist"
   >
     <DeleteOutlined />
   </button>

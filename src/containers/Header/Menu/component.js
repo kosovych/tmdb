@@ -15,9 +15,9 @@ const Menu = ({ onLogout }) => (
     <AntMenu.Item>
       <Link to="/watchlist">Watchlist</Link>
     </AntMenu.Item>
-    {/* <AntMenu.Item>
-      <Link to="/stubs/favorites">Favorites</Link>
-    </AntMenu.Item> */}
+    <AntMenu.Item>
+      <Link to="/favorites">Favorites</Link>
+    </AntMenu.Item>
     {/* <AntMenu.Divider /> */}
     <AntMenu.Item onClick={onLogout}>Logout</AntMenu.Item>
   </AntMenu>

@@ -50,7 +50,7 @@ const reducer = (state = {}, action) => {
         ...state,
         meta: {
           ...state.meta,
-          removeErrors: concat(state.meta.removeErrors || [], [action.movieId])
+          removeErrors: concat(state.meta.removeErrors || [], action.movieId)
         }
       }
     case CLEANUP_REMOVE_MOVIE_ERRORS:

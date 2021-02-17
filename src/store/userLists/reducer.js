@@ -1,18 +1,17 @@
-import { concat, without, get } from 'lodash'
+import { get } from 'lodash'
 
 import {
-  REQUEST_MOVIES_START,
-  REQUEST_MOVIES_SUCCESS,
-  REQUEST_MOVIES_ERROR,
-  SET_REMOVE_MOVIE_ERROR,
-  REMOVE_MOVIE_FROM_STORE,
-  CLEANUP_REMOVE_MOVIE_ERRORS
+  CREATE_USER_LIST_START,
+  CREATE_USER_LIST_FINISH,
+  REQUEST_USER_LISTS_START,
+  REQUEST_USER_LISTS_SUCCESS,
+  REQUEST_USER_LISTS_ERROR
 } from './types'
 
 const reducer = (state = {}, action) => {
   const { type } = action
   switch (type) {
-    case REQUEST_MOVIES_START:
+    case REQUEST_USER_LISTS_START:
       return {
         ...state,
         meta: {
@@ -22,7 +21,7 @@ const reducer = (state = {}, action) => {
           totalResults: get(state, ['meta', 'totalResults'])
         }
       }
-    case REQUEST_MOVIES_SUCCESS:
+    case REQUEST_USER_LISTS_SUCCESS:
       return {
         ...state,
         meta: {
@@ -33,7 +32,7 @@ const reducer = (state = {}, action) => {
         },
         entries: action.payload.entries
       }
-    case REQUEST_MOVIES_ERROR:
+    case REQUEST_USER_LISTS_ERROR:
       return {
         ...state,
         meta: {
@@ -42,26 +41,15 @@ const reducer = (state = {}, action) => {
         },
         entries: null
       }
-    case REMOVE_MOVIE_FROM_STORE:
+    case CREATE_USER_LIST_START:
       return {
         ...state,
-        entries: without(state.entries, action.movieId)
+        createListLoading: true
       }
-    case SET_REMOVE_MOVIE_ERROR:
+    case CREATE_USER_LIST_FINISH:
       return {
         ...state,
-        meta: {
-          ...state.meta,
-          removeErrors: concat(state.meta.removeErrors || [], [action.movieId])
-        }
-      }
-    case CLEANUP_REMOVE_MOVIE_ERRORS:
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          removeErrors: without(state.meta.removeErrors, action.movieId)
-        }
+        createListLoading: false
       }
     default:
       return state

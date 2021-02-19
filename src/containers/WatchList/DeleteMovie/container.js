@@ -14,7 +14,7 @@ import DeleteMovieComponent from './component'
 class DeleteMovie extends Component {
   onDeleteMovie = () => {
     const { removeMovie, movieId, title } = this.props
-    return Modal.confirm({
+    Modal.confirm({
       title: 'Do you want to delete this movie from the Watchlist?',
       onOk() { removeMovie(movieId, title) }
     })

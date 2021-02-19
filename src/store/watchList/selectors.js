@@ -6,11 +6,11 @@ const movieDataSelector = state => (
 )
 
 const movieCatalogEntriesSelector = state => (
-  get(state, ['watchList', 'entries'])
+  get(state, ['watchListMovies', 'entries'])
 )
 
 const movieMetaSelector = state => (
-  get(state, ['watchList', 'meta'])
+  get(state, ['watchListMovies', 'meta'])
 )
 
 export const moviePagesSelector = createSelector(

@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic'
 
-import { openNotification } from 'Utils/index'
+import { openNotification } from 'Utils'
 import { sessionIdSelector } from 'Store/auth/selectors'
 import { REMOVE_USER_LIST } from '../types'
 import { getUserLists } from '../actions'

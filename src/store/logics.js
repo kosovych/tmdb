@@ -6,7 +6,7 @@ import {
   createUserListOperation,
   getUserListsOperations,
   removeUserListOperation
-} from './userLists/operations'
+} from './userMovieLists/operations'
 
 export default [
   loginOperation,

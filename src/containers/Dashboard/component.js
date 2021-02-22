@@ -59,7 +59,7 @@ const Dashboard = ({
         justify="center"
       >
         <Col>
-          {movies.length ? (
+          {Boolean(movies.length) && (
             <Pagination
               disabled={loading}
               current={currentPage}
@@ -69,7 +69,7 @@ const Dashboard = ({
               total={totalResults}
               pageSize={20}
             />
-          ) : null}
+          )}
         </Col>
       </Row>
     </div>

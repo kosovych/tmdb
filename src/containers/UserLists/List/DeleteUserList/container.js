@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Modal } from 'antd'
 
-import { removeUserList as removeUserListAction } from 'Store/userLists/actions'
+import { removeUserList as removeUserListAction } from 'Store/userMovieLists/actions'
 import DeleteUserListComponent from './component'
 
 class DeleteUserList extends Component {
@@ -11,8 +11,7 @@ class DeleteUserList extends Component {
     const { listId, removeUserList } = this.props
     Modal.confirm({
       title: 'Do you want to delete list?',
-      onOk() { removeUserList(listId) },
-      onCancel() {}
+      onOk() { removeUserList(listId) }
     })
   }
 

@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getUserLists as getUserListsAction } from 'Store/userLists/actions'
+import { getUserLists as getUserListsAction } from 'Store/userMovieLists/actions'
 import {
   userListsLoadingSelector,
   userListsPageSelector,
   userListsErrorSelector,
   userListsSelector,
   isBlankSelector
-} from 'Store/userLists/selectors'
+} from 'Store/userMovieLists/selectors'
 import UserListsComponent from './component'
 
 class UserLists extends Component {
@@ -22,12 +22,7 @@ class UserLists extends Component {
     getUserLists()
   }
 
-  onPageChange = (page) => {
-    const { getUserLists } = this.props
-    getUserLists(page)
-  }
-
-  toggleCreateListModalOpen = () => {
+  handleYourFunctionName = () => {
     this.setState(({ createListModalOpen }) => ({ createListModalOpen: !createListModalOpen }))
   }
 
@@ -40,18 +35,19 @@ class UserLists extends Component {
       page,
       error,
       userLists,
-      isBlank
+      isBlank,
+      getUserLists
     } = this.props
     return (
       <UserListsComponent
         createListModalOpen={createListModalOpen}
-        toggleCreateListModalOpen={this.toggleCreateListModalOpen}
+        handleYourFunctionName={this.handleYourFunctionName}
         loading={loading}
         page={page}
         error={error}
         userLists={userLists}
         isBlank={isBlank}
-        onPageChange={this.onPageChange}
+        onPageChange={getUserLists}
       />
     )
   }

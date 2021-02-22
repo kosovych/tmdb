@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic'
 import { normalize } from 'normalizr'
 
-import { moviesListSchema } from 'Schemas'
+import { moviesListSchema } from 'Store/userMovieLists/operations'
 import { ALL_TRENDING_DAY_URL, SEARCH_MOVIE_URL } from 'Constants'
 import { storeData } from 'Store/data/actions'
 import { GET_MOVIES } from '../types'

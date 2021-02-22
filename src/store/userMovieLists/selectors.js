@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import { get, map, pick } from 'lodash'
 import { userListsDataSelector } from 'Store/data/selectors'
 
-const userListsStateSelector = state => get(state, 'userLists')
+const userListsStateSelector = state => get(state, 'userMovieLists')
 
 const userListsMetaSelector = createSelector(
   userListsStateSelector,

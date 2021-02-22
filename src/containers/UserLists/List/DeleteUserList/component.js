@@ -9,9 +9,7 @@ const DeleteUserList = ({ onDeleteList }) => (
     className="reset-btn"
     onClick={onDeleteList}
   >
-    <DeleteOutlined
-      key="delete"
-    />
+    <DeleteOutlined />
   </button>
 )
 

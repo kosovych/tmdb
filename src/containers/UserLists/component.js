@@ -10,7 +10,7 @@ import CreateUserListModal from './CreateUserListModal'
 
 const UserLists = ({
   createListModalOpen,
-  toggleCreateListModalOpen,
+  handleYourFunctionName,
   loading,
   page: { currentPage, totalResults },
   error,
@@ -30,7 +30,7 @@ const UserLists = ({
             {' '}
             <button
               aria-label="Create List"
-              onClick={toggleCreateListModalOpen}
+              onClick={handleYourFunctionName}
               type="button"
               className="reset-btn"
             >
@@ -85,7 +85,7 @@ const UserLists = ({
       justify="center"
     >
       <Col>
-        {userLists.length ? (
+        {Boolean(userLists.length) && (
           <Pagination
             disabled={loading}
             current={currentPage}
@@ -95,12 +95,12 @@ const UserLists = ({
             pageSize={20}
             total={totalResults}
           />
-        ) : null }
+        )}
       </Col>
     </Row>
     <CreateUserListModal
       createListModalOpen={createListModalOpen}
-      toggleCreateListModalOpen={toggleCreateListModalOpen}
+      handleYourFunctionName={handleYourFunctionName}
     />
   </>
 )
@@ -108,7 +108,7 @@ const UserLists = ({
 
 UserLists.propTypes = {
   createListModalOpen: PropTypes.bool.isRequired,
-  toggleCreateListModalOpen: PropTypes.func.isRequired,
+  handleYourFunctionName: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   error: PropTypes.string,

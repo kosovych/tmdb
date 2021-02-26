@@ -2,7 +2,8 @@ import {
   GET_USER_LISTS,
   CREATE_USER_LIST,
   CREATE_USER_LIST_START,
-  CREATE_USER_LIST_FINISH,
+  CREATE_USER_LIST_ERROR,
+  CREATE_USER_LIST_SUCCESS,
   REQUEST_USER_LISTS_START,
   REQUEST_USER_LISTS_SUCCESS,
   REQUEST_USER_LISTS_ERROR,
@@ -37,8 +38,12 @@ export const createUserListStart = () => ({
   type: CREATE_USER_LIST_START
 })
 
-export const createUserListFinish = () => ({
-  type: CREATE_USER_LIST_FINISH
+export const createUserListSuccess = () => ({
+  type: CREATE_USER_LIST_SUCCESS
+})
+
+export const createUserListError = () => ({
+  type: CREATE_USER_LIST_ERROR
 })
 
 export const removeUserList = listId => ({

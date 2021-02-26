@@ -4,7 +4,7 @@ import { getWatchListOperation, removeMovieOperation } from './watchList/operati
 import { getFavoritesOperation, removeFavoriteMovieOperation } from './favorites/operations'
 import {
   createUserListOperation,
-  getUserListsOperations,
+  getUserListsOperation,
   removeUserListOperation
 } from './userMovieLists/operations'
 
@@ -17,6 +17,6 @@ export default [
   getFavoritesOperation,
   removeFavoriteMovieOperation,
   createUserListOperation,
-  getUserListsOperations,
+  getUserListsOperation,
   removeUserListOperation
 ]

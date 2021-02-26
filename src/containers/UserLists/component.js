@@ -7,10 +7,9 @@ import { PlusCircleOutlined } from '@ant-design/icons'
 import List from './List'
 import CreateUserListModal from './CreateUserListModal'
 
-
 const UserLists = ({
   createListModalOpen,
-  handleYourFunctionName,
+  onToggleModal,
   loading,
   page: { currentPage, totalResults },
   error,
@@ -30,7 +29,7 @@ const UserLists = ({
             {' '}
             <button
               aria-label="Create List"
-              onClick={handleYourFunctionName}
+              onClick={onToggleModal}
               type="button"
               className="reset-btn"
             >
@@ -100,7 +99,7 @@ const UserLists = ({
     </Row>
     <CreateUserListModal
       createListModalOpen={createListModalOpen}
-      handleYourFunctionName={handleYourFunctionName}
+      onToggleModal={onToggleModal}
     />
   </>
 )
@@ -108,7 +107,7 @@ const UserLists = ({
 
 UserLists.propTypes = {
   createListModalOpen: PropTypes.bool.isRequired,
-  handleYourFunctionName: PropTypes.func.isRequired,
+  onToggleModal: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   error: PropTypes.string,

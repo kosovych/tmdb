@@ -11,7 +11,7 @@ const userListsMetaSelector = createSelector(
 
 export const userListsLoadingSelector = createSelector(
   userListsMetaSelector,
-  meta => get(meta, 'loading')
+  meta => get(meta, 'catalogLoading')
 )
 export const userListsPageSelector = createSelector(
   userListsMetaSelector,
@@ -40,6 +40,6 @@ export const userListsSelector = createSelector(
 )
 
 export const createListLoadingSelector = createSelector(
-  userListsStateSelector,
-  userLists => get(userLists, 'createListLoading')
+  userListsMetaSelector,
+  meta => get(meta, 'createListLoading')
 )

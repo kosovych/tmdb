@@ -3,7 +3,12 @@ import { createLogic } from 'redux-logic'
 import { openNotification } from 'Utils/'
 import { sessionIdSelector } from 'Store/auth/selectors'
 import { CREATE_USER_LIST } from '../types'
-import { createUserListStart, createUserListFinish, getUserLists } from '../actions'
+import {
+  createUserListStart,
+  createUserListSuccess,
+  createUserListError,
+  getUserLists
+} from '../actions'
 
 export const createUserListOperation = createLogic({
   type: CREATE_USER_LIST,
@@ -27,12 +32,13 @@ export const createUserListOperation = createLogic({
       })
       cb()
     } catch (error) {
+      dispatch(createUserListError())
       openNotification({
         message: error.message,
         type: 'error'
       })
     }
-    dispatch(createUserListFinish())
+    dispatch(createUserListSuccess())
     dispatch(getUserLists())
     done()
   }

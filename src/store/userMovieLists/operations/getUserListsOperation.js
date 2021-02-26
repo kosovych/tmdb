@@ -11,7 +11,7 @@ import {
 } from '../actions'
 import { GET_USER_LISTS } from '../types'
 
-export const getUserListsOperations = createLogic({
+export const getUserListsOperation = createLogic({
   type: GET_USER_LISTS,
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {

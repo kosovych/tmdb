@@ -7,13 +7,13 @@ import InputField from 'Components/InputField'
 
 const CreateUserListModal = ({
   createListModalOpen,
-  handleYourFunctionName,
+  onToggleModal,
   handleSubmit,
   loading
 }) => (
   <Modal
     visible={createListModalOpen}
-    onCancel={handleYourFunctionName}
+    onCancel={onToggleModal}
     onOk={handleSubmit}
     confirmLoading={loading}
     okText="Create"
@@ -36,7 +36,7 @@ const CreateUserListModal = ({
 
 CreateUserListModal.propTypes = {
   createListModalOpen: PropTypes.bool.isRequired,
-  handleYourFunctionName: PropTypes.func.isRequired,
+  onToggleModal: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool
 }

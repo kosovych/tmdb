@@ -61,7 +61,7 @@ const WatchList = ({
       justify="center"
     >
       <Col>
-        {movies.length ? (
+        {Boolean(movies.length) && (
           <Pagination
             disabled={loading}
             current={currentPage}
@@ -71,7 +71,7 @@ const WatchList = ({
             total={totalResults}
             pageSize={20}
           />
-        ) : null}
+        )}
       </Col>
     </Row>
   </>

@@ -2,7 +2,8 @@ import { get } from 'lodash'
 
 import {
   CREATE_USER_LIST_START,
-  CREATE_USER_LIST_FINISH,
+  CREATE_USER_LIST_SUCCESS,
+  CREATE_USER_LIST_ERROR,
   REQUEST_USER_LISTS_START,
   REQUEST_USER_LISTS_SUCCESS,
   REQUEST_USER_LISTS_ERROR
@@ -15,7 +16,7 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         meta: {
-          loading: true,
+          catalogLoading: true,
           error: null,
           currentPage: get(state, ['meta', 'currentPage']),
           totalResults: get(state, ['meta', 'totalResults'])
@@ -25,7 +26,7 @@ const reducer = (state = {}, action) => {
       return {
         ...state,
         meta: {
-          loading: false,
+          catalogLoading: false,
           currentPage: action.payload.currentPage,
           totalResults: action.payload.totalResults,
           error: null
@@ -37,19 +38,33 @@ const reducer = (state = {}, action) => {
         ...state,
         meta: {
           error: action.error,
-          loading: false
+          catalogLoading: false
         },
         entries: null
       }
     case CREATE_USER_LIST_START:
       return {
         ...state,
-        createListLoading: true
+        meta: {
+          ...state.meta,
+          createListLoading: true
+        }
       }
-    case CREATE_USER_LIST_FINISH:
+    case CREATE_USER_LIST_SUCCESS:
       return {
         ...state,
-        createListLoading: false
+        meta: {
+          ...state.meta,
+          createListLoading: false
+        }
+      }
+    case CREATE_USER_LIST_ERROR:
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          createListLoading: false
+        }
       }
     default:
       return state

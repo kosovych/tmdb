@@ -22,7 +22,7 @@ class UserLists extends Component {
     getUserLists()
   }
 
-  handleYourFunctionName = () => {
+  onToggleModal = () => {
     this.setState(({ createListModalOpen }) => ({ createListModalOpen: !createListModalOpen }))
   }
 
@@ -41,7 +41,7 @@ class UserLists extends Component {
     return (
       <UserListsComponent
         createListModalOpen={createListModalOpen}
-        handleYourFunctionName={this.handleYourFunctionName}
+        onToggleModal={this.onToggleModal}
         loading={loading}
         page={page}
         error={error}

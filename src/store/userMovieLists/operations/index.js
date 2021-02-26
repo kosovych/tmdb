@@ -1,3 +1,3 @@
 export { createUserListOperation } from './createUserListOperation'
-export { getUserListsOperations } from './getUserListsOperations'
+export { getUserListsOperation } from './getUserListsOperation'
 export { removeUserListOperation } from './removeUserListOperation'

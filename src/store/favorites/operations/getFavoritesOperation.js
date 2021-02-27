@@ -7,14 +7,14 @@ import { storeData } from 'Store/data/actions'
 import { GET_MOVIES } from '../types'
 import { requestMoviesStart, requestMoviesSuccess, requestMoviesError } from '../actions'
 
-export const getWatchListOperation = createLogic({
+export const getFavoritesOperation = createLogic({
   type: GET_MOVIES,
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {
     const state = getState()
     const { params = {} } = action
     params.session_id = sessionIdSelector(state)
-    const url = `/account/${userIdSelector(state)}/watchlist/movies`
+    const url = `/account/${userIdSelector(state)}/favorite/movies`
     dispatch(requestMoviesStart())
     try {
       const dataRequest = await axios.get(url, { params })

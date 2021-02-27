@@ -1,4 +1,4 @@
-import { concat, without, get } from 'lodash'
+import { concat, without } from 'lodash'
 
 import {
   REQUEST_MOVIES_START,
@@ -17,9 +17,7 @@ const reducer = (state = {}, action) => {
         ...state,
         meta: {
           loading: true,
-          error: null,
-          currentPage: get(state, ['meta', 'currentPage']),
-          totalResults: get(state, ['meta', 'totalResults'])
+          error: null
         }
       }
     case REQUEST_MOVIES_SUCCESS:

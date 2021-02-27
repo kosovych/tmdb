@@ -21,7 +21,7 @@ const WatchList = ({
         offset={2}
       >
         <div className="top-margin">
-          <Typography.Title>Watchlist</Typography.Title>
+          <Typography.Title>Favorites</Typography.Title>
         </div>
         <Row
           gutter={{

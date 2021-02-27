@@ -1,0 +1,8 @@
+export const GET_MOVIES = 'favorites/GET_MOVIES'
+export const REMOVE_MOVIE = 'favorites/REMOVE_MOVIE'
+export const REMOVE_MOVIE_FROM_STORE = 'favorites/REMOVE_MOVIE_FROM_STORE'
+export const REQUEST_MOVIES_START = 'favorites/REQUEST_MOVIES_START'
+export const REQUEST_MOVIES_SUCCESS = 'favorites/REQUEST_MOVIES_SUCCESS'
+export const REQUEST_MOVIES_ERROR = 'favorites/REQUEST_MOVIES_ERROR'
+export const SET_REMOVE_MOVIE_ERROR = 'favorites/SET_REMOVE_MOVIE_ERROR'
+export const CLEANUP_REMOVE_MOVIE_ERRORS = 'favorites/CLEANUP_REMOVE_MOVIE_ERRORS'

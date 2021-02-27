@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getMovies as getMoviesAction } from 'Store/trendingMovies/actions'
+import { getMovies as getMoviesAction } from 'Store/favorites/actions'
 import {
   moviesSelector,
   moviePagesSelector,
   movieErrorSelector,
   movieLoadingSelector,
   isBlankSelector
-} from 'Store/trendingMovies/selectors'
-import DashboardComponent from './component'
+} from 'Store/favorites/selectors'
+import WatchListComponent from './component'
 
-class Dashboard extends Component {
+class WatchList extends Component {
   componentDidMount = () => {
     const { getMovies } = this.props
     getMovies()
@@ -28,7 +28,7 @@ class Dashboard extends Component {
       movies, loading, pagination: { currentPage, totalResults }, error, isBlank
     } = this.props
     return (
-      <DashboardComponent
+      <WatchListComponent
         movies={movies}
         currentPage={currentPage}
         totalResults={totalResults}
@@ -41,7 +41,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
+WatchList.propTypes = {
   getMovies: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   pagination: PropTypes.shape({
@@ -53,7 +53,7 @@ Dashboard.propTypes = {
   isBlank: PropTypes.bool
 }
 
-Dashboard.defaultProps = {
+WatchList.defaultProps = {
   loading: null,
   movies: null,
   pagination: {
@@ -76,4 +76,4 @@ const mapDispatchToProps = {
   getMovies: getMoviesAction
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(WatchList)

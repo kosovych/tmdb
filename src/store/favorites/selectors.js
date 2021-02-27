@@ -3,11 +3,11 @@ import { map, pick, get } from 'lodash'
 import { movieDataSelector } from 'Store/data/selectors'
 
 const movieCatalogEntriesSelector = state => (
-  get(state, ['watchListMovies', 'entries'])
+  get(state, ['favoriteMovies', 'entries'])
 )
 
 const movieMetaSelector = state => (
-  get(state, ['watchListMovies', 'meta'])
+  get(state, ['favoriteMovies', 'meta'])
 )
 
 export const moviePagesSelector = createSelector(

@@ -1,0 +1,8 @@
+export const GET_MOVIES = 'watchlist/GET_MOVIES'
+export const REMOVE_MOVIE = 'watchlist/REMOVE_MOVIE'
+export const REMOVE_MOVIE_FROM_STORE = 'watchlist/REMOVE_MOVIE_FROM_STORE'
+export const REQUEST_MOVIES_START = 'watchlist/REQUEST_MOVIES_START'
+export const REQUEST_MOVIES_SUCCESS = 'watchlist/REQUEST_MOVIES_SUCCESS'
+export const REQUEST_MOVIES_ERROR = 'watchlist/REQUEST_MOVIES_ERROR'
+export const SET_REMOVE_MOVIE_ERROR = 'watchlist/SET_REMOVE_MOVIE_ERROR'
+export const CLEANUP_REMOVE_MOVIE_ERRORS = 'watchlist/CLEANUP_REMOVE_MOVIE_ERRORS'

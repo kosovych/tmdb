@@ -2,7 +2,8 @@ import {
   LOGIN_REQUEST,
   LOGIN_FAILS,
   LOGIN_SUCCESS,
-  LOGIN_LOGOUT
+  LOGIN_LOGOUT,
+  STORE_USER
 } from './types'
 
 const initState = {
@@ -19,6 +20,8 @@ const authReducer = (state = initState, action) => {
     case LOGIN_LOGOUT:
       localStorage.removeItem('session_id')
       return { ...state, sessionID: null }
+    case STORE_USER:
+      return { ...state, ...action.payload }
     default: return state
   }
 }

@@ -80,3 +80,9 @@ body,
 .d-none {
   display: none !important;
 }
+
+.ant-avatar-image .ant-image-img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}

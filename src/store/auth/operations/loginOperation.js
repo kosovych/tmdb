@@ -1,7 +1,9 @@
 import { createLogic } from 'redux-logic'
 
 import { LOGIN_SUBMIT } from '../types'
-import { loginFails, loginSuccess, loginRequest } from '../actions'
+import {
+  loginFails, loginSuccess, loginRequest, getUser
+} from '../actions'
 
 export const loginOperation = createLogic({
   type: LOGIN_SUBMIT,
@@ -28,7 +30,7 @@ export const loginOperation = createLogic({
         { request_token: sessionRequestToken }
       )
       const sessionID = sessionIDReq.data.session_id
-
+      dispatch(getUser(sessionID))
       localStorage.setItem('session_id', sessionID)
       dispatch(loginSuccess(sessionID))
     } catch (err) {

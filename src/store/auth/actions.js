@@ -3,7 +3,9 @@ import {
   LOGIN_FAILS,
   LOGIN_SUCCESS,
   LOGIN_SUBMIT,
-  LOGIN_LOGOUT
+  LOGIN_LOGOUT,
+  STORE_USER,
+  GET_USER
 } from './types'
 
 export const loginSubmit = ({ username, password }) => ({
@@ -28,4 +30,14 @@ export const loginSuccess = sessionID => ({
 
 export const loginRequest = () => ({
   type: LOGIN_REQUEST
+})
+
+export const getUser = sessionID => ({
+  type: GET_USER,
+  sessionID
+})
+
+export const storeUser = payload => ({
+  type: STORE_USER,
+  payload
 })

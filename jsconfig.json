@@ -7,7 +7,8 @@
       "Components/*": ["./src/components/*"],
       "Helpers/*": ["./src/config/*"],
       "Store/*": ["./src/store/*"],
-      "Schemas/*": ["./src/schemas/*"]
+      "Schemas/*": ["./src/schemas/*"],
+      "Utils/*": ["./src/utils/*"]
     },
     "module": "commonjs"
   },

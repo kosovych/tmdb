@@ -1,7 +1,9 @@
 import { createLogic } from 'redux-logic'
 
+import { openNotification } from 'Utils'
 import { userIdSelector, sessionIdSelector } from 'Store/auth/selectors'
-import { removeMovieFromStore, setRemoveMovieError } from '../actions'
+import { moviePagesSelector } from '../selectors'
+import { getMovies } from '../actions'
 import { REMOVE_MOVIE } from '../types'
 
 export const removeMovieOperation = createLogic({
@@ -26,9 +28,13 @@ export const removeMovieOperation = createLogic({
         params,
         data
       })
-      dispatch(removeMovieFromStore(movieId))
-    } catch (err) {
-      dispatch(setRemoveMovieError(movieId))
+      dispatch(getMovies({ page: moviePagesSelector(state).currentPage }))
+    } catch (error) {
+      openNotification({
+        message: error.message,
+        description: error.response.data.status_message,
+        type: 'error'
+      })
     }
     done()
   }

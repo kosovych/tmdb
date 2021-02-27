@@ -1,9 +1,6 @@
 import { createSelector } from 'reselect'
 import { map, pick, get } from 'lodash'
-
-const movieDataSelector = state => (
-  get(state, ['data', 'movies'])
-)
+import { movieDataSelector } from 'Store/data/selectors'
 
 const movieCatalogEntriesSelector = state => (
   get(state, ['watchListMovies', 'entries'])
@@ -15,7 +12,7 @@ const movieMetaSelector = state => (
 
 export const moviePagesSelector = createSelector(
   movieMetaSelector,
-  meta => pick(meta, ['currentPage', 'totalPages'])
+  meta => pick(meta, ['currentPage', 'totalResults'])
 )
 
 export const movieErrorSelector = createSelector(

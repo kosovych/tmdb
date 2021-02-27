@@ -25,13 +25,13 @@ class Dashboard extends Component {
 
   render() {
     const {
-      movies, loading, pagination: { currentPage, totalPages }, error, isBlank
+      movies, loading, pagination: { currentPage, totalResults }, error, isBlank
     } = this.props
     return (
       <DashboardComponent
         movies={movies}
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalResults={totalResults}
         loading={loading}
         onPageChange={this.onPageChange}
         error={error}
@@ -46,7 +46,7 @@ Dashboard.propTypes = {
   loading: PropTypes.bool,
   pagination: PropTypes.shape({
     currentPage: PropTypes.number,
-    totalPages: PropTypes.number
+    totalResults: PropTypes.number
   }),
   movies: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
   error: PropTypes.string,
@@ -58,7 +58,7 @@ Dashboard.defaultProps = {
   movies: null,
   pagination: {
     currentPage: null,
-    totalPages: null
+    totalResults: null
   },
   error: null,
   isBlank: false

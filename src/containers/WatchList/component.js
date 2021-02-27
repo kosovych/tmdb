@@ -8,7 +8,7 @@ import MoviesList from 'Components/MoviesList'
 import DeleteMovie from './DeleteMovie'
 
 const WatchList = ({
-  movies, loading, onPageChange, currentPage, totalPages, error, isBlank
+  movies, loading, onPageChange, currentPage, totalResults, error, isBlank
 }) => (
   <>
     <Row
@@ -61,14 +61,15 @@ const WatchList = ({
       justify="center"
     >
       <Col>
-        {movies && !!totalPages && (
+        {Boolean(movies.length) && (
           <Pagination
             disabled={loading}
             current={currentPage}
             onChange={onPageChange}
             className="pagination"
             showSizeChanger={false}
-            total={totalPages}
+            total={totalResults}
+            pageSize={20}
           />
         )}
       </Col>
@@ -80,7 +81,7 @@ WatchList.propTypes = {
   onPageChange: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   currentPage: PropTypes.number,
-  totalPages: PropTypes.number,
+  totalResults: PropTypes.number,
   error: PropTypes.string,
   movies: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
   isBlank: PropTypes.bool
@@ -90,7 +91,7 @@ WatchList.defaultProps = {
   movies: null,
   loading: null,
   currentPage: null,
-  totalPages: null,
+  totalResults: null,
   error: null,
   isBlank: false
 }

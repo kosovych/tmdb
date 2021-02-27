@@ -22,7 +22,7 @@ export const getFavoritesOperation = createLogic({
       const { result, entities } = normalize(data.results, moviesListSchema)
       const movies = {
         entries: result,
-        totalPages: data.total_pages,
+        totalResults: data.total_results,
         currentPage: data.page
       }
       dispatch(storeData('movies', entities.movies))

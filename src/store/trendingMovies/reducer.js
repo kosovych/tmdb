@@ -22,7 +22,7 @@ const reducer = (state = {}, action) => {
         meta: {
           loading: false,
           currentPage: action.payload.currentPage,
-          totalPages: action.payload.totalPages,
+          totalResults: action.payload.totalResults,
           error: null,
           search: get(state, ['meta', 'search'])
         },

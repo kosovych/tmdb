@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import { map, pick, get } from 'lodash'
-import { movieDataSelector } from 'Store/data/selectors'
+import { moviesDataSelector } from 'Store/data/selectors'
 
 const movieCatalogEntriesSelector = state => (
   get(state, ['trendingMovies', 'entries'])
@@ -38,6 +38,6 @@ export const isBlankSelector = createSelector(
 
 export const moviesSelector = createSelector(
   movieCatalogEntriesSelector,
-  movieDataSelector,
+  moviesDataSelector,
   (movieEntries, data) => map(movieEntries, id => data[id])
 )

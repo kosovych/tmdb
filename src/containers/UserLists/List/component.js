@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Col, Card, Typography
 } from 'antd'
+import { Link } from 'react-router-dom'
 
 import DeleteUserList from './DeleteUserList'
 
@@ -26,7 +27,11 @@ const List = ({ userLists }) => (
         ]}
       >
         <Typography.Title level={4}>
-          {name}
+          <Link
+            to={`list/${id}`}
+          >
+            {name}
+          </Link>
         </Typography.Title>
         {description}
       </Card>

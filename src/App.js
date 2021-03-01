@@ -6,6 +6,7 @@ import Dashboard from './containers/Dashboard'
 import WatchList from './containers/WatchList'
 import Favorites from './containers/Favorites'
 import UserLists from './containers/UserLists'
+import ListDetails from './containers/ListDetails'
 import StubsRoot from './components/stubs/StubsRoot'
 import PrivateRoute from './components/PrivateRoute'
 import GuestRoute from './components/GuestRoute'
@@ -32,6 +33,11 @@ const App = () => (
         path="/lists"
         exact
         component={UserLists}
+      />
+      <PrivateRoute
+        path="/list/:id"
+        exact
+        component={ListDetails}
       />
       <GuestRoute
         path="/login"

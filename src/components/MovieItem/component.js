@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
+import { Link } from 'react-router-dom'
 
 const Movie = ({
-  poster, overview, title, action: Action, movieId
+  poster, overview, title, action: Action, movieId, mediaType
 }) => {
   const actions = Action ? ([<Action
     key={movieId}
@@ -25,7 +26,13 @@ const Movie = ({
       className="top-margin"
     >
       <Card.Meta
-        title={title}
+        title={(
+          <Link
+            to={`/${mediaType}/${movieId}`}
+          >
+            {title}
+          </Link>
+  )}
         description={overview}
       />
     </Card>
@@ -37,7 +44,8 @@ Movie.propTypes = {
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   action: PropTypes.elementType,
-  movieId: PropTypes.number
+  movieId: PropTypes.number,
+  mediaType: PropTypes.string.isRequired
 }
 
 Movie.defaultProps = {

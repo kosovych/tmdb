@@ -12,6 +12,11 @@ import {
   removeMovieOperation as removeMovieFromUserListOperation,
   removeUserListOperation as removeUserListDetailsOperation
 } from './listDetails/operations'
+import {
+  getMovieInfoOperation,
+  getMovieImagesOperation,
+  getMovieCreditsOperation
+} from './movie/operations'
 
 export default [
   loginOperation,
@@ -26,5 +31,8 @@ export default [
   removeUserListOperation,
   getListDetailsOperation,
   removeMovieFromUserListOperation,
-  removeUserListDetailsOperation
+  removeUserListDetailsOperation,
+  getMovieInfoOperation,
+  getMovieImagesOperation,
+  getMovieCreditsOperation
 ]

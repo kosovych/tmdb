@@ -7,6 +7,7 @@ import watchListMovies from './watchList'
 import favoriteMovies from './favorites'
 import userMovieLists from './userMovieLists'
 import listDetails from './listDetails'
+import movie from './movie'
 
 const reducers = combineReducers({
   auth,
@@ -15,7 +16,8 @@ const reducers = combineReducers({
   watchListMovies,
   favoriteMovies,
   userMovieLists,
-  listDetails
+  listDetails,
+  movie
 })
 
 export default reducers

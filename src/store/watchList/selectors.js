@@ -36,11 +36,6 @@ export const isBlankSelector = createSelector(
   (moviesEntries, loading) => !loading && moviesEntries && !moviesEntries.length
 )
 
-export const removeMovieErrorsSelector = createSelector(
-  movieMetaSelector,
-  meta => get(meta, 'removeErrors') || []
-)
-
 export const moviesSelector = createSelector(
   movieCatalogEntriesSelector,
   movieDataSelector,

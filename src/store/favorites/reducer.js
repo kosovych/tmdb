@@ -1,12 +1,7 @@
-import { concat, without } from 'lodash'
-
 import {
   REQUEST_MOVIES_START,
   REQUEST_MOVIES_SUCCESS,
-  REQUEST_MOVIES_ERROR,
-  SET_REMOVE_MOVIE_ERROR,
-  REMOVE_MOVIE_FROM_STORE,
-  CLEANUP_REMOVE_MOVIE_ERRORS
+  REQUEST_MOVIES_ERROR
 } from './types'
 
 const reducer = (state = {}, action) => {
@@ -17,7 +12,9 @@ const reducer = (state = {}, action) => {
         ...state,
         meta: {
           loading: true,
-          error: null
+          error: null,
+          currentPage: state.meta?.currentPage,
+          totalResults: state.meta?.totalResults
         }
       }
     case REQUEST_MOVIES_SUCCESS:
@@ -39,27 +36,6 @@ const reducer = (state = {}, action) => {
           loading: false
         },
         entries: null
-      }
-    case REMOVE_MOVIE_FROM_STORE:
-      return {
-        ...state,
-        entries: without(state.entries, action.movieId)
-      }
-    case SET_REMOVE_MOVIE_ERROR:
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          removeErrors: concat(state.meta.removeErrors || [], action.movieId)
-        }
-      }
-    case CLEANUP_REMOVE_MOVIE_ERRORS:
-      return {
-        ...state,
-        meta: {
-          ...state.meta,
-          removeErrors: without(state.meta.removeErrors, action.movieId)
-        }
       }
     default:
       return state

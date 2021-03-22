@@ -20,7 +20,7 @@ class ListDetails extends Component {
     getListDetails(listId)
   }
 
-  showDeleteListModal = () => {
+  onShowDeleteListModal = () => {
     const { removeUserList, history } = this.props
     const listId = get(this.props, ['match', 'params', 'id'])
 
@@ -36,7 +36,7 @@ class ListDetails extends Component {
     } = this.props
     return (
       <ListDetailsComponent
-        showDeleteListModal={this.showDeleteListModal}
+        onShowDeleteListModal={this.onShowDeleteListModal}
         movies={movies}
         listName={listName}
         loading={loading}

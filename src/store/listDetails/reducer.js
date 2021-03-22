@@ -4,7 +4,7 @@ import {
   REQUEST_ERROR
 } from './types'
 
-const authReducer = (state = {}, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case REQUEST_START:
       return {
@@ -34,4 +34,4 @@ const authReducer = (state = {}, action) => {
   }
 }
 
-export default authReducer
+export default reducer

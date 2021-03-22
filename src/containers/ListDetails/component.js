@@ -3,13 +3,13 @@ import {
   Row, Col, Typography, Spin, Empty
 } from 'antd'
 import PropsTypes from 'prop-types'
+import { MinusCircleOutlined } from '@ant-design/icons'
 
 import MoviesList from 'Components/MoviesList'
-import { MinusCircleOutlined } from '@ant-design/icons'
 import DeleteMovie from './DeleteMovie'
 
 const ListDetails = ({
-  showDeleteListModal, movies, listName, loading, isBlank
+  onShowDeleteListModal, movies, listName, loading, isBlank
 }) => (
   <>
     <Row>
@@ -22,7 +22,7 @@ const ListDetails = ({
             <Typography.Title>
               {listName}
               {' '}
-              <MinusCircleOutlined onClick={showDeleteListModal} />
+              <MinusCircleOutlined onClick={onShowDeleteListModal} />
             </Typography.Title>
           </div>
         )}
@@ -48,15 +48,15 @@ const ListDetails = ({
             </Col>
           )}
           {isBlank && (
-          <Col span={24}>
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-          </Col>
+            <Col span={24}>
+              <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            </Col>
           )}
           {!loading && movies && (
-          <MoviesList
-            movies={movies}
-            action={DeleteMovie}
-          />
+            <MoviesList
+              movies={movies}
+              action={DeleteMovie}
+            />
           )}
         </Row>
       </Col>
@@ -65,7 +65,7 @@ const ListDetails = ({
 )
 
 ListDetails.propTypes = {
-  showDeleteListModal: PropsTypes.func.isRequired,
+  onShowDeleteListModal: PropsTypes.func.isRequired,
   movies: PropsTypes.arrayOf(PropsTypes.shape()),
   listName: PropsTypes.string,
   loading: PropsTypes.bool,

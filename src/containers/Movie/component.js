@@ -20,9 +20,7 @@ const Movie = ({ movieId, loading }) => (
       </Row>
     )}
     <div className={classnames({ 'd-none': loading })}>
-      <MovieImages
-        movieId={movieId}
-      />
+      <MovieImages movieId={movieId} />
       <div className="top-margin">
         <MovieInfo movieId={movieId} />
         <Credits movieId={movieId} />

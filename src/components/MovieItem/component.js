@@ -27,12 +27,10 @@ const Movie = ({
     >
       <Card.Meta
         title={(
-          <Link
-            to={`/${mediaType}/${movieId}`}
-          >
+          <Link to={`/${mediaType}/${movieId}`}>
             {title}
           </Link>
-  )}
+        )}
         description={overview}
       />
     </Card>

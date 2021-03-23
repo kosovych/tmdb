@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { getMovieImagesSelector } from 'Store/movie/selectors'
+import { movieImagesSelector } from 'Store/movie/selectors'
 import { getMovieImages as getMovieImagesAction } from 'Store/movie/actions'
 import MovieImagesComponent from './component'
 
@@ -33,7 +33,7 @@ MovieImages.defaultProps = {
 }
 
 const mapStateToProps = (state, { movieId }) => ({
-  movieImages: getMovieImagesSelector(state, movieId)
+  movieImages: movieImagesSelector(state, movieId)
 })
 
 const mapDispatchToProps = {

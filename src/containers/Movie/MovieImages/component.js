@@ -6,6 +6,8 @@ import {
 } from 'antd'
 import PropTypes from 'prop-types'
 
+import { IMG_PATH_PREFIX } from 'Constants'
+
 const MovieImages = ({ movieImages }) => (
   <Row type="flex">
     <Col span={24}>
@@ -14,7 +16,7 @@ const MovieImages = ({ movieImages }) => (
           <img
             key={filePath}
             className="movie-image"
-            src={`https://image.tmdb.org/t/p/original${filePath}`}
+            src={`${IMG_PATH_PREFIX}${filePath}`}
             alt=""
           />
         ))}

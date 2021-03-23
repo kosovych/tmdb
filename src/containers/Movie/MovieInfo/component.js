@@ -6,7 +6,8 @@ import {
   Tag
 } from 'antd'
 import PropTypes from 'prop-types'
-import { timeConvert, isoLang } from 'Utils/'
+import { convertMinutesToHours } from 'Utils'
+import { isoLang } from 'Constants'
 
 const MovieInfo = ({ info, genres }) => {
   const {
@@ -59,7 +60,7 @@ const MovieInfo = ({ info, genres }) => {
           >
             <Typography.Paragraph>
               <b>Runtime: </b>
-              <span>{timeConvert(runtime)}</span>
+              <span>{convertMinutesToHours(runtime)}</span>
             </Typography.Paragraph>
           </Col>
         )}

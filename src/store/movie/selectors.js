@@ -24,7 +24,7 @@ export const genresMovieSelector = createSelector(
   (movie, genresData) => map(get(movie, 'genres'), id => genresData[id])
 )
 
-export const getMovieImagesSelector = createSelector(
+export const movieImagesSelector = createSelector(
   movieSelector,
   movie => get(movie, 'images')
 )

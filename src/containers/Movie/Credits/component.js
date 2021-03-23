@@ -4,7 +4,7 @@ import {
 } from 'antd'
 import PropTypes from 'prop-types'
 
-import { getImageFallback } from 'Utils/'
+import { getImageUrl } from 'Utils'
 
 const Credits = ({ cast, crew }) => (
   <>
@@ -51,7 +51,7 @@ const Credits = ({ cast, crew }) => (
                       <img
                         alt="example"
                         height="750"
-                        src={getImageFallback(profilePath)}
+                        src={getImageUrl(profilePath)}
                       />
                       )}
                     className="top-margin"
@@ -110,9 +110,9 @@ const Credits = ({ cast, crew }) => (
                       <img
                         alt="example"
                         height="750"
-                        src={getImageFallback(profilePath)}
+                        src={getImageUrl(profilePath)}
                       />
-                )}
+                    )}
                     className="top-margin"
                   >
                     <Card.Meta

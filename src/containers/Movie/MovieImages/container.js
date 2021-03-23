@@ -13,9 +13,12 @@ class MovieImages extends Component {
   }
 
   render() {
-    const { movieImages } = this.props
+    const { movieImages, loading } = this.props
     return (
-      movieImages ? <MovieImagesComponent movieImages={movieImages} /> : null
+      <MovieImagesComponent
+        loading={loading}
+        movieImages={movieImages}
+      />
     )
   }
 }
@@ -23,6 +26,7 @@ class MovieImages extends Component {
 MovieImages.propTypes = {
   getMovieImages: PropTypes.func.isRequired,
   movieId: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   movieImages: PropTypes.arrayOf(
     PropTypes.shape()
   )

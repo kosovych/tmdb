@@ -43,8 +43,8 @@ export const movieInfoSelector = createSelector(
 export const movieLoadingSelector = createSelector(
   state => get(state, 'movie'),
   movie => [
-    movie?.infoLoading,
-    movie?.imageLoading,
-    movie?.creditsLoading
-  ].every(item => item === true)
+    movie.infoLoading,
+    movie.imageLoading,
+    movie.creditsLoading
+  ].includes(true)
 )

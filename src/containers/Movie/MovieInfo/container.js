@@ -14,13 +14,14 @@ class MovieInfo extends Component {
   }
 
   render() {
-    const { info, genres } = this.props
-    return (info ? (
+    const { info, genres, loading } = this.props
+    return (
       <MovieInfoComponent
         info={info}
         genres={genres}
+        loading={loading}
       />
-    ) : null)
+    )
   }
 }
 
@@ -38,6 +39,7 @@ MovieInfo.propTypes = {
   }),
   getMovie: PropTypes.func.isRequired,
   movieId: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
   genres: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

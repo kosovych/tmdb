@@ -10,7 +10,13 @@ import {
   REQUEST_MOVIE_CREDITS_ERROR
 } from './types'
 
-const reducer = (state = {}, action) => {
+const initialStore = {
+  infoLoading: true,
+  imageLoading: true,
+  creditsLoading: true
+}
+
+const reducer = (state = initialStore, action) => {
   switch (action.type) {
     case REQUEST_MOVIE_INFO_START:
       return { ...state, infoLoading: true }

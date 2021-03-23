@@ -11,7 +11,7 @@ const reducer = (state = {}, action) => {
       const { movieId, payload } = action
       const movies = get(state, 'movies', {})
       const prevMovie = get(movies, movieId, {})
-      const movie = { ...merge(prevMovie, payload) }
+      const movie = merge({}, prevMovie, payload)
       return {
         ...state,
         movies: {

@@ -13,11 +13,12 @@ class Credits extends Component {
   }
 
   render() {
-    const { cast, crew } = this.props
+    const { cast, crew, loading } = this.props
     return (
       <CreditsComponent
         cast={cast}
         crew={crew}
+        loading={loading}
       />
     )
   }
@@ -35,6 +36,7 @@ const mapDispatchToProps = {
 Credits.propTypes = {
   movieId: PropTypes.string.isRequired,
   getMovieCredits: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   cast: PropTypes.arrayOf(PropTypes.shape()),
   crew: PropTypes.PropTypes.arrayOf(PropTypes.shape())
 }

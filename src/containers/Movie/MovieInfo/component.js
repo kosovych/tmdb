@@ -6,10 +6,12 @@ import {
   Tag
 } from 'antd'
 import PropTypes from 'prop-types'
+import { map } from 'lodash'
+
 import { convertMinutesToHours } from 'Utils'
 import { isoLang } from 'Constants'
 
-const MovieInfo = ({ info, genres }) => {
+const MovieInfo = ({ info, genres, loading }) => {
   const {
     originalTitle,
     originalLanguage,
@@ -21,7 +23,7 @@ const MovieInfo = ({ info, genres }) => {
     firstAirDate,
     originalName
   } = info
-  return (
+  return !loading && (
     <>
       <Row>
         <Col
@@ -94,7 +96,7 @@ const MovieInfo = ({ info, genres }) => {
         >
           <Typography.Paragraph>
             <b>Genres: </b>
-            {Boolean(genres?.length) && genres.map(genre => (
+            {map(genres, genre => (
               <Tag key={genre.id}>{genre.name}</Tag>
             ))}
           </Typography.Paragraph>
@@ -116,6 +118,7 @@ MovieInfo.propTypes = {
     budget: PropTypes.number,
     revenue: PropTypes.number
   }),
+  loading: PropTypes.bool.isRequired,
   genres: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

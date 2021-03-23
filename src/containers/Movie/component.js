@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Spin } from 'antd'
-import classnames from 'classnames'
 
 import MovieImages from './MovieImages'
 import MovieInfo from './MovieInfo'
@@ -19,12 +18,19 @@ const Movie = ({ movieId, loading }) => (
         </Col>
       </Row>
     )}
-    <div className={classnames({ 'd-none': loading })}>
-      <MovieImages movieId={movieId} />
-      <div className="top-margin">
-        <MovieInfo movieId={movieId} />
-        <Credits movieId={movieId} />
-      </div>
+    <MovieImages
+      movieId={movieId}
+      loading={loading}
+    />
+    <div className="top-margin">
+      <MovieInfo
+        movieId={movieId}
+        loading={loading}
+      />
+      <Credits
+        movieId={movieId}
+        loading={loading}
+      />
     </div>
   </>
 )

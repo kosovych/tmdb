@@ -15,6 +15,7 @@
     "__DEV__": true
   },
   "rules": {
+    "no-case-declarations": "off",
     "comma-dangle": ["error", "never"],
     "jsx-a11y/anchor-is-valid": [
       "error",

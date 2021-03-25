@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 
-export const movieDataSelector = state => (
+export const moviesDataSelector = state => (
   get(state, ['data', 'movies'])
 )
 

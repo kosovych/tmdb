@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic'
 import { normalize } from 'normalizr'
-import { uniq } from 'lodash'
+import { uniq, mergeWith } from 'lodash'
 
 import { movieCredits } from 'Schemas'
 import { storeData, storeMovieInfo } from 'Store/data/actions'
@@ -22,6 +22,7 @@ export const getMovieCreditsOperation = createLogic({
       const { movie, persons } = normalize(response.data, movieCredits).entities
       const { cast, crew } = movie[movieId]
       dispatch(storeData('persons', persons))
+      console.log(response.data)
       dispatch(storeMovieInfo(movieId, { cast, crew: uniq(crew) }))
       dispatch(requestMovieCreditsSuccess())
     } catch (error) {

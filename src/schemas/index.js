@@ -1,4 +1,5 @@
 export { moviesListSchema } from './moviesListSchema'
+export { searchMoviesSchema } from './searchMoviesSchema'
 export { userListsSchema } from './userListsSchema'
 export { genresListsSchema } from './genresListsSchema'
 export { personsListSchema } from './personsListSchema'

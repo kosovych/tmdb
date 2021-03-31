@@ -1,4 +1,4 @@
-export const isoLang = {
+export const isoLanguages = {
   ab: 'Abkhazian',
   aa: 'Afar',
   af: 'Afrikaans',

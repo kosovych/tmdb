@@ -8,8 +8,8 @@ import {
 import PropTypes from 'prop-types'
 import { map } from 'lodash'
 
-import { convertMinutesToHours } from 'Utils'
-import { isoLang } from 'Constants'
+import { convertMinutesToHours, formatPrice } from 'Utils'
+import { isoLanguages } from 'Constants'
 
 const MovieInfo = ({ info, genres, loading }) => {
   const {
@@ -52,7 +52,7 @@ const MovieInfo = ({ info, genres, loading }) => {
         >
           <Typography.Paragraph>
             <b>Original Language: </b>
-            <span>{isoLang[originalLanguage]}</span>
+            <span>{isoLanguages[originalLanguage]}</span>
           </Typography.Paragraph>
         </Col>
         {Boolean(runtime) && (
@@ -74,7 +74,7 @@ const MovieInfo = ({ info, genres, loading }) => {
             <Typography.Paragraph>
               <b>Budget: </b>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              <span>${budget.toFixed(2)}</span>
+              <span>${formatPrice(budget)}</span>
             </Typography.Paragraph>
           </Col>
         )}
@@ -86,7 +86,7 @@ const MovieInfo = ({ info, genres, loading }) => {
             <Typography.Paragraph>
               <b>Revenue: </b>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              <span>${revenue.toFixed(2)}</span>
+              <span>${formatPrice(revenue)}</span>
             </Typography.Paragraph>
           </Col>
         )}

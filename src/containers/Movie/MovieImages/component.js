@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types'
 import { map } from 'lodash'
 
-import { IMG_PATH_PREFIX } from 'Constants'
+import { IMAGES_HOST } from 'Constants'
 
 const MovieImages = ({ movieImages, loading }) => (
   !loading && (
@@ -18,7 +18,7 @@ const MovieImages = ({ movieImages, loading }) => (
             <img
               key={filePath}
               className="movie-image"
-              src={`${IMG_PATH_PREFIX}${filePath}`}
+              src={`${IMAGES_HOST}${filePath}`}
               alt=""
             />
           ))}

@@ -107,14 +107,14 @@ const Credits = ({ cast, crew, loading }) => (
                     xl={{ span: 6 }}
                   >
                     <Card
+                      className="top-margin"
                       cover={(
                         <img
                           alt="example"
                           height="750"
                           src={getImageUrl(profilePath)}
                         />
-                    )}
-                      className="top-margin"
+                      )}
                     >
                       <Card.Meta
                         title={name}

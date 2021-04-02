@@ -2,17 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { logout, getUser as getUserAction } from 'Store/auth/actions'
+import { logout } from 'Store/auth/actions'
 import HeaderComponent from './component'
 
 class Header extends Component {
-  componentDidMount() {
-    const { username, sessionID, getUser } = this.props
-    if (!username) {
-      getUser(sessionID)
-    }
-  }
-
   render() {
     const {
       onLogout,
@@ -32,9 +25,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  sessionID: PropTypes.string.isRequired,
   onLogout: PropTypes.func.isRequired,
-  getUser: PropTypes.func.isRequired,
   displayName: PropTypes.string,
   username: PropTypes.string,
   avatarUrl: PropTypes.string
@@ -46,16 +37,8 @@ Header.defaultProps = {
   avatarUrl: null
 }
 
-const mapStateToProps = state => ({
-  sessionID: state.auth.sessionID,
-  displayName: state.auth.displayName,
-  username: state.auth.username,
-  avatarUrl: state.auth.avatarUrl
-})
-
 const mapDispatchToProps = {
-  onLogout: logout,
-  getUser: getUserAction
+  onLogout: logout
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(null, mapDispatchToProps)(Header)

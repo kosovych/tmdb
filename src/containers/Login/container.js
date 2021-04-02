@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import * as Yup from 'yup'
 import { withFormik } from 'formik'
 
+import { sessionIdSelector, authLoadingSelector, errorTxtSelector } from 'Store/auth/selectors'
 import { loginSubmit } from 'Store/auth/actions'
 import LoginComponent from './component'
 
@@ -26,9 +27,9 @@ Login.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  loading: state.auth.loading,
-  errorTxt: state.auth.errorTxt,
-  sessionID: state.auth.sessionID
+  loading: authLoadingSelector(state),
+  errorTxt: errorTxtSelector(state),
+  sessionID: sessionIdSelector(state)
 })
 
 const mapDispatchToProps = {

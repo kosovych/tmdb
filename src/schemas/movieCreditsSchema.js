@@ -1,4 +1,5 @@
 import { schema } from 'normalizr'
+import camelcaseKeys from 'camelcase-keys'
 
 const crewMember = new schema.Entity(
   'persons',
@@ -7,8 +8,9 @@ const crewMember = new schema.Entity(
     mergeStrategy: (entityA, entityB) => ({
       ...entityA,
       ...entityB,
-      job: `${entityA.job} / ${entityB.job}`
-    })
+      job: [entityA.job, entityB.job].filter(job => job).join(' / ')
+    }),
+    processStrategy: entity => camelcaseKeys(entity)
   }
 )
 
@@ -20,7 +22,8 @@ const castMember = new schema.Entity(
       ...entityA,
       ...entityB,
       character: `${entityA.job} / ${entityB.job}`
-    })
+    }),
+    processStrategy: entity => camelcaseKeys(entity)
   }
 )
 

@@ -34,8 +34,8 @@ const Credits = ({ cast, crew, loading }) => (
                 }}
               >
                 {cast.map(({
-                  credit_id: creditId,
-                  profile_path: profilePath,
+                  creditId,
+                  profilePath,
                   name,
                   character
                 }) => (
@@ -93,8 +93,8 @@ const Credits = ({ cast, crew, loading }) => (
               }}
               >
                 {crew.map(({
-                  credit_id: creditId,
-                  profile_path: profilePath,
+                  creditId,
+                  profilePath,
                   name,
                   job
                 }) => (

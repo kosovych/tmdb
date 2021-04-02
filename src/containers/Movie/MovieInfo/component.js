@@ -74,7 +74,7 @@ const MovieInfo = ({ info, genres, loading }) => {
             <Typography.Paragraph>
               <b>Budget: </b>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              <span>${formatPrice(budget)}</span>
+              <span>{formatPrice(budget)}</span>
             </Typography.Paragraph>
           </Col>
         )}
@@ -86,7 +86,7 @@ const MovieInfo = ({ info, genres, loading }) => {
             <Typography.Paragraph>
               <b>Revenue: </b>
               {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              <span>${formatPrice(revenue)}</span>
+              <span>{formatPrice(revenue)}</span>
             </Typography.Paragraph>
           </Col>
         )}

@@ -28,7 +28,7 @@ export const getUserListsOperation = createLogic({
     try {
       const response = await axios.get(url, { params })
       const responseData = response.data
-      const { results, page: currentPage, total_results: totalResults } = responseData
+      const { results, page: currentPage, totalResults } = responseData
       const { result, entities } = normalize(results, userListsSchema)
       const lists = {
         entries: result,

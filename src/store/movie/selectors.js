@@ -1,6 +1,5 @@
 import { get, pick, map } from 'lodash'
 import { createSelector } from 'reselect'
-import camelcaseKeys from 'camelcase-keys'
 import { moviesDataSelector, genresDataSelector, personsDataSelector } from 'Store/data/selectors'
 
 
@@ -34,9 +33,19 @@ export const movieInfoSelector = createSelector(
   (movie) => {
     const movieInfo = pick(
       movie,
-      ['original_title', 'original_language', 'overview', 'runtime', 'budget', 'revenue', 'first_air_date', 'release_date', 'original_name']
+      [
+        'originalTitle',
+        'originalLanguage',
+        'overview',
+        'runtime',
+        'budget',
+        'revenue',
+        'firstAirDate',
+        'releaseDate',
+        'originalName'
+      ]
     )
-    return camelcaseKeys(movieInfo)
+    return movieInfo
   }
 )
 

@@ -1,2 +1,1 @@
 export const STORE_DATA = 'STORE_DATA'
-export const STORE_MOVIE_INFO = 'STORE_MOVIE_INFO'

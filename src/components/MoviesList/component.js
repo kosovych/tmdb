@@ -6,7 +6,7 @@ import MovieItem from 'Components/MovieItem'
 const MoviesList = ({ movies, action }) => (
   movies.map((movie) => {
     const {
-      id: movieId, poster_path: poster, name, title, overview, media_type: mediaType
+      id: movieId, posterPath: poster, name, title, overview, mediaType
     } = movie
     return (
       <Col

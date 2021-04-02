@@ -38,7 +38,7 @@ const Movie = ({
 }
 
 Movie.propTypes = {
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   action: PropTypes.elementType,
@@ -47,6 +47,7 @@ Movie.propTypes = {
 }
 
 Movie.defaultProps = {
+  poster: null,
   action: null,
   movieId: null
 }

@@ -25,14 +25,14 @@ export const loginOperation = createLogic({
       )
       const sessionRequestToken = sessionRequestTokenReq.data.request_token
 
-      const sessionIDReq = await axios.post(
+      const sessionIdReq = await axios.post(
         '/authentication/session/new',
         { request_token: sessionRequestToken }
       )
-      const sessionID = sessionIDReq.data.session_id
-      dispatch(getUser(sessionID))
-      localStorage.setItem('session_id', sessionID)
-      dispatch(loginSuccess(sessionID))
+      const sessionId = sessionIdReq.data.session_id
+      dispatch(getUser(sessionId))
+      localStorage.setItem('sessionId', sessionId)
+      dispatch(loginSuccess(sessionId))
     } catch (err) {
       dispatch(loginFails(err.response.data.status_message))
     }

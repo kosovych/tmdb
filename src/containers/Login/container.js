@@ -29,7 +29,7 @@ Login.propTypes = {
 const mapStateToProps = state => ({
   loading: authLoadingSelector(state),
   errorTxt: errorTxtSelector(state),
-  sessionID: sessionIdSelector(state)
+  sessionId: sessionIdSelector(state)
 })
 
 const mapDispatchToProps = {

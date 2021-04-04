@@ -12,15 +12,15 @@ const PrivateRoute = props => (
 )
 
 const mapStateToProps = state => ({
-  sessionID: sessionIdSelector(state)
+  sessionId: sessionIdSelector(state)
 })
 
 PrivateRoute.propTypes = {
-  sessionID: PropTypes.string
+  sessionId: PropTypes.string
 }
 
 PrivateRoute.defaultProps = {
-  sessionID: null
+  sessionId: null
 }
 
 export default connect(mapStateToProps)(PrivateRoute)

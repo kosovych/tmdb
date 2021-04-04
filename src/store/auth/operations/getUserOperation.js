@@ -9,15 +9,16 @@ export const getUserOperation = createLogic({
   type: GET_USER,
   latest: true,
   async process({ action, axios }, dispatch, done) {
-    const { sessionID } = action
-    const response = await axios.get(ACCOUNT, { params: { session_id: sessionID } })
+    const { sessionId } = action
+    const response = await axios.get(ACCOUNT, { params: { session_id: sessionId } })
     const {
       id, name, avatar, username
     } = response.data
     const avatarUrl = get(avatar, ['tmdb', 'avatar_path'])
     dispatch(storeUser({
-      userID: id, displayName: name, username, avatarUrl
+      userId: id, displayName: name, username, avatarUrl
     }))
+    localStorage.setItem('userId', id)
     done()
   }
 })

@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { logout } from 'Store/auth/actions'
+import {
+  displayNameSelector, avatarUrlSelector, usernameSelector
+} from 'Store/auth/selectors'
 import HeaderComponent from './component'
 
 class Header extends Component {
@@ -37,8 +40,14 @@ Header.defaultProps = {
   avatarUrl: null
 }
 
+const mapStateToProps = state => ({
+  displayName: displayNameSelector(state),
+  username: usernameSelector(state),
+  avatarUrl: avatarUrlSelector(state)
+})
+
 const mapDispatchToProps = {
   onLogout: logout
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

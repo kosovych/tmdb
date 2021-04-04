@@ -9,17 +9,18 @@ import {
 const initState = {
   loading: false,
   errorTxt: null,
-  sessionID: localStorage.getItem('session_id')
+  sessionId: localStorage.getItem('sessionId')
 }
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST: return { ...state, loading: true, errorTxt: null }
     case LOGIN_FAILS: return { ...state, errorTxt: action.errorTxt, loading: false }
-    case LOGIN_SUCCESS: return { ...state, sessionID: action.sessionID, loading: false }
+    case LOGIN_SUCCESS: return { ...state, sessionId: action.sessionId, loading: false }
     case LOGIN_LOGOUT:
-      localStorage.removeItem('session_id')
-      return { ...state, sessionID: null }
+      localStorage.removeItem('sessionId')
+      localStorage.removeItem('userId')
+      return { ...initState, sessionId: null }
     case STORE_USER:
       return { ...state, ...action.payload }
     default: return state

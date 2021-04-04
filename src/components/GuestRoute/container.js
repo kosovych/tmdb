@@ -12,15 +12,15 @@ const GuestRoute = props => (
 )
 
 const mapStateToProps = state => ({
-  sessionID: sessionIdSelector(state)
+  sessionId: sessionIdSelector(state)
 })
 
 GuestRoute.propTypes = {
-  sessionID: PropTypes.string
+  sessionId: PropTypes.string
 }
 
 GuestRoute.defaultProps = {
-  sessionID: null
+  sessionId: null
 }
 
 export default connect(mapStateToProps)(GuestRoute)

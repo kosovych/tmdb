@@ -15,7 +15,9 @@ const UserLists = ({
   error,
   userLists,
   isBlank,
-  onPageChange
+  onPageChange,
+  createUserLits,
+  modalLoading
 }) => (
   <>
     <Row>
@@ -100,6 +102,8 @@ const UserLists = ({
     <CreateUserListModal
       createListModalOpen={createListModalOpen}
       onToggleModal={onToggleModal}
+      action={createUserLits}
+      loading={modalLoading}
     />
   </>
 )
@@ -109,7 +113,9 @@ UserLists.propTypes = {
   createListModalOpen: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
+  createUserLits: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+  modalLoading: PropTypes.bool,
   error: PropTypes.string,
   userLists: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
   isBlank: PropTypes.bool,
@@ -123,6 +129,7 @@ UserLists.defaultProps = {
   error: null,
   loading: null,
   userLists: null,
+  modalLoading: null,
   page: {
     currentPage: null,
     totalResults: null

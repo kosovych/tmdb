@@ -3,28 +3,50 @@ import { connect } from 'react-redux'
 import { get } from 'lodash'
 import PropTypes from 'prop-types'
 
-import { movieLoadingSelector } from 'Store/movie/selectors'
+import { setCurrentMovieId as setCurrentMovieIdAction } from 'Store/movie/actions'
+import { movieLoadingSelector, currentMovieIdSelector } from 'Store/movie/selectors'
 import MovieComponent from './component'
 
 class Movie extends Component {
-  render() {
+  componentDidMount() {
     const movieId = get(this.props, ['match', 'params', 'id'])
-    const { loading } = this.props
-    return (
+    const { setCurrentMovieId } = this.props
+    setCurrentMovieId(movieId)
+  }
+
+  componentWillUnmount() {
+    const { setCurrentMovieId } = this.props
+    setCurrentMovieId(null)
+  }
+
+  render() {
+    const { loading, movieId } = this.props
+    return movieId ? (
       <MovieComponent
         loading={loading}
-        movieId={movieId}
       />
-    )
+    ) : null
   }
 }
 
 const mapStateToProps = state => ({
-  loading: movieLoadingSelector(state)
+  loading: movieLoadingSelector(state),
+  movieId: currentMovieIdSelector(state)
 })
 
-Movie.propTypes = {
-  loading: PropTypes.bool.isRequired
+const mapDispatchToProps = {
+  setCurrentMovieId: setCurrentMovieIdAction
 }
 
-export default connect(mapStateToProps)(Movie)
+
+Movie.propTypes = {
+  movieId: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  setCurrentMovieId: PropTypes.func.isRequired
+}
+
+Movie.defaultProps = {
+  movieId: null
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)

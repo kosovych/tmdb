@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { genresMovieSelector, movieInfoSelector } from 'Store/movie/selectors'
+import { genresMovieSelector, movieInfoSelector, currentMovieIdSelector } from 'Store/movie/selectors'
 import { getMovie as getMovieAction } from 'Store/movie/actions'
 import MovieInfoComponent from './component'
 
@@ -14,7 +14,9 @@ class MovieInfo extends Component {
   }
 
   render() {
-    const { info, genres, loading } = this.props
+    const {
+      info, genres, loading
+    } = this.props
     return (
       <MovieInfoComponent
         info={info}
@@ -65,7 +67,8 @@ MovieInfo.defaultProps = {
 
 const mapStateToProps = (state, { movieId }) => ({
   info: movieInfoSelector(state, movieId),
-  genres: genresMovieSelector(state, movieId)
+  genres: genresMovieSelector(state, movieId),
+  movieId: currentMovieIdSelector(state)
 })
 
 const mapDispatchToProps = {

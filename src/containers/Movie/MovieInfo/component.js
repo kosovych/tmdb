@@ -10,8 +10,12 @@ import { map } from 'lodash'
 
 import { convertMinutesToHours, formatPrice } from 'Utils'
 import { isoLanguages } from 'Constants'
+import AccountStates from './AccountStates'
+import Lists from './Lists'
 
-const MovieInfo = ({ info, genres, loading }) => {
+const MovieInfo = ({
+  info, genres, loading, movieId
+}) => {
   const {
     originalTitle,
     originalLanguage,
@@ -38,6 +42,10 @@ const MovieInfo = ({ info, genres, loading }) => {
               {new Date(releaseDate || firstAirDate).getFullYear()}
               )
             </span>
+            {' '}
+            <Lists />
+            {' '}
+            <AccountStates movieId={movieId} />
           </Typography.Title>
           <Typography.Title level={3}>Overview</Typography.Title>
           <Typography.Paragraph>
@@ -108,6 +116,7 @@ const MovieInfo = ({ info, genres, loading }) => {
 }
 
 MovieInfo.propTypes = {
+  movieId: PropTypes.string,
   info: PropTypes.shape({
     originalTitle: PropTypes.string,
     originalName: PropTypes.string,
@@ -129,6 +138,7 @@ MovieInfo.propTypes = {
 }
 
 MovieInfo.defaultProps = {
+  movieId: null,
   info: {
     originalTitle: '',
     originalName: '',

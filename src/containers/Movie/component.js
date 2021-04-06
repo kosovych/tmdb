@@ -36,8 +36,12 @@ const Movie = ({ movieId, loading }) => (
 )
 
 Movie.propTypes = {
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.string,
   loading: PropTypes.bool.isRequired
+}
+
+Movie.defaultProps = {
+  movieId: null
 }
 
 export default Movie

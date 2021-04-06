@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { movieImagesSelector } from 'Store/movie/selectors'
+import { movieImagesSelector, currentMovieIdSelector } from 'Store/movie/selectors'
 import { getMovieImages as getMovieImagesAction } from 'Store/movie/actions'
 import MovieImagesComponent from './component'
 
@@ -25,7 +25,7 @@ class MovieImages extends Component {
 
 MovieImages.propTypes = {
   getMovieImages: PropTypes.func.isRequired,
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   movieImages: PropTypes.arrayOf(
     PropTypes.shape()
@@ -33,10 +33,12 @@ MovieImages.propTypes = {
 }
 
 MovieImages.defaultProps = {
-  movieImages: null
+  movieImages: null,
+  movieId: null
 }
 
 const mapStateToProps = (state, { movieId }) => ({
+  movieId: currentMovieIdSelector(state),
   movieImages: movieImagesSelector(state, movieId)
 })
 

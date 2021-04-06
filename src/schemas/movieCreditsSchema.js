@@ -10,7 +10,7 @@ const crewMember = new schema.Entity(
       ...entityB,
       job: [entityA.job, entityB.job].filter(job => job).join(' / ')
     }),
-    processStrategy: entity => camelcaseKeys(entity)
+    processStrategy: camelcaseKeys
   }
 )
 

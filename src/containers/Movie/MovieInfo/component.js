@@ -85,8 +85,9 @@ const MovieInfo = ({ info, genres, loading }) => {
           >
             <Typography.Paragraph>
               <b>Revenue: </b>
-              {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-              <span>{formatPrice(revenue)}</span>
+              <span>
+                {formatPrice(revenue)}
+              </span>
             </Typography.Paragraph>
           </Col>
         )}

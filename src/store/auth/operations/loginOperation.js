@@ -12,10 +12,10 @@ export const loginOperation = createLogic({
     dispatch(loginRequest())
     const { username, password } = action
     try {
-      const requestTokenReq = await axios.get('/authentication/token/new')
-      const requestToken = requestTokenReq.data.request_token
+      const requestTokenResponse = await axios.get('/authentication/token/new')
+      const requestToken = requestTokenResponse.data.request_token
 
-      const sessionRequestTokenReq = await axios.post(
+      const sessionRequestTokenResponse = await axios.post(
         '/authentication/token/validate_with_login',
         {
           request_token: requestToken,
@@ -23,13 +23,13 @@ export const loginOperation = createLogic({
           password
         }
       )
-      const sessionRequestToken = sessionRequestTokenReq.data.request_token
+      const sessionRequestToken = sessionRequestTokenResponse.data.request_token
 
-      const sessionIdReq = await axios.post(
+      const sessionIdResponse = await axios.post(
         '/authentication/session/new',
         { request_token: sessionRequestToken }
       )
-      const sessionId = sessionIdReq.data.session_id
+      const sessionId = sessionIdResponse.data.session_id
       dispatch(getUser(sessionId))
       localStorage.setItem('sessionId', sessionId)
       dispatch(loginSuccess(sessionId))

@@ -35,7 +35,7 @@ export const usernameSelector = createSelector(
   userData => get(userData, 'username')
 )
 
-export const errorTxtSelector = createSelector(
+export const errorMessageSelector = createSelector(
   userDataSelector,
-  userData => get(userData, 'errorTxt')
+  userData => get(userData, 'errorMessage')
 )

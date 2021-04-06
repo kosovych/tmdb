@@ -14,9 +14,9 @@ export const loginSubmit = ({ username, password }) => ({
   password
 })
 
-export const loginFails = errorTxt => ({
+export const loginFails = errorMessage => ({
   type: LOGIN_FAILS,
-  errorTxt
+  errorMessage
 })
 
 export const logout = () => ({

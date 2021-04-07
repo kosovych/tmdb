@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { sessionIdSelector } from 'Store/auth/selectors'
 import PrivateRouteComponent from './component'
 
 const PrivateRoute = props => (
@@ -11,15 +12,15 @@ const PrivateRoute = props => (
 )
 
 const mapStateToProps = state => ({
-  sessionID: state.auth.sessionID
+  sessionId: sessionIdSelector(state)
 })
 
 PrivateRoute.propTypes = {
-  sessionID: PropTypes.string
+  sessionId: PropTypes.string
 }
 
 PrivateRoute.defaultProps = {
-  sessionID: null
+  sessionId: null
 }
 
 export default connect(mapStateToProps)(PrivateRoute)

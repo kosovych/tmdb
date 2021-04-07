@@ -9,7 +9,7 @@ import { Form, Field } from 'formik'
 import InputField from 'Components/InputField'
 
 const Login = ({
-  errorTxt, loading, handleSubmit
+  errorMessage, loading, handleSubmit
 }) => (
   <div className="center">
     <Layout>
@@ -24,10 +24,10 @@ const Login = ({
           >
             <Form onSubmit={handleSubmit}>
               <Typography.Title>The Movie DB</Typography.Title>
-              {errorTxt && (
+              {errorMessage && (
                 <Alert
                   type="error"
-                  message={errorTxt}
+                  message={errorMessage}
                 />
               )}
               <Field
@@ -71,13 +71,13 @@ const Login = ({
 )
 
 Login.propTypes = {
-  errorTxt: PropTypes.string,
+  errorMessage: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired
 }
 
 Login.defaultProps = {
-  errorTxt: null
+  errorMessage: null
 }
 
 export default Login

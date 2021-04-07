@@ -1,4 +1,4 @@
-import { loginOperation, getUserOperation } from './auth/operations'
+import { loginOperation, getUserOperation, logoutOperation } from './auth/operations'
 import { getMoviesOperation } from './trendingMovies/operations'
 import { getWatchListOperation, removeMovieOperation } from './watchList/operations'
 import { getFavoritesOperation, removeFavoriteMovieOperation } from './favorites/operations'
@@ -20,6 +20,7 @@ import {
 
 export default [
   loginOperation,
+  logoutOperation,
   getUserOperation,
   getMoviesOperation,
   getWatchListOperation,

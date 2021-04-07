@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { sessionIdSelector } from 'Store/auth/selectors'
 import GuestRouteComponent from './component'
 
 const GuestRoute = props => (
@@ -11,15 +12,15 @@ const GuestRoute = props => (
 )
 
 const mapStateToProps = state => ({
-  sessionID: state.auth.sessionID
+  sessionId: sessionIdSelector(state)
 })
 
 GuestRoute.propTypes = {
-  sessionID: PropTypes.string
+  sessionId: PropTypes.string
 }
 
 GuestRoute.defaultProps = {
-  sessionID: null
+  sessionId: null
 }
 
 export default connect(mapStateToProps)(GuestRoute)

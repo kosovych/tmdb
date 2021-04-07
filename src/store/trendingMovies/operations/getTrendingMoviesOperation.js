@@ -1,7 +1,8 @@
 import { createLogic } from 'redux-logic'
 import { normalize } from 'normalizr'
 
-import { moviesListSchema } from 'Schemas'
+
+import { moviesListSchema, searchMoviesSchema } from 'Schemas'
 import { TRENDING_MOVIES_DAY, SEARCH_MOVIE_URL } from 'Constants'
 import { storeData } from 'Store/data/actions'
 import { GET_MOVIES } from '../types'
@@ -15,6 +16,8 @@ export const getMoviesOperation = createLogic({
     let { params } = action
     const searchQuery = movieSearchQuerySelector(getState())
     const url = searchQuery ? SEARCH_MOVIE_URL : TRENDING_MOVIES_DAY
+    const schema = searchQuery ? searchMoviesSchema : moviesListSchema
+
     if (searchQuery) {
       params = { ...params, query: searchQuery }
     }
@@ -22,7 +25,7 @@ export const getMoviesOperation = createLogic({
     try {
       const dataRequest = await axios.get(url, { params })
       const { data } = dataRequest
-      const { result, entities } = normalize(data.results, moviesListSchema)
+      const { result, entities } = normalize(data.results, schema)
       const movies = {
         entries: result,
         totalResults: data.total_results,

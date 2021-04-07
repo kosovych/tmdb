@@ -7,3 +7,11 @@ export const moviesDataSelector = state => (
 export const userListsDataSelector = state => (
   get(state, ['data', 'userLists'])
 )
+
+export const genresDataSelector = state => (
+  get(state, ['data', 'genres'])
+)
+
+export const personsDataSelector = state => (
+  get(state, ['data', 'persons'])
+)

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import UserLayout from '../UserLayout'
+import UserLayout from '../../containers/UserLayout'
 
-const PrivateRoute = ({ component: Component, sessionID, ...rest }) => (
+const PrivateRoute = ({ component: Component, sessionId, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      sessionID ? (
+      sessionId ? (
         <UserLayout>
           <Component {...props} />
         </UserLayout>
@@ -18,11 +18,11 @@ const PrivateRoute = ({ component: Component, sessionID, ...rest }) => (
 
 PrivateRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
-  sessionID: PropTypes.string
+  sessionId: PropTypes.string
 }
 
 PrivateRoute.defaultProps = {
-  sessionID: null
+  sessionId: null
 }
 
 export default PrivateRoute

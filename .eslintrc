@@ -43,5 +43,13 @@
         "ignore": ["Components", "Helpers", "Store", "Constants", "Utils", "Schemas"]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["container.js"],
+      "rules": {
+        "react/prefer-stateless-function": "off"
+      }
+    }
+  ]
 }

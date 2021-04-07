@@ -14,27 +14,27 @@ export const loginSubmit = ({ username, password }) => ({
   password
 })
 
-export const loginFails = errorTxt => ({
+export const loginFails = errorMessage => ({
   type: LOGIN_FAILS,
-  errorTxt
+  errorMessage
 })
 
 export const logout = () => ({
   type: LOGIN_LOGOUT
 })
 
-export const loginSuccess = sessionID => ({
+export const loginSuccess = sessionId => ({
   type: LOGIN_SUCCESS,
-  sessionID
+  sessionId
 })
 
 export const loginRequest = () => ({
   type: LOGIN_REQUEST
 })
 
-export const getUser = sessionID => ({
+export const getUser = sessionId => ({
   type: GET_USER,
-  sessionID
+  sessionId
 })
 
 export const storeUser = payload => ({

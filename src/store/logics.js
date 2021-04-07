@@ -1,4 +1,4 @@
-import { loginOperation, getUserOperation } from './auth/operations'
+import { loginOperation, getUserOperation, logoutOperation } from './auth/operations'
 import { getMoviesOperation } from './trendingMovies/operations'
 import { getWatchListOperation, removeMovieOperation } from './watchList/operations'
 import { getFavoritesOperation, removeFavoriteMovieOperation } from './favorites/operations'
@@ -12,9 +12,15 @@ import {
   removeMovieOperation as removeMovieFromUserListOperation,
   removeUserListOperation as removeUserListDetailsOperation
 } from './listDetails/operations'
+import {
+  getMovieInfoOperation,
+  getMovieImagesOperation,
+  getMovieCreditsOperation
+} from './movie/operations'
 
 export default [
   loginOperation,
+  logoutOperation,
   getUserOperation,
   getMoviesOperation,
   getWatchListOperation,
@@ -26,5 +32,8 @@ export default [
   removeUserListOperation,
   getListDetailsOperation,
   removeMovieFromUserListOperation,
-  removeUserListDetailsOperation
+  removeUserListDetailsOperation,
+  getMovieInfoOperation,
+  getMovieImagesOperation,
+  getMovieCreditsOperation
 ]

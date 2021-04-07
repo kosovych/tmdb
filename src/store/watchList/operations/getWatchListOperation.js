@@ -1,5 +1,6 @@
 import { createLogic } from 'redux-logic'
 import { normalize } from 'normalizr'
+import camelcaseKeys from 'camelcase-keys'
 
 import { moviesListSchema } from 'Schemas'
 import { userIdSelector, sessionIdSelector } from 'Store/auth/selectors'
@@ -18,11 +19,11 @@ export const getWatchListOperation = createLogic({
     dispatch(requestMoviesStart())
     try {
       const dataRequest = await axios.get(url, { params })
-      const { data } = dataRequest
+      const data = camelcaseKeys(dataRequest.data)
       const { result, entities } = normalize(data.results, moviesListSchema)
       const movies = {
         entries: result,
-        totalResults: data.total_results,
+        totalResults: data.totalResults,
         currentPage: data.page
       }
       dispatch(storeData('movies', entities.movies))

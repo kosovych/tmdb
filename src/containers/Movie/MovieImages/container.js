@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { movieImagesSelector, currentMovieIdSelector } from 'Store/movie/selectors'
+import { movieImagesSelector } from 'Store/movie/selectors'
 import { getMovieImages as getMovieImagesAction } from 'Store/movie/actions'
 import MovieImagesComponent from './component'
 
 class MovieImages extends Component {
   componentDidMount() {
-    const { getMovieImages, movieId } = this.props
-    getMovieImages(movieId)
+    const { getMovieImages } = this.props
+    getMovieImages()
   }
 
   render() {
@@ -25,7 +25,6 @@ class MovieImages extends Component {
 
 MovieImages.propTypes = {
   getMovieImages: PropTypes.func.isRequired,
-  movieId: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   movieImages: PropTypes.arrayOf(
     PropTypes.shape()
@@ -33,12 +32,10 @@ MovieImages.propTypes = {
 }
 
 MovieImages.defaultProps = {
-  movieImages: null,
-  movieId: null
+  movieImages: null
 }
 
 const mapStateToProps = (state, { movieId }) => ({
-  movieId: currentMovieIdSelector(state),
   movieImages: movieImagesSelector(state, movieId)
 })
 

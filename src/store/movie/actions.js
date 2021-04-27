@@ -18,7 +18,7 @@ import {
   REQUEST_MOVIE_ACCOUNT_STATES_SUCCESS,
   ADD_MOVIE_TO_WATCHLIST,
   ADD_MOVIE_TO_FAVORITES,
-  ADD_MOVIE_TO_EXIST_LIST,
+  ADD_MOVIE_TO_EXISTING_LIST,
   ADD_MOVIE_TO_NEW_LIST,
   ADD_MOVIE_TO_NEW_LIST_START,
   ADD_MOVIE_TO_NEW_LIST_SUCCESS
@@ -29,9 +29,8 @@ export const setCurrentMovieId = movieId => ({
   movieId
 })
 
-export const getMovie = movieId => ({
-  type: GET_MOVIE_INFO,
-  movieId
+export const getMovie = () => ({
+  type: GET_MOVIE_INFO
 })
 
 export const requestMovieInfoStart = () => ({
@@ -47,9 +46,8 @@ export const requestMovieInfoError = () => ({
   type: REQUEST_MOVIE_INFO_ERROR
 })
 
-export const getMovieImages = movieId => ({
-  type: GET_MOVIE_IMAGES,
-  movieId
+export const getMovieImages = () => ({
+  type: GET_MOVIE_IMAGES
 })
 
 export const requestMovieImagesStart = () => ({
@@ -65,9 +63,8 @@ export const requestMovieImagesError = () => ({
   type: REQUEST_MOVIE_IMAGES_ERROR
 })
 
-export const getMovieCredits = movieId => ({
-  type: GET_MOVIE_CREDITS,
-  movieId
+export const getMovieCredits = () => ({
+  type: GET_MOVIE_CREDITS
 })
 
 export const requestMovieCreditsStart = () => ({
@@ -84,9 +81,8 @@ export const requestMovieCreditsSuccess = (cast, crew) => ({
   crew
 })
 
-export const getMovieAccountStates = movieId => ({
-  type: GET_MOVIE_ACCOUNT_STATES,
-  movieId
+export const getMovieAccountStates = () => ({
+  type: GET_MOVIE_ACCOUNT_STATES
 })
 
 export const requestMovieAccountStatesStart = () => ({
@@ -101,20 +97,18 @@ export const requestMovieAccountStatesSuccess = () => ({
   type: REQUEST_MOVIE_ACCOUNT_STATES_SUCCESS
 })
 
-export const addMovieToWatchList = (movieId, isOnWatchlist) => ({
+export const toggleMovieWatchlist = isOnWatchlist => ({
   type: ADD_MOVIE_TO_WATCHLIST,
-  movieId,
   isOnWatchlist
 })
 
-export const addMovieToFavorites = (movieId, isFavorite) => ({
+export const addMovieToFavorites = isFavorite => ({
   type: ADD_MOVIE_TO_FAVORITES,
-  movieId,
   isFavorite
 })
 
-export const addMovieToExistList = listId => ({
-  type: ADD_MOVIE_TO_EXIST_LIST,
+export const addMovieToExistingList = listId => ({
+  type: ADD_MOVIE_TO_EXISTING_LIST,
   listId
 })
 

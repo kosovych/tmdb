@@ -6,9 +6,10 @@ import MovieImages from './MovieImages'
 import MovieInfo from './MovieInfo'
 import Credits from './Credits'
 
-const Movie = ({ movieId, loading }) => (
-  <>
-    {loading && (
+const Movie = ({ loading, movieId }) => (
+  movieId && (
+    <>
+      {loading && (
       <Row
         className="top-margin"
         justify="center"
@@ -17,22 +18,14 @@ const Movie = ({ movieId, loading }) => (
           <Spin />
         </Col>
       </Row>
-    )}
-    <MovieImages
-      movieId={movieId}
-      loading={loading}
-    />
-    <div className="top-margin">
-      <MovieInfo
-        movieId={movieId}
-        loading={loading}
-      />
-      <Credits
-        movieId={movieId}
-        loading={loading}
-      />
-    </div>
-  </>
+      )}
+      <MovieImages loading={loading} />
+      <div className="top-margin">
+        <MovieInfo loading={loading} />
+        <Credits loading={loading} />
+      </div>
+    </>
+  )
 )
 
 Movie.propTypes = {

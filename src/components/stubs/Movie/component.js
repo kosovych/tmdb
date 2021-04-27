@@ -59,7 +59,7 @@ class Movie extends React.Component {
       watchlist: false
     }
 
-    this.handleVisiblePopover = (visible) => {
+    this.handleVisibleChange = (visible) => {
       this.setState({ popoverVisible: visible })
     }
 
@@ -71,11 +71,11 @@ class Movie extends React.Component {
       this.setState({ modalVisible: false })
     }
 
-    this.handleWatchlist = () => {
+    this.handleToggleWatchlist = () => {
       this.setState(state => ({ watchlist: !state.watchlist }))
     }
 
-    this.handleBookmark = () => {
+    this.handleToggleBookmark = () => {
       this.setState(state => ({ bookmarked: !state.bookmarked }))
     }
   }
@@ -128,11 +128,11 @@ class Movie extends React.Component {
                     title="Add movie to list"
                     trigger="click"
                     visible={popoverVisible}
-                    onVisibleChange={this.handleVisiblePopover}
+                    onVisibleChange={this.handleVisibleChange}
                     content={(
                       <PopoverContent
                         openModal={this.showModal}
-                        closePopover={() => this.handleVisiblePopover(false)}
+                        closePopover={() => this.handleVisibleChange(false)}
                       />
                     )}
                   >
@@ -141,12 +141,12 @@ class Movie extends React.Component {
                   {' '}
                   <HeartOutlined
                     theme={watchlist ? 'filled' : undefined}
-                    onClick={this.handleWatchlist}
+                    onClick={this.handleToggleWatchlist}
                   />
                   {' '}
                   <BookOutlined
                     theme={bookmarked ? 'filled' : undefined}
-                    onClick={this.handleBookmark}
+                    onClick={this.handleToggleBookmark}
                   />
                 </Typography.Title>
                 <Typography.Title level={3}>Overview</Typography.Title>

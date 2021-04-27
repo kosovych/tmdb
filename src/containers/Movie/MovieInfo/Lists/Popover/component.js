@@ -3,25 +3,22 @@ import { Button } from 'antd'
 import { map } from 'lodash'
 import PropTypes from 'prop-types'
 
-import CreateUserListModal from '../../../../UserLists/CreateUserListModal'
+import CreateUserListModal from 'Containers/CreateUserListModal'
 
 const Popover = ({
-  closePopover,
   userLists,
-  addMovieToExistList,
+  addMovieToExistingList,
   createListModalOpen,
   onToggleModal,
   actionModal,
-  modalLoading
+  modalLoading,
+  openModalHandler
 }) => (
   <>
     <div>
       <Button
         type="link"
-        onClick={() => {
-          onToggleModal()
-          closePopover()
-        }}
+        onClick={openModalHandler}
       >
         Create new list ...
       </Button>
@@ -30,7 +27,7 @@ const Popover = ({
       {map(userLists, ({ description, id }) => (
         <div key={id}>
           <Button
-            onClick={() => addMovieToExistList(id)}
+            onClick={() => addMovieToExistingList(id)}
             type="link"
           >
             {description}
@@ -48,9 +45,9 @@ const Popover = ({
 )
 
 Popover.propTypes = {
-  closePopover: PropTypes.func.isRequired,
+  openModalHandler: PropTypes.func.isRequired,
   userLists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  addMovieToExistList: PropTypes.func.isRequired,
+  addMovieToExistingList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool.isRequired,
   createListModalOpen: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,

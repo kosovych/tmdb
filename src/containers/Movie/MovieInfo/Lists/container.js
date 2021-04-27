@@ -8,7 +8,6 @@ import {
 } from 'Store/userMovieLists/actions'
 import ListsComponent from './component'
 
-
 class Lists extends Component {
   state = {
     popoverVisible: false
@@ -23,7 +22,7 @@ class Lists extends Component {
     this.setState({ popoverVisible: false })
   }
 
-  handleVisiblePopover = () => {
+  handleVisibleChange = () => {
     this.setState(({ popoverVisible }) => ({ popoverVisible: !popoverVisible }))
   }
 
@@ -32,7 +31,7 @@ class Lists extends Component {
     return (
       <ListsComponent
         popoverVisible={popoverVisible}
-        handleVisiblePopover={this.handleVisiblePopover}
+        handleVisibleChange={this.handleVisibleChange}
         loading={loading}
       />
     )

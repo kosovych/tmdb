@@ -21,11 +21,12 @@ class Movie extends Component {
 
   render() {
     const { loading, movieId } = this.props
-    return movieId ? (
+    return (
       <MovieComponent
         loading={loading}
+        movieId={movieId}
       />
-    ) : null
+    )
   }
 }
 

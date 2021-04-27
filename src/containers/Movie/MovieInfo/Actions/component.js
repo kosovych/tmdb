@@ -7,22 +7,22 @@ import classnames from 'classnames'
 
 import Icon from 'Components/Icon'
 
-const AccountStates = ({
+const Actions = ({
   isOnWatchlist,
-  handleWatchlist,
+  handleToggleWatchlist,
   isFavorite,
-  handleBookmark,
+  handleToggleBookmark,
   loading
 }) => (
   <>
     <button
       className="reset-btn"
       type="button"
-      onClick={handleWatchlist}
-      aria-label={isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
+      onClick={handleToggleBookmark}
+      aria-label={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
     >
       <Icon
-        as={isOnWatchlist ? HeartFilled : HeartOutlined}
+        as={isFavorite ? HeartFilled : HeartOutlined}
         className={classnames({ 'op-10': loading })}
       />
     </button>
@@ -30,28 +30,28 @@ const AccountStates = ({
     <button
       className="reset-btn"
       type="button"
-      onClick={handleBookmark}
-      aria-label={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+      onClick={handleToggleWatchlist}
+      aria-label={isOnWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
     >
       <Icon
-        as={isFavorite ? BookFilled : BookOutlined}
+        as={isOnWatchlist ? BookFilled : BookOutlined}
         className={classnames({ 'op-10': loading })}
       />
     </button>
   </>
 )
 
-AccountStates.propTypes = {
+Actions.propTypes = {
   loading: PropTypes.bool.isRequired,
-  handleWatchlist: PropTypes.func.isRequired,
+  handleToggleWatchlist: PropTypes.func.isRequired,
   isOnWatchlist: PropTypes.bool,
-  handleBookmark: PropTypes.func.isRequired,
+  handleToggleBookmark: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool
 }
 
-AccountStates.defaultProps = {
+Actions.defaultProps = {
   isOnWatchlist: null,
   isFavorite: null
 }
 
-export default AccountStates
+export default Actions

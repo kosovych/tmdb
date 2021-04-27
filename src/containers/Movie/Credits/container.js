@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { castMovieSelector, crewMovieSelector, currentMovieIdSelector } from 'Store/movie/selectors'
+import { castMovieSelector, crewMovieSelector } from 'Store/movie/selectors'
 import { getMovieCredits as getMovieCreditsAction } from 'Store/movie/actions'
 import CreditsComponent from './component'
 
 class Credits extends Component {
   componentDidMount() {
-    const { movieId, getMovieCredits } = this.props
-    getMovieCredits(movieId)
+    const { getMovieCredits } = this.props
+    getMovieCredits()
   }
 
   render() {
@@ -25,7 +25,6 @@ class Credits extends Component {
 }
 
 const mapStateToProps = state => ({
-  movieId: currentMovieIdSelector(state),
   cast: castMovieSelector(state),
   crew: crewMovieSelector(state)
 })
@@ -35,7 +34,6 @@ const mapDispatchToProps = {
 }
 
 Credits.propTypes = {
-  movieId: PropTypes.string,
   getMovieCredits: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   cast: PropTypes.arrayOf(PropTypes.shape()),
@@ -44,8 +42,7 @@ Credits.propTypes = {
 
 Credits.defaultProps = {
   cast: null,
-  crew: null,
-  movieId: null
+  crew: null
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Credits)

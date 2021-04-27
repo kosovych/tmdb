@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
-import { connect } from 'react-redux'
 
 import { TEXT_CONTENT_REGEXP } from 'Constants'
 
@@ -44,7 +43,7 @@ CreateUserListModal.defaultProps = {
   loading: false
 }
 
-export default connect()(withFormik({
+export default withFormik({
   mapPropsToValues: () => ({ name: '', description: '' }),
   handleSubmit: (values, { props, resetForm }) => {
     const { onToggleModal, action } = props
@@ -54,4 +53,4 @@ export default connect()(withFormik({
     })
   },
   validationSchema: UserListSchema
-})(CreateUserListModal))
+})(CreateUserListModal)

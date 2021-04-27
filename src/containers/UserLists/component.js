@@ -4,8 +4,9 @@ import {
   Row, Col, Typography, Pagination, Empty, Spin, Alert
 } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
+
+import CreateUserListModal from 'Containers/CreateUserListModal'
 import List from './List'
-import CreateUserListModal from './CreateUserListModal'
 
 const UserLists = ({
   createListModalOpen,

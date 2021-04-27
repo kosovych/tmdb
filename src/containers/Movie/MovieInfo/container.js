@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { genresMovieSelector, movieInfoSelector, currentMovieIdSelector } from 'Store/movie/selectors'
+import { genresMovieSelector, movieInfoSelector } from 'Store/movie/selectors'
 import { getMovie as getMovieAction } from 'Store/movie/actions'
 import MovieInfoComponent from './component'
 
 
 class MovieInfo extends Component {
   componentDidMount() {
-    const { getMovie, movieId } = this.props
-    getMovie(movieId)
+    const { getMovie } = this.props
+    getMovie()
   }
 
   render() {
@@ -40,7 +40,6 @@ MovieInfo.propTypes = {
     revenue: PropTypes.number
   }),
   getMovie: PropTypes.func.isRequired,
-  movieId: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   genres: PropTypes.arrayOf(
     PropTypes.shape({
@@ -67,8 +66,7 @@ MovieInfo.defaultProps = {
 
 const mapStateToProps = (state, { movieId }) => ({
   info: movieInfoSelector(state, movieId),
-  genres: genresMovieSelector(state, movieId),
-  movieId: currentMovieIdSelector(state)
+  genres: genresMovieSelector(state, movieId)
 })
 
 const mapDispatchToProps = {

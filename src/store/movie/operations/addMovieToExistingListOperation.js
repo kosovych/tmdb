@@ -3,11 +3,10 @@ import { createLogic } from 'redux-logic'
 import { openNotification } from 'Utils'
 import { sessionIdSelector } from 'Store/auth/selectors'
 import { currentMovieIdSelector } from 'Store/movie/selectors'
-import { ADD_MOVIE_TO_EXIST_LIST } from '../types'
+import { ADD_MOVIE_TO_EXISTING_LIST } from '../types'
 
-
-export const addMovieToExistListOperation = createLogic({
-  type: ADD_MOVIE_TO_EXIST_LIST,
+export const addMovieToExistingListOperation = createLogic({
+  type: ADD_MOVIE_TO_EXISTING_LIST,
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {
     const movieId = currentMovieIdSelector(getState())

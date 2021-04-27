@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import {
   addMovieToNewList as addMovieToNewListAction,
-  addMovieToExistList as addMovieToExistListAction
+  addMovieToExistingList as addMovieToExistingListAction
 } from 'Store/movie/actions'
 
 import { newListLoadingSelector } from 'Store/movie/selectors'
@@ -17,33 +17,38 @@ class Popover extends Component {
     createListModalOpen: false
   }
 
-  addMovieToExistListHandler = (listId) => {
-    const { addMovieToExistList, closePopover } = this.props
+  addMovieToExistingListHandler = (listId) => {
+    const { addMovieToExistingList, closePopover } = this.props
     closePopover()
-    addMovieToExistList(listId)
+    addMovieToExistingList(listId)
   }
 
   onToggleModal = () => {
     this.setState(({ createListModalOpen }) => ({ createListModalOpen: !createListModalOpen }))
   }
 
+  openModalHandler = () => {
+    const { closePopover } = this.props
+    closePopover()
+    this.onToggleModal()
+  }
+
   render() {
     const { createListModalOpen } = this.state
     const {
-      closePopover,
       userLists,
       addMovieToNewList,
       modalLoading
     } = this.props
     return (
       <PopoverComponent
-        closePopover={closePopover}
         userLists={userLists}
-        addMovieToExistList={this.addMovieToExistListHandler}
+        addMovieToExistingList={this.addMovieToExistingListHandler}
         onToggleModal={this.onToggleModal}
         createListModalOpen={createListModalOpen}
         actionModal={addMovieToNewList}
         modalLoading={modalLoading}
+        openModalHandler={this.openModalHandler}
       />
     )
   }
@@ -51,7 +56,7 @@ class Popover extends Component {
 
 Popover.propTypes = {
   closePopover: PropTypes.func.isRequired,
-  addMovieToExistList: PropTypes.func.isRequired,
+  addMovieToExistingList: PropTypes.func.isRequired,
   userLists: PropTypes.arrayOf(PropTypes.shape()),
   addMovieToNewList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool
@@ -69,7 +74,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addMovieToNewList: addMovieToNewListAction,
-  addMovieToExistList: addMovieToExistListAction
+  addMovieToExistingList: addMovieToExistingListAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popover)

@@ -2,7 +2,7 @@ import { createLogic } from 'redux-logic'
 
 import { openNotification } from 'Utils'
 import { storeData } from 'Store/data/actions'
-import { movieSelector } from 'Store/movie/selectors'
+import { movieSelector, currentMovieIdSelector } from 'Store/movie/selectors'
 import { GET_MOVIE_IMAGES } from '../types'
 import {
   requestMovieImagesStart,
@@ -13,13 +13,13 @@ import {
 export const getMovieImagesOperation = createLogic({
   type: GET_MOVIE_IMAGES,
   latest: true,
-  async process({ action, axios, getState }, dispatch, done) {
-    const { movieId } = action
+  async process({ axios, getState }, dispatch, done) {
+    const movieId = currentMovieIdSelector(getState())
     dispatch(requestMovieImagesStart())
     try {
       const response = await axios.get(`movie/${movieId}/images`)
       const images = response.data.backdrops?.slice(0, 3)
-      const movie = movieSelector(getState(), movieId)
+      const movie = movieSelector(getState())
       dispatch(storeData('movies', { [movieId]: { ...movie, images } }))
       dispatch(requestMovieImagesSuccess())
     } catch (error) {

@@ -19,7 +19,7 @@ import UserListsComponent from './component'
 
 class UserLists extends Component {
   state = {
-    createListModalOpen: false
+    createListModalOpened: false
   }
 
   componentDidMount() {
@@ -28,12 +28,12 @@ class UserLists extends Component {
   }
 
   onToggleModal = () => {
-    this.setState(({ createListModalOpen }) => ({ createListModalOpen: !createListModalOpen }))
+    this.setState(({ createListModalOpened }) => ({ createListModalOpened: !createListModalOpened }))
   }
 
   render() {
     const {
-      createListModalOpen
+      createListModalOpened
     } = this.state
     const {
       loading,
@@ -47,7 +47,7 @@ class UserLists extends Component {
     } = this.props
     return (
       <UserListsComponent
-        createListModalOpen={createListModalOpen}
+        createListModalOpened={createListModalOpened}
         onToggleModal={this.onToggleModal}
         loading={loading}
         page={page}

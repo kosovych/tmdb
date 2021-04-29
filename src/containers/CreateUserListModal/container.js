@@ -17,14 +17,14 @@ const UserListSchema = Yup.object().shape({
 })
 
 const CreateUserListModal = ({
-  createListModalOpen,
+  createListModalOpened,
   onToggleModal,
   loading,
   action,
   ...restProps
 }) => (
   <CreateUserListModalComponent
-    createListModalOpen={createListModalOpen}
+    createListModalOpened={createListModalOpened}
     onToggleModal={onToggleModal}
     loading={loading}
     {...restProps}
@@ -32,7 +32,7 @@ const CreateUserListModal = ({
 )
 
 CreateUserListModal.propTypes = {
-  createListModalOpen: PropTypes.bool.isRequired,
+  createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool,

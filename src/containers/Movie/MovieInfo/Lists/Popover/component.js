@@ -4,11 +4,12 @@ import { map } from 'lodash'
 import PropTypes from 'prop-types'
 
 import CreateUserListModal from 'Containers/CreateUserListModal'
+import ListButton from './ListButton'
 
 const Popover = ({
   userLists,
   addMovieToExistingList,
-  createListModalOpen,
+  createListModalOpened,
   onToggleModal,
   actionModal,
   modalLoading,
@@ -25,18 +26,16 @@ const Popover = ({
     </div>
     <div className="popup-user-lists">
       {map(userLists, ({ description, id }) => (
-        <div key={id}>
-          <Button
-            onClick={() => addMovieToExistingList(id)}
-            type="link"
-          >
-            {description}
-          </Button>
-        </div>
+        <ListButton
+          key={id}
+          listId={id}
+          onClick={addMovieToExistingList}
+          description={description}
+        />
       ))}
     </div>
     <CreateUserListModal
-      createListModalOpen={createListModalOpen}
+      createListModalOpened={createListModalOpened}
       onToggleModal={onToggleModal}
       action={actionModal}
       loading={modalLoading}
@@ -49,7 +48,7 @@ Popover.propTypes = {
   userLists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   addMovieToExistingList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool.isRequired,
-  createListModalOpen: PropTypes.bool.isRequired,
+  createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   actionModal: PropTypes.func.isRequired
 }

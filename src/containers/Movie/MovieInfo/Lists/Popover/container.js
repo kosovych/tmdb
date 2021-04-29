@@ -14,17 +14,19 @@ import PopoverComponent from './component'
 
 class Popover extends Component {
   state = {
-    createListModalOpen: false
+    createListModalOpened: false
   }
 
-  addMovieToExistingListHandler = (listId) => {
+  movieToExistingListHandler = (listId) => {
     const { addMovieToExistingList, closePopover } = this.props
     closePopover()
     addMovieToExistingList(listId)
   }
 
   onToggleModal = () => {
-    this.setState(({ createListModalOpen }) => ({ createListModalOpen: !createListModalOpen }))
+    this.setState(
+      ({ createListModalOpened }) => ({ createListModalOpened: !createListModalOpened })
+    )
   }
 
   openModalHandler = () => {
@@ -34,7 +36,7 @@ class Popover extends Component {
   }
 
   render() {
-    const { createListModalOpen } = this.state
+    const { createListModalOpened } = this.state
     const {
       userLists,
       addMovieToNewList,
@@ -43,9 +45,9 @@ class Popover extends Component {
     return (
       <PopoverComponent
         userLists={userLists}
-        addMovieToExistingList={this.addMovieToExistingListHandler}
+        addMovieToExistingList={this.movieToExistingListHandler}
         onToggleModal={this.onToggleModal}
-        createListModalOpen={createListModalOpen}
+        createListModalOpened={createListModalOpened}
         actionModal={addMovieToNewList}
         modalLoading={modalLoading}
         openModalHandler={this.openModalHandler}

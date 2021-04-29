@@ -11,8 +11,8 @@ export const toggleMovieWatchlistOperation = createLogic({
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {
     const { isOnWatchlist } = action
-    const movieId = currentMovieIdSelector(getState())
     const state = getState()
+    const movieId = currentMovieIdSelector(state)
     const params = {
       session_id: sessionIdSelector(state)
     }
@@ -22,7 +22,7 @@ export const toggleMovieWatchlistOperation = createLogic({
       watchlist: !isOnWatchlist
     }
     const url = `/account/${userIdSelector(state)}/watchlist`
-    const storeMovie = movieSelector(getState())
+    const storeMovie = movieSelector(state)
     dispatch(storeData('movies', { [movieId]: { ...storeMovie, isOnWatchlist: !isOnWatchlist } }))
     try {
       await axios({

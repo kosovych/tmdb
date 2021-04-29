@@ -9,7 +9,7 @@ import CreateUserListModal from 'Containers/CreateUserListModal'
 import List from './List'
 
 const UserLists = ({
-  createListModalOpen,
+  createListModalOpened,
   onToggleModal,
   loading,
   page: { currentPage, totalResults },
@@ -101,7 +101,7 @@ const UserLists = ({
       </Col>
     </Row>
     <CreateUserListModal
-      createListModalOpen={createListModalOpen}
+      createListModalOpened={createListModalOpened}
       onToggleModal={onToggleModal}
       action={createUserLits}
       loading={modalLoading}
@@ -111,7 +111,7 @@ const UserLists = ({
 
 
 UserLists.propTypes = {
-  createListModalOpen: PropTypes.bool.isRequired,
+  createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
   createUserLits: PropTypes.func.isRequired,

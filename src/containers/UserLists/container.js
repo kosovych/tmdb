@@ -28,7 +28,9 @@ class UserLists extends Component {
   }
 
   onToggleModal = () => {
-    this.setState(({ createListModalOpened }) => ({ createListModalOpened: !createListModalOpened }))
+    this.setState(
+      ({ createListModalOpened }) => ({ createListModalOpened: !createListModalOpened })
+    )
   }
 
   render() {

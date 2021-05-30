@@ -1,4 +1,5 @@
 export const SET_MOVIE_ID = 'movie/SET_MOVIE_ID'
+export const RESET_MOVIE = 'movie/RESET_MOVIE'
 
 export const GET_MOVIE_INFO = 'movie/GET_MOVIE_INFO'
 export const REQUEST_MOVIE_INFO_START = 'movie/REQUEST_MOVIE_INFO_START'

@@ -1,5 +1,6 @@
 import {
   SET_MOVIE_ID,
+  RESET_MOVIE,
   REQUEST_MOVIE_INFO_START,
   REQUEST_MOVIE_INFO_SUCCESS,
   REQUEST_MOVIE_INFO_ERROR,
@@ -27,6 +28,8 @@ const reducer = (state = initialStore, action) => {
   switch (action.type) {
     case SET_MOVIE_ID:
       return { ...state, movieId: action.movieId }
+    case RESET_MOVIE:
+      return { movieId: null, ...initialStore }
     case REQUEST_MOVIE_INFO_START:
       return { ...state, infoLoading: true }
     case REQUEST_MOVIE_INFO_SUCCESS:

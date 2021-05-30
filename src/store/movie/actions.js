@@ -21,7 +21,8 @@ import {
   ADD_MOVIE_TO_EXISTING_LIST,
   ADD_MOVIE_TO_NEW_LIST,
   ADD_MOVIE_TO_NEW_LIST_START,
-  ADD_MOVIE_TO_NEW_LIST_SUCCESS
+  ADD_MOVIE_TO_NEW_LIST_SUCCESS,
+  RESET_MOVIE
 } from './types'
 
 export const setCurrentMovieId = movieId => ({
@@ -124,4 +125,8 @@ export const addMovieToNewListStart = () => ({
 
 export const addMovieToNewListSuccess = () => ({
   type: ADD_MOVIE_TO_NEW_LIST_SUCCESS
+})
+
+export const resetMovie = () => ({
+  type: RESET_MOVIE
 })

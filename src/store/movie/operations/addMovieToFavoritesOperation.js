@@ -2,15 +2,15 @@ import { createLogic } from 'redux-logic'
 
 import { openNotification } from 'Utils'
 import { sessionIdSelector, userIdSelector } from 'Store/auth/selectors'
-import { movieSelector, currentMovieIdSelector } from 'Store/movie/selectors'
+import { movieSelector, currentMovieIdSelector, isFavoriteSelector } from 'Store/movie/selectors'
 import { storeData } from 'Store/data/actions'
 import { ADD_MOVIE_TO_FAVORITES } from '../types'
 
 export const addMovieToFavoritesOperation = createLogic({
   type: ADD_MOVIE_TO_FAVORITES,
   latest: true,
-  async process({ action, axios, getState }, dispatch, done) {
-    const { isFavorite } = action
+  async process({ axios, getState }, dispatch, done) {
+    const isFavorite = isFavoriteSelector(getState())
     const movieId = currentMovieIdSelector(getState())
     const state = getState()
     const params = {

@@ -22,13 +22,13 @@ class Actions extends Component {
   }
 
   handleToggleWatchlist = () => {
-    const { movieId, isOnWatchlist, toggleMovieWatchlist } = this.props
-    toggleMovieWatchlist(movieId, isOnWatchlist)
+    const { toggleMovieWatchlist } = this.props
+    toggleMovieWatchlist()
   }
 
   handleToggleBookmark = () => {
-    const { movieId, isFavorite, addMovieToFavorites } = this.props
-    addMovieToFavorites(movieId, isFavorite)
+    const { addMovieToFavorites } = this.props
+    addMovieToFavorites()
   }
 
   render() {

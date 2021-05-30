@@ -98,14 +98,12 @@ export const requestMovieAccountStatesSuccess = () => ({
   type: REQUEST_MOVIE_ACCOUNT_STATES_SUCCESS
 })
 
-export const toggleMovieWatchlist = isOnWatchlist => ({
-  type: ADD_MOVIE_TO_WATCHLIST,
-  isOnWatchlist
+export const toggleMovieWatchlist = () => ({
+  type: ADD_MOVIE_TO_WATCHLIST
 })
 
-export const addMovieToFavorites = isFavorite => ({
-  type: ADD_MOVIE_TO_FAVORITES,
-  isFavorite
+export const addMovieToFavorites = () => ({
+  type: ADD_MOVIE_TO_FAVORITES
 })
 
 export const addMovieToExistingList = listId => ({

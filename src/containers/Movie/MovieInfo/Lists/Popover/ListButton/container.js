@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ListButtonComponent from './component'
 
 class ListButton extends Component {
-  listButtonHandler = () => {
+  onClick = () => {
     const { listId, onClick } = this.props
     onClick(listId)
   }
@@ -13,7 +13,7 @@ class ListButton extends Component {
     const { description } = this.props
     return (
       <ListButtonComponent
-        onClick={this.listButtonHandler}
+        onClick={this.onClick}
         description={description}
       />
     )

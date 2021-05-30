@@ -10,15 +10,14 @@ import {
 import {
   accountStatesLoadingSelector,
   isOnWatchlistSelector,
-  isFavoriteSelector,
-  currentMovieIdSelector
+  isFavoriteSelector
 } from 'Store/movie/selectors'
 import ActionsComponent from './component'
 
 class Actions extends Component {
   componentDidMount() {
-    const { getMovieAccountStates, movieId } = this.props
-    getMovieAccountStates(movieId)
+    const { getMovieAccountStates } = this.props
+    getMovieAccountStates()
   }
 
   handleToggleWatchlist = () => {
@@ -48,7 +47,6 @@ class Actions extends Component {
 Actions.propTypes = {
   loading: PropTypes.bool.isRequired,
   getMovieAccountStates: PropTypes.func.isRequired,
-  movieId: PropTypes.string,
   isOnWatchlist: PropTypes.bool,
   toggleMovieWatchlist: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
@@ -56,7 +54,6 @@ Actions.propTypes = {
 }
 
 Actions.defaultProps = {
-  movieId: null,
   isOnWatchlist: null,
   isFavorite: null
 }
@@ -64,8 +61,7 @@ Actions.defaultProps = {
 const mapStateToProps = (state, { movieId }) => ({
   loading: accountStatesLoadingSelector(state),
   isOnWatchlist: isOnWatchlistSelector(state, movieId),
-  isFavorite: isFavoriteSelector(state, movieId),
-  movieId: currentMovieIdSelector(state)
+  isFavorite: isFavoriteSelector(state, movieId)
 })
 
 const mapDispatchToProps = ({

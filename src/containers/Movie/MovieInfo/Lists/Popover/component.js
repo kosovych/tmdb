@@ -11,15 +11,15 @@ const Popover = ({
   addMovieToExistingList,
   createListModalOpened,
   onToggleModal,
-  actionModal,
+  action,
   modalLoading,
-  openModalHandler
+  onOpenModal
 }) => (
   <>
     <div>
       <Button
         type="link"
-        onClick={openModalHandler}
+        onClick={onOpenModal}
       >
         Create new list ...
       </Button>
@@ -37,20 +37,20 @@ const Popover = ({
     <CreateUserListModal
       createListModalOpened={createListModalOpened}
       onToggleModal={onToggleModal}
-      action={actionModal}
+      action={action}
       loading={modalLoading}
     />
   </>
 )
 
 Popover.propTypes = {
-  openModalHandler: PropTypes.func.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
   userLists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   addMovieToExistingList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool.isRequired,
   createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
-  actionModal: PropTypes.func.isRequired
+  action: PropTypes.func.isRequired
 }
 
 export default Popover

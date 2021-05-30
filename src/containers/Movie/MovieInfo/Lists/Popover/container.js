@@ -29,7 +29,7 @@ class Popover extends Component {
     )
   }
 
-  openModalHandler = () => {
+  onOpenModal = () => {
     const { closePopover } = this.props
     closePopover()
     this.onToggleModal()
@@ -48,9 +48,9 @@ class Popover extends Component {
         addMovieToExistingList={this.movieToExistingListHandler}
         onToggleModal={this.onToggleModal}
         createListModalOpened={createListModalOpened}
-        actionModal={addMovieToNewList}
+        action={addMovieToNewList}
         modalLoading={modalLoading}
-        openModalHandler={this.openModalHandler}
+        onOpenModal={this.onOpenModal}
       />
     )
   }

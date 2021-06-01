@@ -106,7 +106,7 @@ export const addMovieToFavorites = () => ({
   type: ADD_MOVIE_TO_FAVORITES
 })
 
-export const addMovieToExistingList = listId => ({
+export const onAddToExistingList = listId => ({
   type: ADD_MOVIE_TO_EXISTING_LIST,
   listId
 })

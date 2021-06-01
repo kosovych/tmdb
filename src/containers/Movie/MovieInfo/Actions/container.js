@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import {
   getMovieAccountStates as getMovieAccountStatesAction,
-  toggleMovieWatchlist as toggleMovieWatchlistAction,
-  addMovieToFavorites as addMovieToFavoritesAction
+  toggleMovieWatchlist,
+  addMovieToFavorites
 } from 'Store/movie/actions'
 import {
   accountStatesLoadingSelector,
@@ -20,25 +20,17 @@ class Actions extends Component {
     getMovieAccountStates()
   }
 
-  handleToggleWatchlist = () => {
-    const { toggleMovieWatchlist } = this.props
-    toggleMovieWatchlist()
-  }
-
-  handleToggleBookmark = () => {
-    const { addMovieToFavorites } = this.props
-    addMovieToFavorites()
-  }
-
   render() {
-    const { loading, isOnWatchlist, isFavorite } = this.props
+    const {
+      loading, isOnWatchlist, isFavorite, handleToggleWatchlist, handleToggleBookmark
+    } = this.props
     return (
       <ActionsComponent
         loading={loading}
         isOnWatchlist={isOnWatchlist}
         isFavorite={isFavorite}
-        handleToggleWatchlist={this.handleToggleWatchlist}
-        handleToggleBookmark={this.handleToggleBookmark}
+        handleToggleWatchlist={handleToggleWatchlist}
+        handleToggleBookmark={handleToggleBookmark}
       />
     )
   }
@@ -48,9 +40,9 @@ Actions.propTypes = {
   loading: PropTypes.bool.isRequired,
   getMovieAccountStates: PropTypes.func.isRequired,
   isOnWatchlist: PropTypes.bool,
-  toggleMovieWatchlist: PropTypes.func.isRequired,
+  handleToggleWatchlist: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
-  addMovieToFavorites: PropTypes.func.isRequired
+  handleToggleBookmark: PropTypes.func.isRequired
 }
 
 Actions.defaultProps = {
@@ -66,8 +58,8 @@ const mapStateToProps = (state, { movieId }) => ({
 
 const mapDispatchToProps = ({
   getMovieAccountStates: getMovieAccountStatesAction,
-  toggleMovieWatchlist: toggleMovieWatchlistAction,
-  addMovieToFavorites: addMovieToFavoritesAction
+  handleToggleWatchlist: toggleMovieWatchlist,
+  handleToggleBookmark: addMovieToFavorites
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Actions)

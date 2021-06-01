@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import {
   addMovieToNewList as addMovieToNewListAction,
-  addMovieToExistingList as addMovieToExistingListAction
+  onAddToExistingList as onAddToExistingListAction
 } from 'Store/movie/actions'
 
 import { newListLoadingSelector } from 'Store/movie/selectors'
@@ -18,9 +18,9 @@ class Popover extends Component {
   }
 
   movieToExistingListHandler = (listId) => {
-    const { addMovieToExistingList, closePopover } = this.props
+    const { onAddToExistingList, closePopover } = this.props
     closePopover()
-    addMovieToExistingList(listId)
+    onAddToExistingList(listId)
   }
 
   onToggleModal = () => {
@@ -45,7 +45,7 @@ class Popover extends Component {
     return (
       <PopoverComponent
         userLists={userLists}
-        addMovieToExistingList={this.movieToExistingListHandler}
+        onAddToExistingList={this.movieToExistingListHandler}
         onToggleModal={this.onToggleModal}
         createListModalOpened={createListModalOpened}
         action={addMovieToNewList}
@@ -58,7 +58,7 @@ class Popover extends Component {
 
 Popover.propTypes = {
   closePopover: PropTypes.func.isRequired,
-  addMovieToExistingList: PropTypes.func.isRequired,
+  onAddToExistingList: PropTypes.func.isRequired,
   userLists: PropTypes.arrayOf(PropTypes.shape()),
   addMovieToNewList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool
@@ -76,7 +76,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addMovieToNewList: addMovieToNewListAction,
-  addMovieToExistingList: addMovieToExistingListAction
+  onAddToExistingList: onAddToExistingListAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popover)

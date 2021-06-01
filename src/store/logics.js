@@ -19,7 +19,7 @@ import {
   getMovieAccountStatesOperation,
   toggleMovieWatchlistOperation,
   addMovieToFavoritesOperation,
-  addMovieToExistingListOperation,
+  addToExistingListOperation,
   addMovieToNewListOperation
 } from './movie/operations'
 
@@ -44,6 +44,6 @@ export default [
   getMovieAccountStatesOperation,
   toggleMovieWatchlistOperation,
   addMovieToFavoritesOperation,
-  addMovieToExistingListOperation,
+  addToExistingListOperation,
   addMovieToNewListOperation
 ]

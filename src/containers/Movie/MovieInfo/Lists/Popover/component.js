@@ -8,7 +8,7 @@ import ListButton from './ListButton'
 
 const Popover = ({
   userLists,
-  addMovieToExistingList,
+  onAddToExistingList,
   createListModalOpened,
   onToggleModal,
   action,
@@ -29,7 +29,7 @@ const Popover = ({
         <ListButton
           key={id}
           listId={id}
-          onClick={addMovieToExistingList}
+          onClick={onAddToExistingList}
           description={description}
         />
       ))}
@@ -46,7 +46,7 @@ const Popover = ({
 Popover.propTypes = {
   onOpenModal: PropTypes.func.isRequired,
   userLists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  addMovieToExistingList: PropTypes.func.isRequired,
+  onAddToExistingList: PropTypes.func.isRequired,
   modalLoading: PropTypes.bool.isRequired,
   createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,

@@ -7,7 +7,7 @@ import { ADD_MOVIE_TO_NEW_LIST } from '../types'
 import {
   addMovieToNewListStart,
   addMovieToNewListSuccess,
-  addMovieToExistingList
+  onAddToExistingList
 } from '../actions'
 
 export const addMovieToNewListOperation = createLogic({
@@ -31,7 +31,7 @@ export const addMovieToNewListOperation = createLogic({
         }
       })
       const { listId } = camelcaseKeys(newListResponse.data)
-      dispatch(addMovieToExistingList(listId))
+      dispatch(onAddToExistingList(listId))
       cb()
     } catch (error) {
       openNotification({

@@ -10,9 +10,9 @@ export const addMovieToFavoritesOperation = createLogic({
   type: ADD_MOVIE_TO_FAVORITES,
   latest: true,
   async process({ axios, getState }, dispatch, done) {
-    const isFavorite = isFavoriteSelector(getState())
-    const movieId = currentMovieIdSelector(getState())
     const state = getState()
+    const isFavorite = isFavoriteSelector(state)
+    const movieId = currentMovieIdSelector(state)
     const params = {
       session_id: sessionIdSelector(state)
     }
@@ -22,7 +22,7 @@ export const addMovieToFavoritesOperation = createLogic({
       favorite: !isFavorite
     }
     const url = `/account/${userIdSelector(state)}/favorite`
-    const storeMovie = movieSelector(getState())
+    const storeMovie = movieSelector(state)
     dispatch(storeData('movies', { [movieId]: { ...storeMovie, isFavorite: !isFavorite } }))
     try {
       await axios({

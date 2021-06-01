@@ -5,7 +5,7 @@ import { sessionIdSelector } from 'Store/auth/selectors'
 import { currentMovieIdSelector } from 'Store/movie/selectors'
 import { ADD_MOVIE_TO_EXISTING_LIST } from '../types'
 
-export const addMovieToExistingListOperation = createLogic({
+export const addToExistingListOperation = createLogic({
   type: ADD_MOVIE_TO_EXISTING_LIST,
   latest: true,
   async process({ action, axios, getState }, dispatch, done) {

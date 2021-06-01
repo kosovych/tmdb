@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { get } from 'lodash'
 
-const userDataSelector = state => (
+export const userDataSelector = state => (
   get(state, 'auth')
 )
 

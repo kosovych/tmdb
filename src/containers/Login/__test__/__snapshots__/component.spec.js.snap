@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component should render component with errorMessage 1`] = `
+<div
+  className="center"
+>
+  <Layout>
+    <Content>
+      <Row
+        justify="center"
+        type="flex"
+      >
+        <Col
+          lg={
+            Object {
+              "offset": 2,
+              "span": 8,
+            }
+          }
+          sm={
+            Object {
+              "offset": 1,
+              "span": 10,
+            }
+          }
+        >
+          <Form
+            onSubmit={[Function]}
+          >
+            <Title>
+              The Movie DB
+            </Title>
+            <Alert
+              message="Error"
+              type="error"
+            />
+            <Field
+              component={[Function]}
+              name="username"
+              placeholder="Username"
+              prefix={
+                <ForwardRef(UserOutlined)
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              }
+            />
+            <Field
+              component={[Function]}
+              name="password"
+              placeholder="Password"
+              prefix={
+                <ForwardRef(LockOutlined)
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              }
+              type="password"
+            />
+            <Button
+              htmlType="submit"
+              loading={false}
+              type="primary"
+            >
+              Log in
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Content>
+  </Layout>
+</div>
+`;
+
+exports[`Login Component should render component without errorMessage 1`] = `
+<div
+  className="center"
+>
+  <Layout>
+    <Content>
+      <Row
+        justify="center"
+        type="flex"
+      >
+        <Col
+          lg={
+            Object {
+              "offset": 2,
+              "span": 8,
+            }
+          }
+          sm={
+            Object {
+              "offset": 1,
+              "span": 10,
+            }
+          }
+        >
+          <Form
+            onSubmit={[Function]}
+          >
+            <Title>
+              The Movie DB
+            </Title>
+            <Field
+              component={[Function]}
+              name="username"
+              placeholder="Username"
+              prefix={
+                <ForwardRef(UserOutlined)
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              }
+            />
+            <Field
+              component={[Function]}
+              name="password"
+              placeholder="Password"
+              prefix={
+                <ForwardRef(LockOutlined)
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              }
+              type="password"
+            />
+            <Button
+              htmlType="submit"
+              loading={false}
+              type="primary"
+            >
+              Log in
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Content>
+  </Layout>
+</div>
+`;

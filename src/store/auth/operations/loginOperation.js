@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic'
+import { AUTH_TOKEN, VALIDATE_TOKEN_WITH_LOGIN, NEW_SESSION } from 'Constants'
 
 import { LOGIN_SUBMIT } from '../types'
 import {
@@ -12,11 +13,11 @@ export const loginOperation = createLogic({
     dispatch(loginRequest())
     const { username, password } = action
     try {
-      const requestTokenResponse = await axios.get('/authentication/token/new')
+      const requestTokenResponse = await axios.get(AUTH_TOKEN)
       const requestToken = requestTokenResponse.data.request_token
 
       const sessionRequestTokenResponse = await axios.post(
-        '/authentication/token/validate_with_login',
+        VALIDATE_TOKEN_WITH_LOGIN,
         {
           request_token: requestToken,
           username,
@@ -26,7 +27,7 @@ export const loginOperation = createLogic({
       const sessionRequestToken = sessionRequestTokenResponse.data.request_token
 
       const sessionIdResponse = await axios.post(
-        '/authentication/session/new',
+        NEW_SESSION,
         { request_token: sessionRequestToken }
       )
       const sessionId = sessionIdResponse.data.session_id

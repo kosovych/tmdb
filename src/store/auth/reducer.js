@@ -6,7 +6,7 @@ import {
   STORE_USER
 } from './types'
 
-const initState = {
+export const initState = {
   loading: false,
   errorMessage: null,
   sessionId: localStorage.getItem('sessionId')

@@ -8,8 +8,8 @@ import MovieImagesComponent from './component'
 
 class MovieImages extends Component {
   componentDidMount() {
-    const { getMovieImages, movieId } = this.props
-    getMovieImages(movieId)
+    const { getMovieImages } = this.props
+    getMovieImages()
   }
 
   render() {
@@ -25,7 +25,6 @@ class MovieImages extends Component {
 
 MovieImages.propTypes = {
   getMovieImages: PropTypes.func.isRequired,
-  movieId: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   movieImages: PropTypes.arrayOf(
     PropTypes.shape()

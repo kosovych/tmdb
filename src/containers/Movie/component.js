@@ -6,38 +6,33 @@ import MovieImages from './MovieImages'
 import MovieInfo from './MovieInfo'
 import Credits from './Credits'
 
-const Movie = ({ movieId, loading }) => (
+const Movie = ({ loading, movieId }) => (
   <>
-    {loading && (
-      <Row
-        className="top-margin"
-        justify="center"
-      >
-        <Col>
-          <Spin />
-        </Col>
-      </Row>
+    {movieId && loading && (
+    <Row
+      className="top-margin"
+      justify="center"
+    >
+      <Col>
+        <Spin />
+      </Col>
+    </Row>
     )}
-    <MovieImages
-      movieId={movieId}
-      loading={loading}
-    />
+    <MovieImages loading={loading} />
     <div className="top-margin">
-      <MovieInfo
-        movieId={movieId}
-        loading={loading}
-      />
-      <Credits
-        movieId={movieId}
-        loading={loading}
-      />
+      <MovieInfo loading={loading} />
+      <Credits loading={loading} />
     </div>
   </>
 )
 
 Movie.propTypes = {
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.string,
   loading: PropTypes.bool.isRequired
+}
+
+Movie.defaultProps = {
+  movieId: null
 }
 
 export default Movie

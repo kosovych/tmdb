@@ -1,7 +1,7 @@
 {
-  "name": "internship_template",
+  "name": "tmdb",
   "version": "1.0.0",
-  "description": "Internship Template",
+  "description": "TMDB",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest --coverage",
@@ -14,7 +14,7 @@
     "node": "10.20.1"
   },
   "keywords": [],
-  "author": "Mykola Voronin",
+  "author": "Kosovych Yaroslav",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.5",

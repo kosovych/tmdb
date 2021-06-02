@@ -10,8 +10,12 @@ import { map } from 'lodash'
 
 import { convertMinutesToHours, formatPrice } from 'Utils'
 import { isoLanguages } from 'Constants'
+import Actions from './Actions'
+import Lists from './Lists'
 
-const MovieInfo = ({ info, genres, loading }) => {
+const MovieInfo = ({
+  info, genres, loading
+}) => {
   const {
     originalTitle,
     originalLanguage,
@@ -38,6 +42,10 @@ const MovieInfo = ({ info, genres, loading }) => {
               {new Date(releaseDate || firstAirDate).getFullYear()}
               )
             </span>
+            {' '}
+            <Lists />
+            {' '}
+            <Actions />
           </Typography.Title>
           <Typography.Title level={3}>Overview</Typography.Title>
           <Typography.Paragraph>

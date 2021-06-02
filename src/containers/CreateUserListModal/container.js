@@ -2,11 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
-import { connect } from 'react-redux'
 
 import { TEXT_CONTENT_REGEXP } from 'Constants'
-import { createListLoadingSelector } from 'Store/userMovieLists/selectors'
-import { createUserLits as createUserLitsAction } from 'Store/userMovieLists/actions'
+
 import CreateUserListModalComponent from './component'
 
 const UserListSchema = Yup.object().shape({
@@ -19,13 +17,14 @@ const UserListSchema = Yup.object().shape({
 })
 
 const CreateUserListModal = ({
-  createListModalOpen,
+  createListModalOpened,
   onToggleModal,
   loading,
+  action,
   ...restProps
 }) => (
   <CreateUserListModalComponent
-    createListModalOpen={createListModalOpen}
+    createListModalOpened={createListModalOpened}
     onToggleModal={onToggleModal}
     loading={loading}
     {...restProps}
@@ -33,32 +32,25 @@ const CreateUserListModal = ({
 )
 
 CreateUserListModal.propTypes = {
-  createListModalOpen: PropTypes.bool.isRequired,
+  createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  action: PropTypes.func.isRequired
 }
 
 CreateUserListModal.defaultProps = {
   loading: false
 }
 
-const mapStateToProps = state => ({
-  loading: createListLoadingSelector(state)
-})
-
-const mapDispatchToProps = {
-  createUserLits: createUserLitsAction
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withFormik({
+export default withFormik({
   mapPropsToValues: () => ({ name: '', description: '' }),
   handleSubmit: (values, { props, resetForm }) => {
-    const { createUserLits, onToggleModal } = props
-    createUserLits(values, () => {
+    const { onToggleModal, action } = props
+    action(values, () => {
       resetForm()
       onToggleModal()
     })
   },
   validationSchema: UserListSchema
-})(CreateUserListModal))
+})(CreateUserListModal)

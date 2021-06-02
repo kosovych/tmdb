@@ -8,8 +8,8 @@ import CreditsComponent from './component'
 
 class Credits extends Component {
   componentDidMount() {
-    const { movieId, getMovieCredits } = this.props
-    getMovieCredits(movieId)
+    const { getMovieCredits } = this.props
+    getMovieCredits()
   }
 
   render() {
@@ -24,9 +24,9 @@ class Credits extends Component {
   }
 }
 
-const mapStateToProps = (state, { movieId }) => ({
-  cast: castMovieSelector(state, movieId),
-  crew: crewMovieSelector(state, movieId)
+const mapStateToProps = state => ({
+  cast: castMovieSelector(state),
+  crew: crewMovieSelector(state)
 })
 
 const mapDispatchToProps = {
@@ -34,7 +34,6 @@ const mapDispatchToProps = {
 }
 
 Credits.propTypes = {
-  movieId: PropTypes.string.isRequired,
   getMovieCredits: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   cast: PropTypes.arrayOf(PropTypes.shape()),

@@ -15,7 +15,12 @@ import {
 import {
   getMovieInfoOperation,
   getMovieImagesOperation,
-  getMovieCreditsOperation
+  getMovieCreditsOperation,
+  getMovieAccountStatesOperation,
+  toggleMovieWatchlistOperation,
+  addMovieToFavoritesOperation,
+  addToExistingListOperation,
+  addMovieToNewListOperation
 } from './movie/operations'
 
 export default [
@@ -35,5 +40,10 @@ export default [
   removeUserListDetailsOperation,
   getMovieInfoOperation,
   getMovieImagesOperation,
-  getMovieCreditsOperation
+  getMovieCreditsOperation,
+  getMovieAccountStatesOperation,
+  toggleMovieWatchlistOperation,
+  addMovieToFavoritesOperation,
+  addToExistingListOperation,
+  addMovieToNewListOperation
 ]

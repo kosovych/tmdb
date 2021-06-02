@@ -9,12 +9,14 @@ import MovieInfoComponent from './component'
 
 class MovieInfo extends Component {
   componentDidMount() {
-    const { getMovie, movieId } = this.props
-    getMovie(movieId)
+    const { getMovie } = this.props
+    getMovie()
   }
 
   render() {
-    const { info, genres, loading } = this.props
+    const {
+      info, genres, loading
+    } = this.props
     return (
       <MovieInfoComponent
         info={info}
@@ -38,7 +40,6 @@ MovieInfo.propTypes = {
     revenue: PropTypes.number
   }),
   getMovie: PropTypes.func.isRequired,
-  movieId: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   genres: PropTypes.arrayOf(
     PropTypes.shape({

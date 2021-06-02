@@ -4,18 +4,21 @@ import {
   Row, Col, Typography, Pagination, Empty, Spin, Alert
 } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
+
+import CreateUserListModal from 'Containers/CreateUserListModal'
 import List from './List'
-import CreateUserListModal from './CreateUserListModal'
 
 const UserLists = ({
-  createListModalOpen,
+  createListModalOpened,
   onToggleModal,
   loading,
   page: { currentPage, totalResults },
   error,
   userLists,
   isBlank,
-  onPageChange
+  onPageChange,
+  createUserLits,
+  modalLoading
 }) => (
   <>
     <Row>
@@ -98,18 +101,22 @@ const UserLists = ({
       </Col>
     </Row>
     <CreateUserListModal
-      createListModalOpen={createListModalOpen}
+      createListModalOpened={createListModalOpened}
       onToggleModal={onToggleModal}
+      action={createUserLits}
+      loading={modalLoading}
     />
   </>
 )
 
 
 UserLists.propTypes = {
-  createListModalOpen: PropTypes.bool.isRequired,
+  createListModalOpened: PropTypes.bool.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
+  createUserLits: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+  modalLoading: PropTypes.bool,
   error: PropTypes.string,
   userLists: PropTypes.PropTypes.arrayOf(PropTypes.shape()),
   isBlank: PropTypes.bool,
@@ -123,6 +130,7 @@ UserLists.defaultProps = {
   error: null,
   loading: null,
   userLists: null,
+  modalLoading: null,
   page: {
     currentPage: null,
     totalResults: null

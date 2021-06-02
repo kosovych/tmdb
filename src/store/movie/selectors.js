@@ -2,8 +2,14 @@ import { get, pick, map } from 'lodash'
 import { createSelector } from 'reselect'
 import { moviesDataSelector, genresDataSelector, personsDataSelector } from 'Store/data/selectors'
 
+const movieSliceSelector = state => get(state, 'movie')
 
-export const movieSelector = (state, movieId) => get(moviesDataSelector(state), movieId)
+export const currentMovieIdSelector = createSelector(
+  movieSliceSelector,
+  movie => movie?.movieId
+)
+
+export const movieSelector = state => get(moviesDataSelector(state), currentMovieIdSelector(state))
 
 export const castMovieSelector = createSelector(
   movieSelector,
@@ -50,10 +56,30 @@ export const movieInfoSelector = createSelector(
 )
 
 export const movieLoadingSelector = createSelector(
-  state => get(state, 'movie'),
+  movieSliceSelector,
   movie => [
     movie.infoLoading,
     movie.imageLoading,
     movie.creditsLoading
   ].includes(true)
+)
+
+export const newListLoadingSelector = createSelector(
+  movieSliceSelector,
+  movie => get(movie, 'newListLoading')
+)
+
+export const accountStatesLoadingSelector = createSelector(
+  movieSliceSelector,
+  movie => movie.accountStatesLoading
+)
+
+export const isOnWatchlistSelector = createSelector(
+  movieSelector,
+  movie => movie.isOnWatchlist
+)
+
+export const isFavoriteSelector = createSelector(
+  movieSelector,
+  movie => movie.isFavorite
 )

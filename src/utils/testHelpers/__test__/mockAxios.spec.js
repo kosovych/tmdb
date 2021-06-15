@@ -1,109 +1,86 @@
 import { mockAxios, mockMultiAxios } from '../mockAxios'
 
-describe('mockHttpClient', () => {
-  describe('returns mock', () => {
+describe('mockHttpClient()', () => {
+  describe('returns right values', () => {
     const method = 'get'
     const response = {
       data: { id: '1' }
     }
 
-    it('resolve', () => {
+    it('resolves with correct value', () => {
       const mock = mockAxios({ method, response })
-      expect(mock).toEqual(expect.objectContaining({
-        [method]: expect.any(Function)
-      }))
       expect(mock[method]()).resolves.toBe(response)
     })
 
-    it('reject', () => {
+    it('reject with correct value', () => {
       const mock = mockAxios({ method, response, reject: true })
-      expect(mock).toEqual(expect.objectContaining({
-        [method]: expect.any(Function)
-      }))
       expect(mock[method]()).rejects.toBe(response)
     })
   })
 })
 
-describe('mockMultiHttpClient', () => {
-  describe('returns mock for multiple calls', () => {
+describe('mockMultiHttpClient()', () => {
+  describe('returns correct values for multiple calls', () => {
     const method = 'get'
     const response = {
       data: { id: '1' }
     }
 
-    describe('same methods', () => {
+    describe('with the same methods', () => {
       const method2 = 'get'
       const response2 = {
         data: { id: '2' }
       }
 
-      it('resolve', () => {
+      it('resolve with correct value', () => {
         const mock = mockMultiAxios([
           { method, response },
           { method: method2, response: response2 }
         ])
-        expect(mock).toEqual(expect.objectContaining({
-          [method]: expect.any(Function)
-        }))
         expect(mock[method]()).resolves.toBe(response)
         expect(mock[method]()).resolves.toBe(response2)
       })
 
-      it('fails returning undefined when recieved more calls than mocks', () => {
+      it('returns undefined', () => {
         const mock = mockMultiAxios([
           { method, response },
           { method: method2, response: response2 }
         ])
-        expect(mock).toEqual(expect.objectContaining({
-          [method]: expect.any(Function)
-        }))
         expect(mock[method]()).resolves.toBe(response)
         expect(mock[method]()).resolves.toBe(response2)
-        expect(mock[method]()).toBe(undefined)
+        expect(mock[method]()).toBeUndefined()
       })
 
-      it('reject', () => {
+      it('rejects with correct value', () => {
         const mock = mockMultiAxios([
           { method, response, reject: true },
           { method: method2, response: response2, reject: true }
         ])
-        expect(mock).toEqual(expect.objectContaining({
-          [method]: expect.any(Function)
-        }))
         expect(mock[method]()).rejects.toBe(response)
         expect(mock[method]()).rejects.toBe(response2)
       })
     })
 
-    describe('different methods', () => {
+    describe('with different methods', () => {
       const method2 = 'post'
       const response2 = {
         data: { id: '2' }
       }
 
-      it('resolve', () => {
+      it('resolve with correct values', () => {
         const mock = mockMultiAxios([
           { method, response },
           { method: method2, response: response2 }
         ])
-        expect(mock).toEqual(expect.objectContaining({
-          [method]: expect.any(Function),
-          [method2]: expect.any(Function)
-        }))
         expect(mock[method]()).resolves.toBe(response)
         expect(mock[method2]()).resolves.toBe(response2)
       })
 
-      it('reject', () => {
+      it('reject with correct values', () => {
         const mock = mockMultiAxios([
           { method, response, reject: true },
           { method: method2, response: response2, reject: true }
         ])
-        expect(mock).toEqual(expect.objectContaining({
-          [method]: expect.any(Function),
-          [method2]: expect.any(Function)
-        }))
         expect(mock[method]()).rejects.toBe(response)
         expect(mock[method2]()).rejects.toBe(response2)
       })

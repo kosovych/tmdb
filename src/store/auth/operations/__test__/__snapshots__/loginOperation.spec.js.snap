@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`loginOperation() succes has valid attributes 1`] = `
+exports[`loginOperation() success has valid attributes 1`] = `
 Object {
   "cancelType": undefined,
   "debounce": 0,

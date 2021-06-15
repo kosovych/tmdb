@@ -29,50 +29,43 @@ describe('Auth selectors', () => {
 
   describe('userIdSelector()', () => {
     it('returns user ID', () => {
-      const userId = 1
-      expect(userIdSelector(state)).toBe(userId)
+      expect(userIdSelector(state)).toBe(1)
     })
   })
 
   describe('sessionIdSelector()', () => {
     it('returns session ID', () => {
-      const sessionId = 'sessionId'
-      expect(sessionIdSelector(state)).toBe(sessionId)
+      expect(sessionIdSelector(state)).toBe('sessionId')
     })
   })
 
   describe('displayNameSelector()', () => {
     it('returns user display name', () => {
-      const displayName = 'User Name'
-      expect(displayNameSelector(state)).toBe(displayName)
+      expect(displayNameSelector(state)).toBe('User Name')
     })
   })
 
   describe('authLoadingSelector()', () => {
     it('returns loading state', () => {
-      const loading = false
-      expect(authLoadingSelector(state)).toBe(loading)
+      expect(authLoadingSelector(state)).toBe(false)
     })
   })
 
   describe('avatarUrlSelector()', () => {
     it('returns avatar ULR', () => {
-      const avatarUrl = 'image'
-      expect(avatarUrlSelector(state)).toBe(avatarUrl)
+      expect(avatarUrlSelector(state)).toBe('image')
     })
   })
 
   describe('usernameSelector()', () => {
     it('returns user name', () => {
-      const username = 'user_name'
-      expect(usernameSelector(state)).toBe(username)
+      expect(usernameSelector(state)).toBe('user_name')
     })
   })
 
   describe('errorMessageSelector()', () => {
     it('returns error message', () => {
-      const errorMessage = null
-      expect(errorMessageSelector(state)).toBe(errorMessage)
+      expect(errorMessageSelector(state)).toBeNull()
     })
   })
 })

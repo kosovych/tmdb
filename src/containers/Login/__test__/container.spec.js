@@ -23,7 +23,7 @@ describe('Login Container', () => {
   const wrapper = shallow(<LoginWrapper store={store} />)
   const container = diveTo(wrapper, LoginContainer)
 
-  it('renders Login component', () => {
+  it('matches snapshot', () => {
     expect(container).toMatchSnapshot()
   })
 
@@ -34,6 +34,7 @@ describe('Login Container', () => {
       const props = { login }
       handleSubmit(value, { props })
       expect(login).toHaveBeenCalledWith(value)
+      expect(login).toHaveBeenCalledTimes(1)
     })
   })
 })

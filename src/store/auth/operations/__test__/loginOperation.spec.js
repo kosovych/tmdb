@@ -10,14 +10,6 @@ import {
   loginFails, loginSuccess, loginRequest, getUser
 } from '../../actions'
 
-// jest.mock('../../actions', () => ({
-//   __esModule: true,
-//   loginFails: jest.fn(() => 'loginFails'),
-//   loginSuccess: jest.fn(() => 'loginSuccess'),
-//   loginRequest: jest.fn(() => 'loginRequest'),
-//   getUser: jest.fn(() => 'getUser')
-// }))
-
 describe('loginOperation()', () => {
   const localStorageSpy = jest.spyOn(Storage.prototype, 'setItem')
   let dispatch
@@ -44,7 +36,7 @@ describe('loginOperation()', () => {
     password: 'password'
   }
 
-  describe('succes', () => {
+  describe('success', () => {
     let axios
     beforeEach((done) => {
       axios = mockMultiAxios([requestTokenMock, sessionRequestMock, sessionIdRequestMock])
@@ -56,7 +48,7 @@ describe('loginOperation()', () => {
       expect(loginOperation).toMatchSnapshot()
     })
 
-    it('should calls right endpoint with right params', () => {
+    it('should call right endpoint with right params', () => {
       expect(axios.spies.get).toHaveBeenNthCalledWith(1, AUTH_TOKEN)
       expect(axios.spies.post).toHaveBeenNthCalledWith(
         1,
@@ -70,7 +62,7 @@ describe('loginOperation()', () => {
       )
     })
 
-    it('should calls dispatch with right params', () => {
+    it('should call dispatch() with right params', () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, loginRequest())
       expect(dispatch).toHaveBeenNthCalledWith(
         2,
@@ -95,7 +87,7 @@ describe('loginOperation()', () => {
       loginOperation.process({ action, axios }, dispatch, done)
     })
 
-    it('should call dispatch with right arguments', () => {
+    it('should call dispatch() with right arguments', () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, loginRequest())
       expect(dispatch).toHaveBeenNthCalledWith(
         2,

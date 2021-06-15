@@ -2,13 +2,13 @@ import { shallow } from 'enzyme'
 import React from 'react'
 import Icon from './component'
 
-describe('<Icon />', () => {
-  const testComponent = () => <div>Test</div>
+describe('Icon component', () => {
+  const TestComponent = () => <div>Test</div>
   const defaultProps = {
-    as: testComponent
+    as: TestComponent
   }
 
-  it('should render <Icon />', () => {
+  it('matches snapshot', () => {
     const wrapper = shallow(<Icon {...defaultProps} />)
     expect(wrapper).toMatchSnapshot()
   })

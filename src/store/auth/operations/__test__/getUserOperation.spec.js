@@ -2,6 +2,7 @@ import { ACCOUNT } from 'Constants'
 import { mockAxios } from 'Utils/testHelpers/mockAxios'
 import { getUserOperation } from '../getUserOperation'
 import { getUserResponse } from '../../__mocks__/responses'
+import { storeUser } from '../../actions'
 
 describe('getUserOperation()', () => {
   describe('success', () => {
@@ -20,17 +21,24 @@ describe('getUserOperation()', () => {
       expect(getUserOperation).toMatchSnapshot()
     })
 
-    it('should calls right endpoint with right params', async () => {
+    it('should call right endpoint with right params', async () => {
       await getUserOperation.process({ action, axios }, dispatch, done)
       expect(axios.spy).toHaveBeenCalledWith(ACCOUNT, { params: { session_id: sessionId } })
+      expect(axios.spy).toHaveBeenCalledTimes(1)
     })
 
-    it('should calls dispatch', async () => {
+    it('should call dispatch()', async () => {
       await getUserOperation.process({ action, axios }, dispatch, done)
-      expect(dispatch).toHaveBeenCalled()
+      const {
+        id, name, username
+      } = getUserResponse.data
+      expect(dispatch).toHaveBeenCalledWith(storeUser({
+        userId: id, displayName: name, username
+      }))
+      expect(dispatch).toHaveBeenCalledTimes(1)
     })
 
-    it('should calls localStorage.setItem() with right arguments', async () => {
+    it('should call localStorage.setItem() with right arguments', async () => {
       await getUserOperation.process({ action, axios }, dispatch, done)
       expect(localStorageSpy).toHaveBeenCalledWith('userId', getUserResponse.data.id)
     })

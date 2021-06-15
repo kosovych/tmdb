@@ -5,24 +5,26 @@ import LoginComponent from '../component'
 describe('Login Component', () => {
   const requiredProps = {
     loading: false,
-    handleSubmit: () => {}
+    handleSubmit: jest.fn()
   }
 
-  it('should render component without errorMessage', () => {
-    const container = shallow(<LoginComponent
-      {... requiredProps}
-    />)
-    expect(container).toMatchSnapshot()
+  describe('with error', () => {
+    it('should matches snapshot', () => {
+      const container = shallow(<LoginComponent {... requiredProps} />)
+      expect(container).toMatchSnapshot()
+    })
   })
 
-  it('should render component with errorMessage', () => {
-    const defaultProps = {
-      errorMessage: 'Error'
-    }
-    const container = shallow(<LoginComponent
-      {... requiredProps}
-      {...defaultProps}
-    />)
-    expect(container).toMatchSnapshot()
+  describe('without error', () => {
+    it('should matches snapshot', () => {
+      const defaultProps = {
+        errorMessage: 'Error'
+      }
+      const container = shallow(<LoginComponent
+        {... requiredProps}
+        {...defaultProps}
+      />)
+      expect(container).toMatchSnapshot()
+    })
   })
 })

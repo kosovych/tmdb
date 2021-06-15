@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Component should render component with errorMessage 1`] = `
+exports[`Login Component with error should matches snapshot 1`] = `
 <div
   className="center"
 >
@@ -25,15 +25,11 @@ exports[`Login Component should render component with errorMessage 1`] = `
           }
         >
           <Form
-            onSubmit={[Function]}
+            onSubmit={[MockFunction]}
           >
             <Title>
               The Movie DB
             </Title>
-            <Alert
-              message="Error"
-              type="error"
-            />
             <Field
               component={[Function]}
               name="username"
@@ -78,7 +74,7 @@ exports[`Login Component should render component with errorMessage 1`] = `
 </div>
 `;
 
-exports[`Login Component should render component without errorMessage 1`] = `
+exports[`Login Component without error should matches snapshot 1`] = `
 <div
   className="center"
 >
@@ -103,11 +99,15 @@ exports[`Login Component should render component without errorMessage 1`] = `
           }
         >
           <Form
-            onSubmit={[Function]}
+            onSubmit={[MockFunction]}
           >
             <Title>
               The Movie DB
             </Title>
+            <Alert
+              message="Error"
+              type="error"
+            />
             <Field
               component={[Function]}
               name="username"

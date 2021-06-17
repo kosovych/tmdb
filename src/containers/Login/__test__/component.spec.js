@@ -9,14 +9,14 @@ describe('Login Component', () => {
   }
 
   describe('with error', () => {
-    it('should matches snapshot', () => {
+    it('should match snapshot', () => {
       const container = shallow(<LoginComponent {... requiredProps} />)
       expect(container).toMatchSnapshot()
     })
   })
 
   describe('without error', () => {
-    it('should matches snapshot', () => {
+    it('should match snapshot', () => {
       const defaultProps = {
         errorMessage: 'Error'
       }

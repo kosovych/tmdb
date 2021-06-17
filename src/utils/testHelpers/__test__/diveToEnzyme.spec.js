@@ -31,29 +31,38 @@ describe('diveTo()', () => {
     const target = diveTo(wrappedComponent, MockComponent)
     const targetInstance = target.instance()
 
-    it('returns correct value', () => {
-      expect(targetInstance).toBeInstanceOf(MockComponent)
+    describe('with target component', () => {
+      it('returns correct value', () => {
+        expect(targetInstance).toBeInstanceOf(MockComponent)
+      })
+    })
+
+    describe('without target component', () => {
+      it('throws error ', () => {
+        expect(() => { diveTo(wrappedComponent, OtherComponent) }).toThrow(Error)
+      })
     })
   })
 
   describe('when target component defined as function', () => {
-    const wrappedComponent = shallow(<WrappedComponent store={store} />)
-    it('throws error if target component is not present', () => {
-      expect(() => { diveTo(wrappedComponent, OtherComponent) }).toThrow(Error)
+    describe('without target component', () => {
+      it('returns correct value', () => {
+        const FunctionalComponent = () => (<div>FunctionalComponent</div>)
+        const WrappedFunctionalComponent = connect()(FunctionalComponent)
+
+        const wrappedFunctionalComponent = shallow(<WrappedFunctionalComponent store={store} />)
+        const targetFunctional = diveTo(wrappedFunctionalComponent, FunctionalComponent)
+        const targetFunctionalInstance = targetFunctional.instance()
+
+        expect(targetFunctional.debug()).toEqual(shallow(<FunctionalComponent />).debug())
+        expect(targetFunctionalInstance).toBeNull()
+      })
     })
-  })
-
-  describe('without target component', () => {
-    it('dives to target component defined as function', () => {
-      const FunctionalComponent = () => (<div>FunctionalComponent</div>)
-      const WrappedFunctionalComponent = connect()(FunctionalComponent)
-
-      const wrappedFunctionalComponent = shallow(<WrappedFunctionalComponent store={store} />)
-      const targetFunctional = diveTo(wrappedFunctionalComponent, FunctionalComponent)
-      const targetFunctionalInstance = targetFunctional.instance()
-
-      expect(targetFunctional.debug()).toEqual(shallow(<FunctionalComponent />).debug())
-      expect(targetFunctionalInstance).toBeNull()
+    describe('without target component', () => {
+      const wrappedComponent = shallow(<WrappedComponent store={store} />)
+      it('throws error', () => {
+        expect(() => { diveTo(wrappedComponent, OtherComponent) }).toThrow(Error)
+      })
     })
   })
 })

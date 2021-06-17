@@ -32,10 +32,10 @@ describe('getUserOperation()', () => {
       const {
         id, name, username
       } = getUserResponse.data
+      expect(dispatch).toHaveBeenCalledTimes(1)
       expect(dispatch).toHaveBeenCalledWith(storeUser({
         userId: id, displayName: name, username
       }))
-      expect(dispatch).toHaveBeenCalledTimes(1)
     })
 
     it('should call localStorage.setItem() with right arguments', async () => {

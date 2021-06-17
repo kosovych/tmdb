@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Container renders Login component 1`] = `
+exports[`Login Container matches snapshot 1`] = `
 <Login
   dirty={false}
   errorMessage={null}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Component with error should matches snapshot 1`] = `
+exports[`Login Component with error should match snapshot 1`] = `
 <div
   className="center"
 >
@@ -74,7 +74,7 @@ exports[`Login Component with error should matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Login Component without error should matches snapshot 1`] = `
+exports[`Login Component without error should match snapshot 1`] = `
 <div
   className="center"
 >

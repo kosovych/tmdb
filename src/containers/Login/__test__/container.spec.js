@@ -33,8 +33,8 @@ describe('Login Container', () => {
       const value = { password: 'password', username: 'username' }
       const props = { login }
       handleSubmit(value, { props })
-      expect(login).toHaveBeenCalledWith(value)
       expect(login).toHaveBeenCalledTimes(1)
+      expect(login).toHaveBeenCalledWith(value)
     })
   })
 })

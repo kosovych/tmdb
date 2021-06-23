@@ -48,12 +48,16 @@ const mapDispatchToProps = {
   setSearch: setSearchAction
 }
 
+export const handleSubmit = (values, { props }) => {
+  const { getMovies, setSearch } = props
+  setSearch(values.search)
+  getMovies()
+}
+
+export { Search as SearchContainer }
+
 export default connect(null, mapDispatchToProps)(withFormik({
   mapPropsToValues: () => ({ search: '' }),
-  handleSubmit: (values, { props }) => {
-    const { getMovies, setSearch } = props
-    setSearch(values.search)
-    getMovies()
-  },
+  handleSubmit,
   validationSchema: SearchSchema
 })(Search))

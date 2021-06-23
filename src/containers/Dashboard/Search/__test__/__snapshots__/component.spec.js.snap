@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should match snapshot 1`] = `
+<Row
+  gutter={
+    Object {
+      "lg": 22,
+      "md": 24,
+      "sm": 16,
+      "xs": 8,
+    }
+  }
+  justify="center"
+>
+  <Col
+    className="gutter-row"
+    lg={
+      Object {
+        "span": 12,
+      }
+    }
+    md={
+      Object {
+        "span": 14,
+      }
+    }
+    sm={
+      Object {
+        "span": 20,
+      }
+    }
+    xl={
+      Object {
+        "span": 10,
+      }
+    }
+    xs={
+      Object {
+        "span": 20,
+      }
+    }
+  >
+    <Form>
+      <Field
+        className="top-margin"
+        component={[Function]}
+        enterButton="Search"
+        inputAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "displayName": "Search",
+            "render": [Function],
+          }
+        }
+        name="search"
+        onBlur={[MockFunction]}
+        onSearch={[MockFunction]}
+        placeholder="Enter movie name"
+        size="large"
+        suffix={
+          <ClearButton
+            isVisible="Search..."
+            onClick={[MockFunction]}
+          />
+        }
+      />
+    </Form>
+  </Col>
+</Row>
+`;

@@ -7,7 +7,7 @@ import {
   STORE_USER
 } from '../types'
 
-describe('Billing reducers', () => {
+describe('Auth reducers', () => {
   it('should returns initial State', () => {
     expect(reducer(undefined, {})).toEqual(initState)
   })

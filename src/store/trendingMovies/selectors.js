@@ -2,11 +2,11 @@ import { createSelector } from 'reselect'
 import { map, pick, get } from 'lodash'
 import { moviesDataSelector } from 'Store/data/selectors'
 
-const movieCatalogEntriesSelector = state => (
+export const movieCatalogEntriesSelector = state => (
   get(state, ['trendingMovies', 'entries'])
 )
 
-const movieMetaSelector = state => (
+export const movieMetaSelector = state => (
   get(state, ['trendingMovies', 'meta'])
 )
 

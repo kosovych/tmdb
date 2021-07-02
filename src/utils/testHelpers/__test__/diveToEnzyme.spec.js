@@ -45,7 +45,7 @@ describe('diveTo()', () => {
   })
 
   describe('when target component defined as function', () => {
-    describe('without target component', () => {
+    describe('with target component', () => {
       it('returns correct value', () => {
         const FunctionalComponent = () => (<div>FunctionalComponent</div>)
         const WrappedFunctionalComponent = connect()(FunctionalComponent)

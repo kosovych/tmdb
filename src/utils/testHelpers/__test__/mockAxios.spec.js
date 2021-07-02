@@ -11,7 +11,7 @@ describe('mockHttpClient()', () => {
     expect(mock[method]()).resolves.toBe(response)
   })
 
-  it('reject with correct value', () => {
+  it('rejects with correct value', () => {
     const mock = mockAxios({ method, response, reject: true })
     expect(mock[method]()).rejects.toBe(response)
   })
@@ -29,7 +29,7 @@ describe('mockMultiHttpClient()', () => {
       data: { id: '2' }
     }
 
-    it('resolve with correct value', () => {
+    it('resolves with correct value', () => {
       const mock = mockMultiAxios([
         { method, response },
         { method: method2, response: response2 }
@@ -64,7 +64,7 @@ describe('mockMultiHttpClient()', () => {
       data: { id: '2' }
     }
 
-    it('resolve with correct values', () => {
+    it('resolves with correct values', () => {
       const mock = mockMultiAxios([
         { method, response },
         { method: method2, response: response2 }
@@ -73,7 +73,7 @@ describe('mockMultiHttpClient()', () => {
       expect(mock[method2]()).resolves.toBe(response2)
     })
 
-    it('reject with correct values', () => {
+    it('rejects with correct values', () => {
       const mock = mockMultiAxios([
         { method, response, reject: true },
         { method: method2, response: response2, reject: true }

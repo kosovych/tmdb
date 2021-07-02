@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component with error should match snapshot 1`] = `
+<Fragment>
+  <Connect(WithFormik(Search)) />
+  <div
+    className="top-margin"
+  >
+    <Row
+      gutter={16}
+      type="flex"
+    >
+      <Col
+        className="gutter-row"
+        offset={2}
+        span={20}
+      >
+        <Row
+          gutter={
+            Object {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+          justify="start"
+        >
+          <MoviesList
+            movies={Array []}
+          />
+          <Col
+            span={24}
+          >
+            <Alert
+              message="Error"
+              type="error"
+            />
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+      type="flex"
+    >
+      <Col />
+    </Row>
+  </div>
+</Fragment>
+`;
+
+exports[`Dashboard component with isBlank should match snapshot 1`] = `
+<Fragment>
+  <Connect(WithFormik(Search)) />
+  <div
+    className="top-margin"
+  >
+    <Row
+      gutter={16}
+      type="flex"
+    >
+      <Col
+        className="gutter-row"
+        offset={2}
+        span={20}
+      >
+        <Row
+          gutter={
+            Object {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+          justify="start"
+        >
+          <MoviesList
+            movies={Array []}
+          />
+          <Col
+            span={24}
+          >
+            <Empty
+              image={<Simple />}
+            />
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+      type="flex"
+    >
+      <Col />
+    </Row>
+  </div>
+</Fragment>
+`;
+
+exports[`Dashboard component with loading should match snapshot 1`] = `
+<Fragment>
+  <Connect(WithFormik(Search)) />
+  <div
+    className="top-margin"
+  >
+    <Row
+      gutter={16}
+      type="flex"
+    >
+      <Col
+        className="gutter-row"
+        offset={2}
+        span={20}
+      >
+        <Row
+          gutter={
+            Object {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+          justify="center"
+        >
+          <Col>
+            <Spin
+              size="default"
+              spinning={true}
+              wrapperClassName=""
+            />
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+      type="flex"
+    >
+      <Col />
+    </Row>
+  </div>
+</Fragment>
+`;
+
+exports[`Dashboard component with movies should match snapshot 1`] = `
+<Fragment>
+  <Connect(WithFormik(Search)) />
+  <div
+    className="top-margin"
+  >
+    <Row
+      gutter={16}
+      type="flex"
+    >
+      <Col
+        className="gutter-row"
+        offset={2}
+        span={20}
+      >
+        <Row
+          gutter={
+            Object {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+          justify="start"
+        >
+          <MoviesList
+            movies={
+              Array [
+                Object {
+                  "backdropPath": "/1.jpg",
+                  "id": 467909,
+                  "mediaType": "movie",
+                  "overview": "The story of Usnavi, a...",
+                  "posterPath": "/1.jpg",
+                  "title": "In the Heights",
+                },
+                Object {
+                  "backdropPath": "/1.jpg",
+                  "id": 791373,
+                  "mediaType": "movie",
+                  "overview": "Determined to ...",
+                  "posterPath": "/1.jpg",
+                  "title": "Justice League",
+                },
+              ]
+            }
+          />
+        </Row>
+      </Col>
+    </Row>
+    <Row
+      justify="center"
+      type="flex"
+    >
+      <Col>
+        <Pagination
+          className="pagination"
+          current={1}
+          disabled={null}
+          onChange={[MockFunction]}
+          pageSize={20}
+          showSizeChanger={false}
+          total={1}
+        />
+      </Col>
+    </Row>
+  </div>
+</Fragment>
+`;

@@ -17,7 +17,6 @@ export const getMoviesOperation = createLogic({
     const searchQuery = movieSearchQuerySelector(getState())
     const url = searchQuery ? SEARCH_MOVIE_URL : TRENDING_MOVIES_DAY
     const schema = searchQuery ? searchMoviesSchema : moviesListSchema
-
     if (searchQuery) {
       params = { ...params, query: searchQuery }
     }

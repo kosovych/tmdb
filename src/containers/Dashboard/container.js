@@ -64,6 +64,8 @@ Dashboard.defaultProps = {
   isBlank: false
 }
 
+export { Dashboard as DashboardContainer }
+
 const mapStateToProps = state => ({
   loading: movieLoadingSelector(state),
   pagination: moviePagesSelector(state),

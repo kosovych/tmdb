@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Container matches snapshot 1`] = `
+<Dashboard
+  currentPage={null}
+  error={null}
+  isBlank={true}
+  loading={null}
+  movies={Array []}
+  onPageChange={[Function]}
+  totalResults={null}
+/>
+`;

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Container matches snapshot 1`] = `
+<Login
+  dirty={false}
+  errorMessage={null}
+  errors={Object {}}
+  getFieldHelpers={[Function]}
+  getFieldMeta={[Function]}
+  getFieldProps={[Function]}
+  handleBlur={[Function]}
+  handleChange={[Function]}
+  handleReset={[Function]}
+  handleSubmit={[Function]}
+  initialErrors={Object {}}
+  initialTouched={Object {}}
+  initialValues={
+    Object {
+      "password": "",
+      "username": "",
+    }
+  }
+  isSubmitting={false}
+  isValid={true}
+  isValidating={false}
+  loading={false}
+  login={[Function]}
+  registerField={[Function]}
+  resetForm={[Function]}
+  sessionId=""
+  setErrors={[Function]}
+  setFieldError={[Function]}
+  setFieldTouched={[Function]}
+  setFieldValue={[Function]}
+  setFormikState={[Function]}
+  setStatus={[Function]}
+  setSubmitting={[Function]}
+  setTouched={[Function]}
+  setValues={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  submitCount={0}
+  submitForm={[Function]}
+  touched={Object {}}
+  unregisterField={[Function]}
+  validateField={[Function]}
+  validateForm={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validateOnMount={false}
+  values={
+    Object {
+      "password": "",
+      "username": "",
+    }
+  }
+/>
+`;

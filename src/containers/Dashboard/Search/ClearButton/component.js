@@ -17,7 +17,7 @@ const ClearButton = ({ onClick, isVisible }) => (
 
 ClearButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  isVisible: PropTypes.string.isRequired
+  isVisible: PropTypes.bool.isRequired
 }
 
 export default ClearButton

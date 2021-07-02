@@ -39,7 +39,7 @@ const Search = ({
           suffix={(
             <ClearButton
               onClick={onClear}
-              isVisible={values.search}
+              isVisible={Boolean(values.search)}
             />
           )}
         />

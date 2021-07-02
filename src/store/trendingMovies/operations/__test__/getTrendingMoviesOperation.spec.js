@@ -83,30 +83,28 @@ describe('getTrendingMoviesOperation()', () => {
   })
 
   describe('when fetching searched movies', () => {
-    describe('fetch trending movies', () => {
-      let dispatch
-      const getState = jest.fn(() => state)
-      const action = {
-        params: {}
+    let dispatch
+    const getState = jest.fn(() => state)
+    const action = {
+      params: {}
+    }
+    const request = {
+      method: 'get',
+      response: getTrendingMoviesOperationSuccess
+    }
+    describe('success', () => {
+      const beforeFunction = axios => (done) => {
+        jest.clearAllMocks()
+        dispatch = jest.fn(() => done)
+        getMoviesOperation.process({ getState, action, axios }, dispatch, done)
       }
-      const request = {
-        method: 'get',
-        response: getTrendingMoviesOperationSuccess
-      }
-      describe('success', () => {
-        const beforeFunction = axios => (done) => {
-          jest.clearAllMocks()
-          dispatch = jest.fn(() => done)
-          getMoviesOperation.process({ getState, action, axios }, dispatch, done)
-        }
-        const axios = mockAxios(request)
-        beforeEach(beforeFunction(axios))
-        it('should call right endpoint with right params', () => {
-          expect(axios.get).toHaveBeenCalledTimes(1)
-          expect(axios.get).toHaveBeenNthCalledWith(1,
-            SEARCH_MOVIE_URL,
-            { params: { query: 'search' } })
-        })
+      const axios = mockAxios(request)
+      beforeEach(beforeFunction(axios))
+      it('should call right endpoint with right params', () => {
+        expect(axios.get).toHaveBeenCalledTimes(1)
+        expect(axios.get).toHaveBeenNthCalledWith(1,
+          SEARCH_MOVIE_URL,
+          { params: { query: 'search' } })
       })
     })
   })

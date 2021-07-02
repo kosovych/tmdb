@@ -40,19 +40,20 @@ describe('Login Container', () => {
       beforeEach(() => {
         jest.clearAllMocks()
       })
-      it('should call setFieldTouched() actions with right params', () => {
+      it('should call setFieldTouched() actions', () => {
         instance.onClear()
         expect(setFieldTouched).toHaveBeenCalledTimes(1)
       })
-      it('should call setSearchAction() actions with right params', () => {
+      it('should call setSearchAction() actions', () => {
         instance.onClear()
+        expect(setSearchAction).toHaveBeenCalledTimes(1)
         expect(setSearchAction).toHaveBeenCalledWith('')
       })
-      it('should call getMoviesAction() actions with right params', () => {
+      it('should call getMoviesAction() actions', () => {
         instance.onClear()
         expect(getMoviesAction).toHaveBeenCalledTimes(1)
       })
-      it('should call handleReset() actions with right params', () => {
+      it('should call handleReset() actions', () => {
         instance.onClear()
         expect(handleReset).toHaveBeenCalledTimes(1)
       })
@@ -72,11 +73,11 @@ describe('Login Container', () => {
       beforeEach(() => {
         jest.clearAllMocks()
       })
-      it('should not call setSearchAction() actions with right params', () => {
+      it('should not call setSearchAction() actions', () => {
         instance.onClear()
         expect(setSearchAction).not.toHaveBeenCalled()
       })
-      it('should not call getMoviesAction() actions with right params', () => {
+      it('should not call getMoviesAction() actions', () => {
         instance.onClear()
         expect(getMoviesAction).not.toHaveBeenCalled()
       })
@@ -89,14 +90,16 @@ describe('handleSubmit()', () => {
   const setSearch = jest.fn()
   const props = { getMovies, setSearch }
   const values = { search: 'Search...' }
-  handleSubmit(values, { props })
-  it('should call setSearch() with right params', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+  it('should call setSearch()', () => {
     handleSubmit(values, { props })
     expect(setSearch).toHaveBeenCalledTimes(1)
     expect(setSearch).toHaveBeenCalledWith(values.search)
   })
   it('should call getMovies()', () => {
     handleSubmit(values, { props })
-    expect(getMovies).toHaveBeenCalled()
+    expect(getMovies).toHaveBeenCalledTimes(1)
   })
 })

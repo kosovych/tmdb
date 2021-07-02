@@ -5,7 +5,7 @@ import ClearButton from '../component'
 describe('ClearButton component', () => {
   const props = {
     onClick: jest.fn(),
-    isVisible: 'Search...'
+    isVisible: true
   }
   it('should match snapshot', () => {
     const component = shallow(<ClearButton {...props} />)

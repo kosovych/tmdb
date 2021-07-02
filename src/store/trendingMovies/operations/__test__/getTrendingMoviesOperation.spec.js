@@ -6,9 +6,8 @@ import { state } from '../../__mock__/state'
 import { getTrendingMoviesOperationSuccess, getTrendingMoviesOperationError } from '../../__mock__/responses'
 import { requestMoviesStart, requestMoviesSuccess, requestMoviesError } from '../../actions'
 
-
 describe('getTrendingMoviesOperation()', () => {
-  describe('fetch trending movies', () => {
+  describe('when fetching trending movies', () => {
     let dispatch
     const getState = jest.fn(() => ({}))
     const action = {
@@ -83,7 +82,7 @@ describe('getTrendingMoviesOperation()', () => {
     })
   })
 
-  describe('fetch search movies', () => {
+  describe('when fetching searched movies', () => {
     describe('fetch trending movies', () => {
       let dispatch
       const getState = jest.fn(() => state)

@@ -59,7 +59,7 @@ exports[`Search component should match snapshot 1`] = `
         size="large"
         suffix={
           <ClearButton
-            isVisible="Search..."
+            isVisible={true}
             onClick={[MockFunction]}
           />
         }

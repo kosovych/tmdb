@@ -5,12 +5,10 @@ import diveTo from 'Utils/testHelpers/diveToEnzyme'
 import { getMovies as getMoviesAction } from 'Store/trendingMovies/actions'
 import DashboardWrapper, { DashboardContainer } from '../container'
 
-
 jest.mock('Store/trendingMovies/actions', () => ({
   getMovies: jest.fn(),
   setSearch: jest.fn()
 }))
-
 
 describe('Login Container', () => {
   const store = configureStore()({})

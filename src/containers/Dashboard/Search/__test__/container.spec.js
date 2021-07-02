@@ -10,63 +10,93 @@ jest.mock('Store/trendingMovies/actions', () => ({
   setSearch: jest.fn()
 }))
 
-describe('Login Container', () => {
+const getContainer = () => {
   const store = configureStore()({})
   store.dispatch = jest.fn()
   const wrapper = shallow(<SearchWrapper store={store} />)
   const container = diveTo(wrapper, SearchContainer)
-  const instance = container.instance()
+  return container
+}
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
+describe('Login Container', () => {
   it('matches snapshot', () => {
+    const container = getContainer()
     expect(container).toMatchSnapshot()
   })
 
   describe('onClear()', () => {
-    describe('if form have been submitted', () => {
-      it('should call actions with right params', () => {
-        const handleReset = jest.fn()
-        const setFieldTouched = jest.fn()
-        container.setProps({
-          submitCount: 1,
-          handleReset,
-          setFieldTouched
-        })
+    describe('when form have been submitted', () => {
+      const submitCount = 1
+      const handleReset = jest.fn()
+      const setFieldTouched = jest.fn()
+      const container = getContainer()
+      container.setProps({
+        submitCount,
+        handleReset,
+        setFieldTouched
+      })
+      const instance = container.instance()
+
+      beforeEach(() => {
+        jest.clearAllMocks()
+      })
+      it('should call setFieldTouched() actions with right params', () => {
         instance.onClear()
         expect(setFieldTouched).toHaveBeenCalledTimes(1)
+      })
+      it('should call setSearchAction() actions with right params', () => {
+        instance.onClear()
         expect(setSearchAction).toHaveBeenCalledWith('')
+      })
+      it('should call getMoviesAction() actions with right params', () => {
+        instance.onClear()
         expect(getMoviesAction).toHaveBeenCalledTimes(1)
+      })
+      it('should call handleReset() actions with right params', () => {
+        instance.onClear()
         expect(handleReset).toHaveBeenCalledTimes(1)
       })
     })
-    describe('if form have NOT been submitted', () => {
-      it('should call actions with right params', () => {
-        const submitCount = 0
-        const handleReset = jest.fn()
-        const setFieldTouched = jest.fn()
-        container.setProps({
-          submitCount,
-          handleReset,
-          setFieldTouched
-        })
+    describe('when form have NOT been submitted', () => {
+      const submitCount = 0
+      const handleReset = jest.fn()
+      const setFieldTouched = jest.fn()
+      const container = getContainer()
+      container.setProps({
+        submitCount,
+        handleReset,
+        setFieldTouched
+      })
+      const instance = container.instance()
+
+      beforeEach(() => {
+        jest.clearAllMocks()
+      })
+      it('should not call setSearchAction() actions with right params', () => {
         instance.onClear()
         expect(setSearchAction).not.toHaveBeenCalled()
+      })
+      it('should not call getMoviesAction() actions with right params', () => {
+        instance.onClear()
         expect(getMoviesAction).not.toHaveBeenCalled()
       })
     })
   })
+})
 
-  describe('handleSubmit()', () => {
-    const getMovies = jest.fn()
-    const setSearch = jest.fn()
-    const props = { getMovies, setSearch }
-    const values = { search: 'Search...' }
+describe('handleSubmit()', () => {
+  const getMovies = jest.fn()
+  const setSearch = jest.fn()
+  const props = { getMovies, setSearch }
+  const values = { search: 'Search...' }
+  handleSubmit(values, { props })
+  it('should call setSearch() with right params', () => {
     handleSubmit(values, { props })
     expect(setSearch).toHaveBeenCalledTimes(1)
     expect(setSearch).toHaveBeenCalledWith(values.search)
+  })
+  it('should call getMovies()', () => {
+    handleSubmit(values, { props })
     expect(getMovies).toHaveBeenCalled()
   })
 })

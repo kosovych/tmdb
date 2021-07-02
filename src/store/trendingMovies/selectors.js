@@ -33,7 +33,12 @@ export const movieSearchQuerySelector = createSelector(
 export const isBlankSelector = createSelector(
   movieCatalogEntriesSelector,
   movieLoadingSelector,
-  (moviesEntries, loading) => !loading && moviesEntries && !moviesEntries.length
+  (moviesEntries, loading) => {
+    if (!moviesEntries) {
+      return true
+    }
+    return !loading && !moviesEntries.length
+  }
 )
 
 export const moviesSelector = createSelector(

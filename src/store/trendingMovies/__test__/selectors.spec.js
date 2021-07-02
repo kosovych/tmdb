@@ -8,11 +8,9 @@ import {
   isBlankSelector,
   moviesSelector
 } from '../selectors'
-import { state, blankState } from '../__mock__/state'
-
-jest.mock('Store/data/selectors', () => ({
-  moviesDataSelector: () => ({ 1: {} })
-}))
+import {
+  state, loadingState, emptyEntriesState, noEntriesState, loadingStateNoEntries
+} from '../__mock__/state'
 
 describe('Auth selectors', () => {
   describe('movieCatalogEntriesSelector()', () => {
@@ -20,6 +18,7 @@ describe('Auth selectors', () => {
       expect(movieCatalogEntriesSelector(state)).toEqual([1])
     })
   })
+
   describe('movieMetaSelector()', () => {
     it('returns correct value', () => {
       expect(movieMetaSelector(state)).toEqual({
@@ -31,6 +30,7 @@ describe('Auth selectors', () => {
       })
     })
   })
+
   describe('moviePagesSelector()', () => {
     it('returns correct value', () => {
       expect(moviePagesSelector(state)).toEqual({
@@ -59,21 +59,37 @@ describe('Auth selectors', () => {
   })
 
   describe('isBlankSelector()', () => {
-    describe('if blank', () => {
+    describe('when movies are loading and trendingMovies has array of entries', () => {
       it('returns correct value', () => {
-        expect(isBlankSelector(blankState)).toBe(true)
+        expect(isBlankSelector(loadingState)).toBe(false)
       })
     })
-    describe('if NOT blank', () => {
+
+    describe("when movies are loading and trendingMovies doesn't has array of entries", () => {
       it('returns correct value', () => {
-        expect(isBlankSelector(state)).toBe(false)
+        expect(isBlankSelector(loadingStateNoEntries)).toBe(true)
+      })
+    })
+
+    describe("when trendingMovies doesn't has array of entries", () => {
+      it('returns correct value', () => {
+        expect(isBlankSelector(noEntriesState)).toBe(true)
+      })
+    })
+
+    describe('when trendingMovies are not loading and has empty array of entries', () => {
+      it('returns correct value', () => {
+        expect(isBlankSelector(emptyEntriesState)).toBe(false)
       })
     })
   })
 
   describe('moviesSelector()', () => {
     it('returns correct value', () => {
-      expect(moviesSelector(state)).toEqual([{}])
+      expect(moviesSelector(state)).toEqual([{
+        title: 'Movie',
+        id: 1
+      }])
     })
   })
 })

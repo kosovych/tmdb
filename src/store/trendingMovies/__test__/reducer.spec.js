@@ -9,7 +9,7 @@ import {
 
 describe('Auth reducers', () => {
   const mockState = { meta: { search: 'test' } }
-  it('should returns initial State', () => {
+  it('should return initial state', () => {
     expect(reducer(undefined, {})).toEqual({})
   })
 
